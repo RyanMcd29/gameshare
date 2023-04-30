@@ -1,13 +1,10 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 # dependencies
 /node_modules
 /.pnp
 .pnp.js
 /server/node_modules
 /client/node_modules
-/server/package-lock.json
-/client/package-lock.json
 
 # testing
 /coverage
@@ -25,3 +22,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+server/package-lock.json
+client/package-lock.json
+node_modules
