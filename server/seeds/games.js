@@ -18,6 +18,7 @@ function destructureGames (games) {
     createGameLibrary(destructuredGames)
 }
 
+// Connect to DB and create game document (not working)
 async function createGameLibrary(games) {
     db.once('open', async () => {
         try {
