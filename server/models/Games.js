@@ -12,7 +12,7 @@ const gameSchema = new Schema({
     date_released: {
         type: Date
     },
-    genre: {
+    genres: {
         type: Array
     },
     platforms: {
@@ -20,6 +20,6 @@ const gameSchema = new Schema({
     }
 })
 
-const GameLibrary = mongoose.model('GameLibrary', gameSchema);
+const GameLibrary = model('GameLibrary', gameSchema);
 
 module.exports = GameLibrary;
