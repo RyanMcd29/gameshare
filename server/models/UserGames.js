@@ -1,6 +1,5 @@
 const  { Schema, model } = require ('mongoose');
 // const bcrypt = require('bcrypt');
-const UserGames = model('UserGames', userSchema);
 
 const UserGamesSchema = new Schema({
     isBorrowed: {
@@ -22,8 +21,16 @@ const UserGamesSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User',
         default: {}
-    }
-   
+    },
+   gameDetails: {
+        type: Schema.Types.ObjectId,
+        ref: 'GameLibrary',
+        required: true
+   },
+   platform: {
+        type: String,
+        required: true
+   }
 },
 { 
     timestamps: true 
