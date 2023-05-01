@@ -1,5 +1,5 @@
 // const db = require('../config/connection')
-const API = "https://api.rawg.io/api/games?page_size=200&rating&key=6d36d11c17574c6e960f36f8e674bd9b"
+const API = "https://api.rawg.io/api/games?page_size=10&rating&key=6d36d11c17574c6e960f36f8e674bd9b"
 // const { GameLibrary } = require ("../models/games")
 const axios = require("axios")
 
@@ -18,16 +18,16 @@ function destructureGames (games) {
 }
 
 // Connect to DB and create game document (not working)
-async function createGameLibrary(games) {
-    db.once('open', async () => {
-        try {
-            await GameLibrary.deleteMany({});
-            await GameLibrary.create(games)
-        } catch (error) {
-            throw error
-        }
-    })
-}
+// async function createGameLibrary(games) {
+//     db.once('open', async () => {
+//         try {
+//             await GameLibrary.deleteMany({});
+//             await GameLibrary.create(games)
+//         } catch (error) {
+//             throw error
+//         }
+//     })
+// }
 
 const getGameDetails = async () => {
     const games = await axios.get(API)
