@@ -1,0 +1,17 @@
+[
+    {
+        "isBorrowed": true,
+        "isListed": false,
+        "owner": 1,
+        "borrower": 2,
+        "gameDetails": 20,
+        "platform": "Xbox"
+    },
+    {
+        "isBorrowed": false,
+        "isListed": true,
+        "owner": 2,
+        "gameDetails": 15,
+        "platform": "PC"
+    }
+]
