@@ -36,4 +36,6 @@ const UserGamesSchema = new Schema({
     timestamps: true 
 });
 
-module.exports = UserGamesSchema;
+const UserGames = new model('UserGames', UserGamesSchema)
+
+module.exports = UserGames;
