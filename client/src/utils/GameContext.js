@@ -1,8 +1,10 @@
 import React, { createContext, useContext } from "react";
 import { useGameReducer } from './reducers'
+import { useQuery } from "@apollo/client"
 
 const GameContext = createContext()
 const { Provider } = GameContext;
+
 
 const GameProvider = ({ value = [], ...props }) => {
     const [ state, dispatch ] = useGameReducer({
