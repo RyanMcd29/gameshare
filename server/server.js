@@ -8,6 +8,7 @@ const db = require('./config/connection');
 
 // const routes = require('./routes');
 
+// const PORT = process.env.PORT || 3001;
 const PORT = process.env.PORT || 3001;
 const app = express();
 
@@ -25,11 +26,13 @@ if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '../client/build')));
 }
 
+
+
+// TODO: Uncomment once we have built the queries and mutations in the client folder
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
-//TODO: Uncomment once we have built the queries and mutations in the client folder
 const startApolloServer = async (typeDefs, resolvers) => {
     await server.start();
     server.applyMiddleware({ app });
@@ -43,10 +46,11 @@ const startApolloServer = async (typeDefs, resolvers) => {
 };
 
 
-//TODO: Comment out this code once we have built out queries and mutations in the client folder
-db.once('open', () => {
-    app.listen(PORT, () => console.log(`Now listening on localhost: ${PORT}`));
-});
+
+//FIXME: This wasn't necessary, it was using the port twice
+// db.once('open', () => {
+//     app.listen(PORT, () => console.log(`Now listening on localhost: ${PORT}`));
+// });
   
-// Uncomment when we have built queries and mutations
+//Uncomment when we have built queries and mutations
 startApolloServer(typeDefs, resolvers);
