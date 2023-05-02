@@ -9,6 +9,7 @@ import SearchContainer from './components/searchContainer';
 // Pages
 import Home from './pages/Home';
 import Login from './pages/Login';
+import SignUp from './pages/SignUp';
 // import Header from './pages/Header';
 // import Footer from './pages/Footer';
 
@@ -45,6 +46,10 @@ function App() {
               <Route 
                 path="/login" 
                 element={<Login />}
+              />
+               <Route 
+                path="/signup" 
+                element={<SignUp />}
               />
               <Route 
                 path="/" 
