@@ -12,10 +12,11 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 // TODO: Uncomment once you have built the queries and mutations in the client folder
-// const server = new ApolloServer({
-//     typeDefs,
-//     resolvers,
-// });
+const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+    context: authMiddleware,
+});
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -29,20 +30,17 @@ app.get('/', (req, res) => {
 });
 
 //TODO: Uncomment once we have built the queries and mutations in the client folder
-// const startApolloServer = async (typeDefs, resolvers) => {
-//     await server.start();
-//     server.applyMiddleware({ app });
+const startApolloServer = async (typeDefs, resolvers) => {
+    await server.start();
+    server.applyMiddleware({ app });
     
-//     db.once('open', () => {
-//       app.listen(PORT, () => {
-//         console.log(`API server running on port ${PORT}!`);
-//         console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
-//       })
-//     })
-// };
-
-
-
+    db.once('open', () => {
+      app.listen(PORT, () => {
+        console.log(`API server running on port ${PORT}!`);
+        console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
+      })
+    })
+};
 
 
 //TODO: Comment out this code once we have built out queries and mutations in the client folder
@@ -51,4 +49,4 @@ db.once('open', () => {
 });
   
 // Uncomment when we have built queries and mutations
-// startApolloServer(typeDefs, resolvers);
+startApolloServer(typeDefs, resolvers);
