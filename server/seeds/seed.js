@@ -19,6 +19,7 @@ db.once('open', async () => {
         await User.insertMany(userData);
         // await UserGames.insertMany(userGameData)
         
+        process.exit()
     } catch (err) {
         throw err;
     }
