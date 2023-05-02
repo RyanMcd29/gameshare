@@ -12,21 +12,12 @@ const UserGamesSchema = new Schema({
         required: true,
         default: true
     },
-    owner: {
+   gameDetails: [
+    {   
         type: Schema.Types.ObjectId,
-        ref: 'User',
-        required: true
-    },
-    borrower: {
-        type: Schema.Types.ObjectId,
-        ref: 'User',
-        default: {}
-    },
-   gameDetails: {
-        type: Schema.Types.ObjectId,
-        ref: 'GameLibrary',
-        required: true
-   },
+        ref: 'gamelibrary'
+    }
+   ],
    platform: {
         type: String,
         required: true
@@ -36,6 +27,6 @@ const UserGamesSchema = new Schema({
     timestamps: true 
 });
 
-const UserGames = new model('UserGames', UserGamesSchema)
+const UserGames = model('usergames', UserGamesSchema)
 
 module.exports = UserGames;
