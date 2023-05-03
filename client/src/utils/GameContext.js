@@ -1,13 +1,12 @@
 import React, { createContext, useContext } from "react";
 import { useGameReducer } from './reducers'
 
-
 const GameContext = createContext()
 const { Provider } = GameContext;
 
 
 const GameProvider = ({ value = [], ...props }) => {
-    const [ state, dispatch ] = useGameReducer({
+    const [state, dispatch] = useGameReducer({
         games: [],
         gamesToAdd: [],
         genres: [],
