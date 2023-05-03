@@ -8,7 +8,8 @@ import SearchContainer from './components/searchContainer';
 
 // Pages
 import Home from './pages/Home';
-import Login from './pages/Login';
+import Login from './pages/login';
+import GamesList from './components/GamesList';
 // import Header from './pages/Header';
 // import Footer from './pages/Footer';
 
@@ -49,6 +50,10 @@ function App() {
               <Route 
                 path="/" 
                 element={<Home />}
+              />
+              <Route
+                path="/games"
+                element={<GamesList/>}
               />
             </Routes>
 
