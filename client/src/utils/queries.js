@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client'
 
-export const QUERY_GAMES = gql`
-    query getGames() {
+export const QUERY_GAMELIBRARY = gql`
+    query getGamesLibrary() {
         gamelibrary
     }`
