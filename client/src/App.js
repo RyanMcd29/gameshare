@@ -16,7 +16,7 @@ import Welcome from './pages/Welcome';
 import Home from './pages/Home';
 import Login from './pages/Login';
 
-import Signup from './pages/Signup';
+import Signup from './pages/SignUp';
 import Inbox from './pages/Inbox';
 
 
@@ -69,7 +69,7 @@ function App() {
               />
                <Route 
                 path="/signup" 
-                element={<SignUp />}
+                element={<Signup />}
               />
               <Route 
                 path="/signup" 
