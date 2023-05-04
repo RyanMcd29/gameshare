@@ -32,7 +32,6 @@ const Header = () => {
                     <button onClick={logout}>Logout</button>
                   </Link>
                   
-                  
                 </>
               ) : (
                 <>

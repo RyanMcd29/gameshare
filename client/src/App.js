@@ -3,16 +3,19 @@ import {ApolloClient, InMemoryCache, ApolloProvider, createHttpLink} from '@apol
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { setContext } from '@apollo/client/link/context';
 
+// Styling
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Components
 import Header from './components/Header';
 import Footer from './components/Footer';
 
 // Components - Pages
+import Welcome from './pages/Welcome';
+import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import Home from './pages/Home';
 import Inbox from './pages/Inbox';
 
 const httpLink = createHttpLink({
@@ -48,6 +51,10 @@ function App() {
             <Routes>
             <Route 
                 path="/" 
+                element={<Welcome />}
+            />
+            <Route 
+                path="/homepage" 
                 element={
                 <div>
                   <Header />
