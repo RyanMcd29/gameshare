@@ -10,7 +10,7 @@ const Welcome = () => {
         <div className='container'>
             <header className='row text-center'>
                 <h1>Game App!</h1>
-                <h5>Share Games, AnyTime, Anywhere</h5>
+                <h6>Share Games, AnyTime, Anywhere</h6>
             </header>
 
             <div className='row text-center'>
