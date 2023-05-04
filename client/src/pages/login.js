@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 
-// Import authorization class
+//-- Import authorization class --//
 import Auth from '../utils/auth';
 
 const Login = (props) => {
     const [formState, setFormState] = useState({email: '', password: ''});
     const [login, { error , data}] = useMutation(LOGIN_USER);
 
-    // update state based on form input changes
+    //-- update state based on form input changes --//
     const handleChange = (event) => {
         const { name , value } = event.target;
 
@@ -20,7 +20,7 @@ const Login = (props) => {
         });
     };
 
-    //submit form
+    //-- submit form --//
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         console.log(formState);
@@ -34,7 +34,7 @@ const Login = (props) => {
             console.error(e);
         }
 
-        // If successful, clear form values
+        //-- If successful, clear form values --//
         setFormState({
             email: '',
             password: '',

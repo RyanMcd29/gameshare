@@ -1,9 +1,15 @@
 import React from 'react';
 
 const Home = () => {
+    const buttonRight = {
+        position: 'absolute',
+        top: '10px',
+        right: '10px'
+    };
 
     return (
         <div>
+
             <h4>Homepage!</h4>
             <div className="card" style={{width: "18rem"}}>
                 <img src="..." className="card-img-top" alt="..."/>
@@ -15,6 +21,7 @@ const Home = () => {
             </div>
         </div>
         
+
     );
 
 };
