@@ -3,15 +3,22 @@ import {ApolloClient, InMemoryCache, ApolloProvider, createHttpLink} from '@apol
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { setContext } from '@apollo/client/link/context';
 
+// Styling
 import './App.css';
-import SearchContainer from './components/searchContainer';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-// Pages
+// Components
+import Header from './components/Header';
+import Footer from './components/Footer';
+
+// Components - Pages
+import Welcome from './pages/Welcome';
 import Home from './pages/Home';
 import Login from './pages/Login';
-import SignUp from './pages/SignUp';
-// import Header from './pages/Header';
-// import Footer from './pages/Footer';
+
+import Signup from './pages/Signup';
+import Inbox from './pages/Inbox';
+
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -38,11 +45,24 @@ const client = new ApolloClient({
 
 
 function App() {
+
   return (
     <ApolloProvider client={client}>
       <Router>
 
             <Routes>
+            <Route 
+                path="/" 
+                element={<Welcome />}
+            />
+            <Route 
+                path="/homepage" 
+                element={
+                <div>
+                  <Header />
+                  <Home />
+                </div>}
+              />
               <Route 
                 path="/login" 
                 element={<Login />}
@@ -52,8 +72,16 @@ function App() {
                 element={<SignUp />}
               />
               <Route 
-                path="/" 
-                element={<Home />}
+                path="/signup" 
+                element={<Signup />}
+              />
+              <Route 
+                path="/inbox" 
+                element={
+                <div>
+                  <Header />
+                  <Inbox />
+                </div>}
               />
             </Routes>
 

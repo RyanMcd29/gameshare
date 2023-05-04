@@ -6,13 +6,10 @@ const { authMiddleware } = require('./utils/auth');
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
 
-// const routes = require('./routes');
 
 // const PORT = process.env.PORT || 3001;
 const PORT = process.env.PORT || 3001;
 const app = express();
-
-// TODO: Uncomment once you have built the queries and mutations in the client folder
 const server = new ApolloServer({
     typeDefs,
     resolvers,
