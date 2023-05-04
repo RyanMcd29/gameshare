@@ -53,7 +53,11 @@ function App() {
             <Routes>
             <Route 
                 path="/" 
-                element={<Welcome />}
+                element={
+                <div>
+                  <Header />
+                  <Welcome />
+                </div>}
             />
             <Route 
                 path="/homepage" 
@@ -65,11 +69,19 @@ function App() {
               />
               <Route 
                 path="/login" 
-                element={<Login />}
+                element={
+                <div>
+                  <Header />
+                  <Login />
+                </div>}
               />
                <Route 
                 path="/signup" 
-                element={<Signup />}
+                element={
+                <div>
+                  <Header />
+                  <Signup />
+                </div>}
               />
               <Route 
                 path="/signup" 
