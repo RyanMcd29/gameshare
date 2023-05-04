@@ -45,61 +45,75 @@ const SignUp = (props) => {
     };
 
     return (
-
-        <main className="flex-row justify-center mb-4">
-        <div className="col-12 col-md-8 mb-3">
-          <div className="card">
-            <h4 className="card-header bg-dark text-light p-2">Sign Up</h4>
-            <div className="card-body">
-              {data ? (
-                <p>
-                  Success! You may now head{' '}
-                  <Link to="/">back to the homepage.</Link>
-                </p>
-              ) : (
-                <form onSubmit={handleFormSubmit}>
-                  <input
-                    className="form-input"
-                    placeholder="Username"
-                    name="username"
-                    type="text"
-                    value={formState.username}
-                    onChange={handleChange}
-                  />
-                  <input
-                    className="form-input"
-                    placeholder="Your email"
-                    name="email"
-                    type="email"
-                    value={formState.email}
-                    onChange={handleChange}
-                  />
-                  <input
-                    className="form-input"
-                    placeholder="******"
-                    name="password"
-                    type="password"
-                    value={formState.password}
-                    onChange={handleChange}
-                  />
-                  <button
-                    className="btn btn-block btn-primary"
-                    style={{ cursor: 'pointer' }}
-                    type="submit"
-                  >
-                    Submit
-                  </button>
-                </form>
-              )}
-  
-              {error && (
-                <div className="my-3 p-3 bg-danger text-white">
-                  {error.message}
-                </div>
-              )}
+        <main  className='container min-vh-100 d-flex justify-content-center align-items-center'>
+        
+          <section className='col-6'>
+            <div className='text-center'>
+                <h1>Game App!</h1>
+                <h6>Share Games, AnyTime, Anywhere</h6>
             </div>
-          </div>
-        </div>
+            <div className="card text-center">
+              <h4 className="card-header bg-dark text-light p-2">Sign Up</h4>
+              <div className="card-body">
+                {data ? (
+                  <p>
+                    Success! You may now head{' '}
+                    <Link to="/">back to the homepage.</Link>
+                  </p>
+                ) : (
+                  <form onSubmit={handleFormSubmit}>
+                    <div className='row justify-content-center m-2'>
+                      <input
+                        className="form-input text-center"
+                        placeholder="Your Email..."
+                        name="email"
+                        type="email"
+                        value={formState.email}
+                        onChange={handleChange}
+                      />
+                    </div>
+                    <div className='row justify-content-center m-2'>
+                      <input
+                        className="form-input text-center"
+                        placeholder="Create Username..."
+                        name="username"
+                        type="text"
+                        value={formState.username}
+                        onChange={handleChange}
+                      />
+                    </div>
+                    <div className='row justify-content-center m-2'>
+                      <input
+                        className="form-input text-center"
+                        placeholder="Create Password..."
+                        name="password"
+                        type="password"
+                        value={formState.password}
+                        onChange={handleChange}
+                      />
+                    </div>
+
+                    <button
+                      className="row btn btn-block btn-primary"
+                      style={{ cursor: 'pointer' }}
+                      type="submit"
+                    >
+                      Sign Up!
+                    </button>
+                  </form>
+                )}
+    
+                {error && (
+                  <div className="my-3 p-3 bg-danger text-white">
+                    {error.message}
+                  </div>
+                )}
+              </div>
+            </div>
+          
+
+          </section>
+
       </main>
     );
 
