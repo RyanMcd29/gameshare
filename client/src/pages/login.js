@@ -44,9 +44,10 @@ const Login = (props) => {
     return (
         <main className='container min-vh-100 d-flex justify-content-center align-items-center'>
           
+          
             <section className='col-6'>
               <div className='text-center'>
-                <h1>Game App!</h1>
+                <h1>GameShare.!</h1>
                 <h6>Share Games, AnyTime, Anywhere</h6>
               </div>
               <div className="card text-center">
