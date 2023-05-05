@@ -1,17 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../src/App.css';
+import AnimatedPage from '../components/AnimatedPage';
 
 const Welcome = () => {
 
     return (
-    <div className='container min-vh-100 d-flex justify-content-center align-items-center'>
-        
-        <div className='container'>
-            <div className='row justify-content-center'>
-                <i className="col-1 fa-sharp fa-solid fa-ghost fa-4x"></i>
-                <i className="col-1 fa-solid fa-dice-five fa-4x"></i>    
-                <i className="col-1 fa-regular fa-swords fa-4x"></i>
+        <AnimatedPage>
+            <div className='container min-vh-100 d-flex justify-content-center align-items-center'>
+            <div className='container'>
+            <div className='text-center'>
+                <i className="fa-sharp fa-solid fa-ghost fa-4x m-2"></i>
+                <i className="fa-solid fa-dice-five fa-4x m-2"></i>
+                <i className="fa-solid fa-headset fa-4x m-2"></i>
             </div>
 
             <header className='row text-center'>
@@ -25,9 +26,11 @@ const Welcome = () => {
                     <button>Lets Get Started!</button>
                 </Link>
             </div>
-        </div> 
+            </div> 
+            </div>
 
-    </div>
+        </AnimatedPage>
+    
     );
 
 };

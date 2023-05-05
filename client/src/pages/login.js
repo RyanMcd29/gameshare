@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
+import AnimatedPage from '../components/AnimatedPage';
+
 
 //-- Import authorization class --//
 import Auth from '../utils/auth';
@@ -42,12 +44,16 @@ const Login = (props) => {
     };
 
     return (
+      <AnimatedPage>
         <main className='container min-vh-100 d-flex justify-content-center align-items-center'>
-          
-          
             <section className='col-6'>
               <div className='text-center'>
-                <h1>GameShare.!</h1>
+                <div>
+                  <i className="fa-sharp fa-solid fa-ghost fa-4x m-2"></i>
+                  <i className="fa-solid fa-dice-five fa-4x m-2"></i>
+                  <i className="fa-solid fa-headset fa-4x m-2"></i>
+                </div>
+                <h1>GameShare.</h1>
                 <h6>Share Games, AnyTime, Anywhere</h6>
               </div>
               <div className="card text-center">
@@ -104,6 +110,9 @@ const Login = (props) => {
             </section>
 
         </main>
+
+      </AnimatedPage>
+        
       );
 
 
