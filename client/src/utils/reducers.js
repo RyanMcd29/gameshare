@@ -9,11 +9,12 @@ export const reducer = ( state, action ) => {
         case UPDATE_GAMES:
             return {
                 ...state,
-                gamelibrary: [...action.gamelibrary]
+                gameLibrary: [...action.gameLibrary]
             }
     }
 };
 
 export function useGameReducer(initialState) {
+    console.log('importing reducer')
     return useReducer(reducer, initialState)
 }

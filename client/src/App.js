@@ -2,7 +2,6 @@ import React from 'react';
 import {ApolloClient, InMemoryCache, ApolloProvider, createHttpLink} from '@apollo/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { setContext } from '@apollo/client/link/context';
-
 import './App.css';
 import SearchContainer from './components/searchContainer';
 
@@ -10,6 +9,7 @@ import SearchContainer from './components/searchContainer';
 import Home from './pages/Home';
 import Login from './pages/login';
 import GamesList from './components/GamesList';
+import { GameProvider } from './utils/GameContext';
 // import Header from './pages/Header';
 // import Footer from './pages/Footer';
 
@@ -40,24 +40,26 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <Router>
+      <GameProvider>
+        <Router>
 
-            <Routes>
-              <Route 
-                path="/login" 
-                element={<Login />}
-              />
-              <Route 
-                path="/" 
-                element={<Home />}
-              />
-              <Route
-                path="/games"
-                element={<GamesList/>}
-              />
-            </Routes>
+              <Routes>
+                <Route 
+                  path="/login" 
+                  element={<Login />}
+                />
+                <Route 
+                  path="/" 
+                  element={<Home />}
+                />
+                <Route
+                  path="/games"
+                  element={<GamesList/>}
+                />
+              </Routes>
 
-      </Router>
+        </Router>
+      </GameProvider>
     </ApolloProvider>
 
   );

@@ -12,3 +12,6 @@ export const QUERY_GAMELIBRARY = gql`
           }
     }
     `;
+
+// export const QUERY_GAMELIBRARY = gql`
+// `

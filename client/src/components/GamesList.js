@@ -1,47 +1,49 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { UPDATE_GAMES } from "../utils/actions";
 import { useGameContext } from "../utils/GameContext";
 import { useQuery } from "@apollo/client"
 import { QUERY_GAMELIBRARY } from "../utils/queries";
-import { idbPromise } from "../utils/helpers"
+// import { idbPromise } from "../utils/helpers"
+import gameItem from './gameitem/gameitem.js'
 
 export default function GamesList () {
-    const { state, dispatch } = useGameContext()
-    
-    const { currentGenre } = state;
+    // load state
+    const [ state, dispatch ] = useGameContext()
 
+    const [ search, setSearch ] = useState('')
+
+    // assign games to state
     const { loading, data } = useQuery(QUERY_GAMELIBRARY)
+    const games = data?.gamelibrary || [];
+    state.gameLibrary = games
 
-    useEffect(() => {
-        if (data) {
-            dispatch({
-                type: UPDATE_GAMES,
-                gamelibrary: data.gamelibrary
-            });
-            data.gamelibrary.forEach((game) => {
-                idbPromise('gamelibrary', 'put', game) 
-            });
-        } else if (!loading) {
-            idbPromise('gamelibrary', 'get').then((gamesLibrary) => {
-                dispatch({
-                    type: UPDATE_GAMES,
-                    gamesLibrary: gamesLibrary,
-                });
-            });
-        }
-    }, [data, loading, dispatch])
-
+    const [ displayedGames, setDisplayedGames ] = useState([state.gameLibrary])
+    // console.log(data)
     function filterGames() {
-        if (!currentGenre) {
-            return state.gamesLibrary
-        }
-
-        return state.gamesLibrary.filter(
-            (game) => game.genre._id === currentGenre
-        );
+        setDisplayedGames(state.gameLibrary.filter((game) => game.name === search))
     }
-    
+
+
+
     return (
-        console.log(filterGames)
+        <div>
+            { displayedGames.length ? (
+                <ul className="flex-row">'
+                { displayedGames.map((game) => (
+                    <gameItem
+                        key={game.id}
+                        name={game.name}
+                        image={game.img}
+                        platforms={game.platforms}
+                        genres={game.genres}
+                    />
+                ))}
+                </ul>
+            ) : (<h3>No games added!</h3> )}      
+        </div> 
     )
+   
+
 }
+    
+   

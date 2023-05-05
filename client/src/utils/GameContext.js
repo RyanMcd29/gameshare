@@ -7,16 +7,18 @@ const { Provider } = GameContext;
 
 const GameProvider = ({ value = [], ...props }) => {
     const [state, dispatch] = useGameReducer({
-        games: [],
+        // Data from api
+        gamelibrary: [],
+        // Cart
         gamesToAdd: [],
+        addOpen: false,
         genres: [],
         currentGenres: '',
         search: '',
         currentSearch: '',
         platforms: [],
         currentPlatform: '',        
-    })
-
+    });
     return <Provider value={[ state, dispatch ]} {...props} />;
 };
 
@@ -24,4 +26,4 @@ const GameProvider = ({ value = [], ...props }) => {
         return useContext(GameContext);
     };
 
-    export {GameProvider, useGameContext}
+    export { GameProvider, useGameContext }
