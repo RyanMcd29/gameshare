@@ -4,7 +4,7 @@ import { useGameContext } from "../utils/GameContext";
 import { useQuery } from "@apollo/client"
 import { QUERY_GAMELIBRARY } from "../utils/queries";
 // import { idbPromise } from "../utils/helpers"
-import gameItem from './gameitem/gameitem.js'
+import GameItem from './gameitem/gameitem.js'
 
 export default function GamesList () {
     // load state
@@ -14,23 +14,23 @@ export default function GamesList () {
 
     // assign games to state
     const { loading, data } = useQuery(QUERY_GAMELIBRARY)
+    console.log(useQuery(QUERY_GAMELIBRARY))
     const games = data?.gamelibrary || [];
-    state.gameLibrary = games
 
-    const [ displayedGames, setDisplayedGames ] = useState([state.gameLibrary])
+    const [ displayedGames, setDisplayedGames ] = useState(games)
+
+    console.log(displayedGames)
     // console.log(data)
-    function filterGames() {
-        setDisplayedGames(state.gameLibrary.filter((game) => game.name === search))
-    }
-
-
+    // function filterGames() {
+    //     setDisplayedGames(state.gameLibrary.filter((game) => game.name === search))
+    // }
 
     return (
         <div>
             { displayedGames.length ? (
                 <ul className="flex-row">'
                 { displayedGames.map((game) => (
-                    <gameItem
+                    <GameItem
                         key={game.id}
                         name={game.name}
                         image={game.img}
