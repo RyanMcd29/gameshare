@@ -1,4 +1,6 @@
 import React from 'react';
+import AnimatedPage from '../components/AnimatedPage';
+
 
 const Home = () => {
     const buttonRight = {
@@ -8,8 +10,8 @@ const Home = () => {
     };
 
     return (
+        <AnimatedPage>
         <div>
-
             <h4>Homepage!</h4>
             <div className="card" style={{width: "18rem"}}>
                 <img src="..." className="card-img-top" alt="..."/>
@@ -20,6 +22,8 @@ const Home = () => {
                 </div>
             </div>
         </div>
+        </AnimatedPage>
+        
         
 
     );

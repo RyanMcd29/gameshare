@@ -11,7 +11,7 @@ class AuthService {
         const decoded = decode(token);
         // If the expiration time is less than then current time (in seconds), the token is expired and we return true.
         if(decoded.exp < Date.now() / 1000) {
-            localStorage.remoteItem('id_token');
+            localStorage.removeItem('id_token');
             return true;
         } else {
             return false;

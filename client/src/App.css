@@ -11,14 +11,18 @@
 --orange-peel: rgb(255, 159, 28);
 }
 
-.backgroundColor {
-  /* background-image: linear-gradient(180deg ,var(--red-cmyk), 40% , var(--baby-powder));
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover; */
+body {
+    
+    /* Background Image & Controls */
+    background-image: url('../src/assets/images/tile_background.png');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
 }
 
+/* Header Elements */
 .headerColor {
   background-color: var(--red-cmyk);
   background-attachment: fixed;
@@ -38,7 +42,7 @@
   transition: color 0.2s;
 }
 
-
+/* General App Elements */
 .App {
   text-align: center;
 }
@@ -97,7 +101,7 @@
   position: relative;
   text-align: left;
   text-decoration: none;
-  transform: translateZ(0) scale(1);
+  /* transform: translateZ(0) scale(1); */
   transition: transform .2s;
   user-select: none;
   -webkit-user-select: none;
@@ -105,11 +109,13 @@
 }
 
 .button-80:not(:disabled):hover {
-  transform: scale(1.05);
+  /* transform: scale(1.05); */
+  background-color: rgb(224, 224, 224);
+  transition: color 0.5s;
 }
 
 .button-80:not(:disabled):hover:active {
-  transform: scale(1.05) translateY(.125rem);
+  /* transform: scale(1.05) translateY(.125rem); */
 }
 
 .button-80:focus {
@@ -135,5 +141,7 @@
 }
 
 .button-80:not(:disabled):active {
-  transform: translateY(.125rem);
+  transform: translateY(.05rem);
 }
+
+/* Page Transitions */

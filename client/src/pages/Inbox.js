@@ -1,9 +1,13 @@
 import React from 'react';
+import AnimatedPage from '../components/AnimatedPage';
 
 const Inbox = () => {
 
     return (
-        <div>Inbox Page!</div>
+        <AnimatedPage>
+            <div>Inbox Page!</div>
+        </AnimatedPage>
+
     );
 
 };

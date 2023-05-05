@@ -34,6 +34,9 @@
     "axios": "^1.4.0",
     "bootstrap": "^5.2.3",
     "graphql": "^15.8.0",
-    "react-bootstrap": "^2.7.4"
+    "node-sass": "^8.0.0",
+    "react-bootstrap": "^2.7.4",
+    "react-transition-group": "^4.4.5",
+    "swup": "^3.0.6"
   }
 }
