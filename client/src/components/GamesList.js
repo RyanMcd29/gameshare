@@ -9,11 +9,7 @@ export default function GamesList () {
     const [ state, dispatch ] = useGameContext()
 
     const [ filteredGames, setFilteredGames ] = useState(state.gameLibrary)
-    const [ search, setSearch ] = useState('Portal 2')
-
-    // // assign games to state
-    // const { loading, data } = useQuery(QUERY_GAMELIBRARY)
-    // const games = data?.gamelibrary || [];\
+    const [ search, setSearch ] = useState('')
 
     const searchItems = (searchValue) => {
         setSearch(searchValue)
@@ -24,13 +20,6 @@ export default function GamesList () {
 
         setFilteredGames(filterGames)
     }
-
-
-    // console.log(data)
-    // const filterGames = (search) => {
-    //     setFilteredGames(state.gameLibrary)
-    //     // return (state.gameLibrary.filter((game) => game.name === search))
-    // }
     
     return (
         <div>
