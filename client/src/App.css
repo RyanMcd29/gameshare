@@ -1,3 +1,48 @@
+* {
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+
+:root {
+--red-cmyk: rgb(230, 0, 18);
+--smoky-black: rgb(19, 18, 0);
+--turquoise: rgb(65, 234, 212);
+--baby-powder: rgb(253, 255, 252);
+--orange-peel: rgb(255, 159, 28);
+}
+
+body {
+    
+    /* Background Image & Controls */
+    background-image: url('../src/assets/images/consoles.png');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+/* Header Elements */
+.headerColor {
+  background-color: var(--red-cmyk);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+  
+.headerTitle {
+  color: var(--baby-powder);
+  
+}
+
+.headerTitle:hover {
+  color: rgb(226, 226, 226);
+  transition: color 0.2s;
+}
+
+/* General App Elements */
 .App {
   text-align: center;
 }
@@ -37,6 +82,7 @@
   }
 }
 
+
 .game-card {
   width: 18rem;
 }
@@ -46,3 +92,67 @@
   max-height: 18rem;
   overflow: hidden;
 }
+
+/* Buttons */
+.button-80 {
+  background: #fff;
+  backface-visibility: hidden;
+  border-radius: .375rem;
+  border-style: solid;
+  border-width: .125rem;
+  box-sizing: border-box;
+  color: #212121;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: -.01em;
+  line-height: 0.5;
+  padding: .875rem 1.125rem;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  /* transform: translateZ(0) scale(1); */
+  transition: transform .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-80:not(:disabled):hover {
+  /* transform: scale(1.05); */
+  background-color: rgb(224, 224, 224);
+  transition: color 0.5s;
+}
+
+.button-80:not(:disabled):hover:active {
+  /* transform: scale(1.05) translateY(.125rem); */
+}
+
+.button-80:focus {
+  outline: 0 solid transparent;
+}
+
+.button-80:focus:before {
+  content: "";
+  left: calc(-1*.375rem);
+  pointer-events: none;
+  position: absolute;
+  top: calc(-1*.375rem);
+  transition: border-radius;
+  user-select: none;
+}
+
+.button-80:focus:not(:focus-visible) {
+  outline: 0 solid transparent;
+}
+
+.button-80:focus:not(:focus-visible):before {
+  border-width: 0;
+}
+
+.button-80:not(:disabled):active {
+  transform: translateY(.05rem);
+}
+
+/* Page Transitions */

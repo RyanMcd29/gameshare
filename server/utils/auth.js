@@ -7,12 +7,12 @@ const expiration = '2h';
 
 module.exports = {
     // Authorisation middleware to deal with client requests to the server.
-    // Request explanation of 'secret' argument at line #23.
+    // Request explanation of 'secret' argument at line #23. and concept of 'headers'
     authMiddleware: function ({ req }) {
         let token = req.body.token || req.query.token || req.headers.authorization;
 
         if(req.headers.authorization) {
-            token = token.split(' ').pop.trim();
+            token = token.split(' ').pop().trim();
         }
 
         if(!token) {

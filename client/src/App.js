@@ -1,17 +1,36 @@
 import React from 'react';
 import {ApolloClient, InMemoryCache, ApolloProvider, createHttpLink} from '@apollo/client';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {Routes, Route} from 'react-router-dom';
 import { setContext } from '@apollo/client/link/context';
-import './App.css';
-import SearchContainer from './components/searchContainer';
+import { AnimatePresence } from 'framer-motion';
+import { useLocation } from "react-router";
 
-// Pages
+// Styling
+
+import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+// Components
+import Header from './components/Header';
+import Footer from './components/Footer';
+
+// Components - Pages
+import Welcome from './pages/Welcome';
 import Home from './pages/Home';
+
 import Login from './pages/login';
 import GamesList from './components/GamesList';
 import { GameProvider } from './utils/GameContext';
 // import Header from './pages/Header';
 // import Footer from './pages/Footer';
+
+import Login from './pages/Login';
+
+import Signup from './pages/signUp';
+import Inbox from './pages/Inbox';
+
+
+
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -37,9 +56,14 @@ const client = new ApolloClient({
 });
 
 
+
 function App() {
+
+  const location = useLocation();
+
   return (
     <ApolloProvider client={client}>
+
       <GameProvider>
         <Router>
 
@@ -60,6 +84,55 @@ function App() {
 
         </Router>
       </GameProvider>
+
+      <AnimatePresence mode='wait'> 
+          <Routes key={location.pathname} location={location}>
+              <Route 
+                  path="/" 
+                  element={
+                  <div>
+                    <Header />
+                    <Welcome />
+                  </div>}
+              />
+              <Route 
+                  path="/homepage" 
+                  element={
+                  <div>
+                    <Header />
+                    <Home />
+                  </div>}
+                />
+                <Route 
+                  path="/login" 
+                  element={
+                  <div>
+                    <Header />
+                    <Login />
+                  </div>}
+                />
+                <Route 
+                  path="/signup" 
+                  element={
+                  <div>
+                    <Header />
+                    <Signup />
+                  </div>}
+                />
+                <Route 
+                  path="/signup" 
+                  element={<Signup />}
+                />
+                <Route 
+                  path="/inbox" 
+                  element={
+                  <div>
+                    <Header />
+                    <Inbox />
+                  </div>}
+                />
+          </Routes> 
+      </AnimatePresence>
     </ApolloProvider>
 
   );

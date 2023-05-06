@@ -2,7 +2,7 @@ const  { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const userSchema = new Schema({
-    userName: {
+    username: {
         type: String,
         required: true,
         unique: true,
@@ -25,7 +25,7 @@ const userSchema = new Schema({
             ref: 'usergames',
         }
     ],
-    burrowedGames: [
+    borrowedGames: [
         {
             type: Schema.Types.ObjectId,
             ref: 'usergames'
@@ -46,6 +46,6 @@ userSchema.methods.isCorrectPassword = async function (password) {
     return bcrypt.compare(password, this.password);
 };
 
-const User = model('user', userSchema);
+const User = model('User', userSchema);
 
 module.exports = User;
