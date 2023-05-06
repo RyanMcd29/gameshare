@@ -1,14 +1,19 @@
 import React, { createContext, useContext } from "react";
 import { useGameReducer } from './reducers'
+import { useQuery } from "@apollo/client";
+import { QUERY_GAMELIBRARY } from "./queries";
 
 const GameContext = createContext()
 const { Provider } = GameContext;
 
 
 const GameProvider = ({ value = [], ...props }) => {
+    const { loading, data } = useQuery(QUERY_GAMELIBRARY)
+    const games = data?.gamelibrary || []
+    
     const [state, dispatch] = useGameReducer({
         // Data from api
-        gamelibrary: [],
+        gameLibrary: [],
         // Cart
         gamesToAdd: [],
         addOpen: false,
@@ -19,6 +24,9 @@ const GameProvider = ({ value = [], ...props }) => {
         platforms: [],
         currentPlatform: '',        
     });
+
+    state.gameLibrary = games
+
     return <Provider value={[ state, dispatch ]} {...props} />;
 };
 

@@ -1,35 +1,48 @@
 import React, { useEffect, useState } from "react";
-import { UPDATE_GAMES } from "../utils/actions";
 import { useGameContext } from "../utils/GameContext";
-import { useQuery } from "@apollo/client"
-import { QUERY_GAMELIBRARY } from "../utils/queries";
-// import { idbPromise } from "../utils/helpers"
 import GameItem from './gameitem/gameitem.js'
+
+// import { idbPromise } from "../utils/helpers"
 
 export default function GamesList () {
     // load state
     const [ state, dispatch ] = useGameContext()
 
-    const [ search, setSearch ] = useState('')
+    const [ filteredGames, setFilteredGames ] = useState(state.gameLibrary)
+    const [ search, setSearch ] = useState('Portal 2')
 
-    // assign games to state
-    const { loading, data } = useQuery(QUERY_GAMELIBRARY)
-    console.log(useQuery(QUERY_GAMELIBRARY))
-    const games = data?.gamelibrary || [];
+    // // assign games to state
+    // const { loading, data } = useQuery(QUERY_GAMELIBRARY)
+    // const games = data?.gamelibrary || [];\
 
-    const [ displayedGames, setDisplayedGames ] = useState(games)
+    const searchItems = (searchValue) => {
+        setSearch(searchValue)
 
-    console.log(displayedGames)
+        const filterGames = state.gameLibrary.filter((game) => {
+            return Object.values(game.name).join('').toLowerCase().includes(search.toLowerCase())
+        })
+
+        setFilteredGames(filterGames)
+    }
+
+
     // console.log(data)
-    // function filterGames() {
-    //     setDisplayedGames(state.gameLibrary.filter((game) => game.name === search))
+    // const filterGames = (search) => {
+    //     setFilteredGames(state.gameLibrary)
+    //     // return (state.gameLibrary.filter((game) => game.name === search))
     // }
-
+    
     return (
         <div>
-            { displayedGames.length ? (
+            <input 
+                icon="search"
+                placeholder="search"
+                onChange={(e) => searchItems(e.target.value)}
+            />
+
+            { filteredGames.length ? (
                 <ul className="flex-row">'
-                { displayedGames.map((game) => (
+                { filteredGames.map((game) => (
                     <GameItem
                         key={game.id}
                         name={game.name}
