@@ -62,7 +62,6 @@
 //     }
 
     
-}
 
 
 
@@ -85,7 +84,8 @@ const resolvers = {
           return await GameLibrary.find();
       },
 
-  }
+  },
+  
   Mutation: {
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
