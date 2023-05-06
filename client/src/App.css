@@ -82,6 +82,17 @@ body {
   }
 }
 
+
+.game-card {
+  width: 18rem;
+}
+
+.game-card img {
+  object-fit: contain;
+  max-height: 18rem;
+  overflow: hidden;
+}
+
 /* Buttons */
 .button-80 {
   background: #fff;

@@ -87,6 +87,15 @@ const typeDefs = gql `
         lendRequests: [LendRequest]
     }
 
+    type GameLibrary {
+        _id: ID!
+        name: String!
+        img: String!
+        date_released: String
+        genres: [String]
+        platforms: [String]
+    }
+
     type BorrowRequest {
         _id: ID!
         borrower: User
@@ -110,6 +119,7 @@ const typeDefs = gql `
         users: [User!]
         user(username: String!): User
         games(_id: ID!, username: String): [Game]
+        gamelibrary: [GameLibrary]
     }
 
 

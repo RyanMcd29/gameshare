@@ -34,6 +34,7 @@
 
 //     },
 
+
 //     Mutation: {
 //         login: async (parent, { email, password }) => {
 //             const user = await User.findOne({ email });
@@ -61,9 +62,8 @@
 //     }
 
     
-// }
+}
 
-// module.exports = resolvers;
 
 
 const { User } = require('../models');
@@ -80,6 +80,12 @@ const resolvers = {
     },
   },
 
+  Query: {
+      gamelibrary: async () => {
+          return await GameLibrary.find();
+      },
+
+  }
   Mutation: {
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });

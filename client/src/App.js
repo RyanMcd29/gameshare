@@ -6,6 +6,7 @@ import { AnimatePresence } from 'framer-motion';
 import { useLocation } from "react-router";
 
 // Styling
+
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -16,10 +17,18 @@ import Footer from './components/Footer';
 // Components - Pages
 import Welcome from './pages/Welcome';
 import Home from './pages/Home';
+
+import Login from './pages/login';
+import GamesList from './components/GamesList';
+import { GameProvider } from './utils/GameContext';
+// import Header from './pages/Header';
+// import Footer from './pages/Footer';
+
 import Login from './pages/Login';
 
 import Signup from './pages/signUp';
 import Inbox from './pages/Inbox';
+
 
 
 
@@ -54,6 +63,28 @@ function App() {
 
   return (
     <ApolloProvider client={client}>
+
+      <GameProvider>
+        <Router>
+
+              <Routes>
+                <Route 
+                  path="/login" 
+                  element={<Login />}
+                />
+                <Route 
+                  path="/" 
+                  element={<Home />}
+                />
+                <Route
+                  path="/games"
+                  element={<GamesList/>}
+                />
+              </Routes>
+
+        </Router>
+      </GameProvider>
+
       <AnimatePresence mode='wait'> 
           <Routes key={location.pathname} location={location}>
               <Route 
