@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { useGameContext } from "../../utils/GameContext";
 
 export default function GameItem (game) {
+
+    const [ state, dispatch ] = useGameContext()
 
     const { name, image, platforms, genres } = game
 
@@ -18,7 +21,7 @@ export default function GameItem (game) {
 
     return (
         <div>
-            <div className="card">
+            <div className="game-card card">
                 <img src={image}/>
                 <div className="card-body">
                     <h5 className="card-title">{name}</h5>
