@@ -24,3 +24,11 @@ export const ADD_USER = gql `
     }
   }
 `;
+
+export const GET_USER_INFO = gql`
+query GetUserInfo {
+  addName {
+    username
+  }
+}
+`;
