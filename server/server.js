@@ -1,21 +1,29 @@
+//--- Modules and Packages ---//
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
 const { authMiddleware } = require('./utils/auth');
 
+//--- Import type definitions and resolvers from the schemas file ---//
 const { typeDefs, resolvers } = require('./schemas');
+
+//--- Import the database connection ---//
 const db = require('./config/connection');
 
-
-// const PORT = process.env.PORT || 3001;
+//--- Set the port number for the server ---//
 const PORT = process.env.PORT || 3001;
+
+//--- Initialise a new Express application ---//
 const app = express();
+
+//--- Create a new ApolloServer instance ---//
 const server = new ApolloServer({
     typeDefs,
     resolvers,
     context: authMiddleware,
 });
 
+//--- Midderware to parse incoming requests ---//
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -24,12 +32,12 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 
-
-// TODO: Uncomment once we have built the queries and mutations in the client folder
+//--- Define a route for the home page ---//
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
+//--- Start the Apollo Server and listen for connections ---//
 const startApolloServer = async (typeDefs, resolvers) => {
     await server.start();
     server.applyMiddleware({ app });
@@ -43,11 +51,4 @@ const startApolloServer = async (typeDefs, resolvers) => {
 };
 
 
-
-//FIXME: This wasn't necessary, it was using the port twice
-// db.once('open', () => {
-//     app.listen(PORT, () => console.log(`Now listening on localhost: ${PORT}`));
-// });
-  
-//Uncomment when we have built queries and mutations
 startApolloServer(typeDefs, resolvers);

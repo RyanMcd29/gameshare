@@ -1,33 +1,174 @@
 import React from 'react';
 import AnimatedPage from '../components/AnimatedPage';
+import { Link } from 'react-router-dom';
+
+const Home = ({ username }) => {
+  const buttonRight = {
+    position: 'absolute',
+    top: '10px',
+    right: '10px'
+  };
 
 
-const Home = () => {
-    const buttonRight = {
-        position: 'absolute',
-        top: '10px',
-        right: '10px'
-    };
+  //FIXME: the username is not rendering correctly, I think I'm missing something somewhere
+  return (
+    <AnimatedPage>
+    <br></br>
+    <br></br>
+    <div className="d-flex justify-content-center">
+     <h2> {username}'s Dashboard</h2> 
+    </div>
+     <br></br>
 
-    return (
-        <AnimatedPage>
-        <div>
-            <h4>Homepage!</h4>
-            <div className="card" style={{width: "18rem"}}>
-                <img src="..." className="card-img-top" alt="..."/>
-                <div className="card-body">
-                    <h5 className="card-title">Card title</h5>
-                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" className="btn btn-primary">Go somewhere</a>
+      <div className="card-deck row justify-content-center">
+
+        <div className="card m-4" style={{width: "350px", height: "400px"}}>
+            <div className="card-body text-center">
+                <h5 className="card-title"> My Games <i className="fa-sharp fa-solid fa-gamepad"></i></h5>
+                <br></br>
+                <div className="container-fluid">
+                <div className="row">
+                    <div className="col">
+                    <div className="p-3 mb-2 bg-success text-white">Game 1</div>
+                    </div>
+                    <div className="col">
+                    <div className="p-3 mb-2 bg-success text-white">Game 2</div>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col">
+                    <div className="p-3 mb-2 bg-success text-white">Game 3</div>
+                    </div>
+                    <div className="col">
+                    <div className="p-3 mb-2 bg-success text-white">Game 4</div>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col">
+                    <div className="p-3 mb-2 bg-success text-white">Game 5</div>
+                    </div>
+                    <div className="col">
+                    <div className="p-3 mb-2 bg-success text-white">Game 6</div>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col">
+                    <div className="p-3 mb-2 bg-success text-white">Game 7</div>
+                    </div>
+                    <div className="col">
+                    <div className="p-3 mb-2 bg-success text-white">Game 8</div>
+                    </div>
                 </div>
             </div>
-        </div>
-        </AnimatedPage>
-        
-        
+        <a href="#" className="btn btn-lg btn-block btn-primary">Go somewhere</a>
+    </div>
+    </div>
 
-    );
 
+    <div className="card m-4" style={{width: "350px", height: "400px"}}>
+            <div className="card-body text-center">
+            <h5 className="card-title">Borrowed Games <i className="fa-sharp fa-solid fa-exchange"></i></h5>
+            <br></br>
+                <div className="container-fluid">
+                <div className="row">
+                    <div className="col">
+                    <div className="p-3 mb-2 bg-success text-white">Game 1</div>
+                    </div>
+                    <div className="col">
+                    <div className="p-3 mb-2 bg-success text-white">Game 2</div>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col">
+                    <div className="p-3 mb-2 bg-success text-white">Game 3</div>
+                    </div>
+                    <div className="col">
+                    <div className="p-3 mb-2 bg-success text-white">Game 4</div>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col">
+                    <div className="p-3 mb-2 bg-success text-white">Game 5</div>
+                    </div>
+                    <div className="col">
+                    <div className="p-3 mb-2 bg-success text-white">Game 6</div>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col">
+                    <div className="p-3 mb-2 bg-success text-white">Game 7</div>
+                    </div>
+                    <div className="col">
+                    <div className="p-3 mb-2 bg-success text-white">Game 8</div>
+                    </div>
+                </div>
+            </div>
+        <a href="#" className="btn btn-lg btn-block btn-primary">Go somewhere</a>
+    </div>
+    </div>
+
+
+    <div className="card m-4" style={{width: "350px", height: "400px"}}>
+            <div className="card-body text-center">
+            <h5 className="card-title">Lent Out Games <i className="fa fa-solid fa-rocket"></i></h5>
+            <br></br>
+                <div className="container-fluid">
+                <div className="row">
+                    <div className="col">
+                    <div className="p-3 mb-2 bg-success text-white">Game 1</div>
+                    </div>
+                    <div className="col">
+                    <div className="p-3 mb-2 bg-success text-white">Game 2</div>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col">
+                    <div className="p-3 mb-2 bg-success text-white">Game 3</div>
+                    </div>
+                    <div className="col">
+                    <div className="p-3 mb-2 bg-success text-white">Game 4</div>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col">
+                    <div className="p-3 mb-2 bg-success text-white">Game 5</div>
+                    </div>
+                    <div className="col">
+                    <div className="p-3 mb-2 bg-success text-white">Game 6</div>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col">
+                    <div className="p-3 mb-2 bg-success text-white">Game 7</div>
+                    </div>
+                    <div className="col">
+                    <div className="p-3 mb-2 bg-success text-white">Game 8</div>
+                    </div>
+                </div>
+            </div>
+        <a href="#" className="btn btn-lg btn-block btn-primary">Go somewhere</a>
+    </div>
+</div>
+
+
+</div>
+
+<br></br>
+
+    <div className="d-flex justify-content-center">  
+
+        <Link to="/GameSearch">
+            <button className="button-80 ms-1" role="button" type="button">Find Something to Play <i className="fa-sharp fa-solid fa-search"></i></button>
+        </Link>
+
+        <Link to="https://rawg.io/" target="_blank">
+            <button className="button-80 ms-1" role="button" type="button">Want to learn more? <i className="fa-sharp fa-solid fa-paper-plane"></i></button>
+        </Link>
+
+    </div>
+        
+</AnimatedPage>
+  );
 };
 
 export default Home;
