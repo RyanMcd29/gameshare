@@ -11,7 +11,7 @@
 --orange-peel: rgb(255, 159, 28);
 }
 
-body {
+.backgroundImage {
     
     /* Background Image & Controls */
     background-image: url('../src/assets/images/tile_background.png');
@@ -31,6 +31,8 @@ body {
   background-size: cover;
 
 }
+
+
   
 .headerTitle {
   color: var(--baby-powder);
@@ -143,5 +145,3 @@ body {
 .button-80:not(:disabled):active {
   transform: translateY(.05rem);
 }
-
-/* Page Transitions */

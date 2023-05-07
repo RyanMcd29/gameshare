@@ -11,15 +11,15 @@ const Header = () => {
       };
 
       return (
-        <header className='headerColor'>
-          <div className='row min-vh-10 d-flex justify-content-center align-items-center'>
+        <header className='headerColor sticky-top'>
+          <div className='d-flex justify-content-center align-items-center m-0'>
             <div className='col-3 text-start'>
               <Link to="/homepage" style={{ textDecoration: 'none' }}>
                 <h1 className='headerTitle ms-2 mt-2'>GameShare.</h1>
               </Link>
             </div>
             <div className='col-auto'></div>
-            <div className='col text-end me-2'>
+            <div className='col text-end'>
               {Auth.loggedIn() ? (
                 <>
                   {/* <Link to="..."> 
