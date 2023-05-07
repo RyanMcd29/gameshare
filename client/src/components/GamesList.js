@@ -1,3 +1,4 @@
+import { empty } from "@apollo/client";
 import React, { useEffect, useState } from "react";
 import { useGameContext } from "../utils/GameContext";
 import GameItem from './gameitem/gameitem.js'
@@ -7,22 +8,23 @@ import GameItem from './gameitem/gameitem.js'
 export default function GamesList () {
     // load state
     const [ state, dispatch ] = useGameContext()
-    console.log(state.gameLibrary)
+
     const [ filteredGames, setFilteredGames ] = useState(state.gameLibrary)
     const [ search, setSearch ] = useState('')
 
     const searchItems = (searchValue) => {
         setSearch(searchValue)
-
+        
         const filterGames = state.gameLibrary.filter((game) => {
             return Object.values(game.name).join('').toLowerCase().includes(search.toLowerCase())
         })
 
+        console.log(filterGames)
         setFilteredGames(filterGames)
     }
     
     return (
-        <div>
+        <div className="container-sm">
             <input 
                 icon="search"
                 placeholder="search"
@@ -30,7 +32,7 @@ export default function GamesList () {
             />
 
             { filteredGames.length ? (
-                <ul className="flex-row">'
+                <ul className="row flex">
                 { filteredGames.map((game) => (
                     <GameItem
                         key={game.id}
