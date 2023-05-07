@@ -16,8 +16,7 @@ import Footer from './components/Footer';
 // Components - Pages
 import Welcome from './pages/Welcome';
 import Home from './pages/Home';
-import Login from './pages/Login';
-
+import Login from './pages/login';
 import Signup from './pages/signUp';
 import Inbox from './pages/Inbox';
 

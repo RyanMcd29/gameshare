@@ -10,8 +10,9 @@ const Header = () => {
     Auth.logout();
   };
 
+
   return (
-    <header className="headerColor">
+    <header className="headerColor sticky-top">
       <div className="row min-vh-10 d-flex justify-content-center align-items-center">
         <div className="col-3 text-start">
           <Link to="/homepage" style={{ textDecoration: 'none' }}>
@@ -22,19 +23,19 @@ const Header = () => {
         <div className="col text-end me-2">
           {Auth.loggedIn() ? (
             <>
-              {/* <Link to="..."> 
+              <Link to="/homepage"> 
                 {Auth.getProfile().data.username}'s profile
-              </Link> */}
+              </Link>
               {location.pathname !== '/homepage' && location.pathname !== '/' && (
                 <Link to="/homepage">
-                  <button className="button-80 ms-1" role="button" type="button">
+                  <button className="button-80 ms-1" type="button">
                     Dashboard
                   </button>
                 </Link>
               )}
               {location.pathname !== '/inbox' && location.pathname !== '/' && (
                 <Link to="/inbox">
-                  <button className="button-80 ms-1" role="button" type="button">
+                  <button className="button-80 ms-1" type="button">
                     Inbox
                   </button>
                 </Link>
@@ -43,7 +44,7 @@ const Header = () => {
                 <Link to="/login">
                   <button
                     className="button-80 ms-1"
-                    role="button"
+                    
                     type="button"
                     onClick={logout}
                   >
@@ -53,14 +54,14 @@ const Header = () => {
               )}
               {location.pathname === '/login' && (
                 <Link to="/signup">
-                  <button className="button-80 ms-1" role="button" type="button">
+                  <button className="button-80 ms-1" type="button">
                     Signup
                   </button>
                 </Link>
               )}
               {location.pathname === '/signup' && (
                 <Link to="/login">
-                  <button className="button-80 ms-1" role="button" type="button">
+                  <button className="button-80 ms-1" type="button">
                     Login
                   </button>
                 </Link>
@@ -70,14 +71,14 @@ const Header = () => {
             <>
               {location.pathname !== '/login' && (
                 <Link to="/login">
-                  <button className="button-80 ms-1" role="button" type="button">
+                  <button className="button-80 ms-1" type="button">
                     Login
                   </button>
                 </Link>
               )}
               {location.pathname !== '/signup' && (
                 <Link to="/signup">
-                  <button className="button-80 ms-1" role="button" type="button">
+                  <button className="button-80 ms-1" type="button">
                     Signup
                   </button>
                 </Link>
