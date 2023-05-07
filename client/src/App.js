@@ -4,6 +4,7 @@ import {Routes, Route} from 'react-router-dom';
 import { setContext } from '@apollo/client/link/context';
 import { AnimatePresence } from 'framer-motion';
 import { useLocation } from "react-router";
+import { GameProvider } from './utils/GameContext';
 
 // Styling
 import './App.css';
@@ -20,6 +21,7 @@ import Login from './pages/Login';
 
 import Signup from './pages/signUp';
 import Inbox from './pages/Inbox';
+import GamesList from './components/GamesList';
 
 
 
@@ -54,6 +56,7 @@ function App() {
 
   return (
     <ApolloProvider client={client}>
+      <GameProvider>
       <AnimatePresence mode='wait'> 
           <Routes key={location.pathname} location={location}>
               <Route 
@@ -92,6 +95,10 @@ function App() {
                   path="/signup" 
                   element={<Signup />}
                 />
+                <Route
+                  path="/games"
+                  element={<GamesList/>}
+                />
                 <Route 
                   path="/inbox" 
                   element={
@@ -102,6 +109,7 @@ function App() {
                 />
           </Routes> 
       </AnimatePresence>
+      </GameProvider>
     </ApolloProvider>
 
   );

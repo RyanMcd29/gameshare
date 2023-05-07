@@ -7,7 +7,7 @@ import GameItem from './gameitem/gameitem.js'
 export default function GamesList () {
     // load state
     const [ state, dispatch ] = useGameContext()
-
+    console.log(state.gameLibrary)
     const [ filteredGames, setFilteredGames ] = useState(state.gameLibrary)
     const [ search, setSearch ] = useState('')
 
