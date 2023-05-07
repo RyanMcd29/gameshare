@@ -1,17 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import AnimatedPage from '../components/AnimatedPage';
+import { useMutation } from '@apollo/client';
+import { UPDATE_GAME_REQUEST } from '../utils/mutations';
 
 import Auth from '../utils/auth';
 
 const Inbox = () => {
+    //TODO: Add functions to actually do something with the accept and reject buttons
+    const handleAccept = () => {
+        console.log('Request Accepted');
+    };
+
+    const handleReject = () => {
+        console.log('Request Rejected');
+    };
 
     return (
         <AnimatedPage>
             <br></br>
             <div className="card" style={{opacity:0.85}}>
                 <div className="card-body">
-                    <h1 className="card-title text-center">'s Game Requests</h1>
+                    <h1 className="card-title text-center">{Auth.getProfile().data.username}'s Game Requests</h1>
                 </div>
             </div>
             {/* style={{width: "500px"}} */}
@@ -28,8 +38,8 @@ const Inbox = () => {
                                 <div className="card-body">
                                     <h5 className="card-title">William Cable</h5>
                                     <p className="card-text">Hey! My name is Will and I'd love to borrow your copy of God of War!</p>
-                                    <button type="button" className="button-80 me-1">Accept</button>
-                                    <button type="button" className="button-80 me-1">Reject</button>
+                                    <button type="button" className="button-80 me-1" onClick={handleAccept}>Accept</button>
+                                    <button type="button" className="button-80 me-1" onClick={handleReject}>Reject</button>
                                 </div>
                             </div>
                         </div>
@@ -56,24 +66,6 @@ const Inbox = () => {
 
             </section>
 
-            {/* OLD CARD */}
-            {/* <div className="row justify-content-center mt-4">
-                <div className="col-md-8">
-                    <div className="card">
-                    <div className="card-body d-flex align-items-center">
-                        <div className="col-md-4">
-                        <h4 className="card-title">Game</h4>
-                        </div>
-                        <div className="col-md-4 text-center">
-                        <h4 className="card-text">Requesting User</h4>
-                        </div>
-                        <div className="col-md-4 text-end">
-                        <h4> accept/reject </h4>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-            </div> */}
 
             {/* //TODO: uncomment when the inbox page is dynamically loaded */}
             {/* <div className="row justify-content-center mt-4">
