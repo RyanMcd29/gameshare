@@ -20,7 +20,6 @@ export default function GamesList () {
             return Object.values(game.name).join('').toLowerCase().includes(search.toLowerCase())
         })
 
-        console.log(filterGames)
         setFilteredGames(filterGames)
     }
     
@@ -36,7 +35,8 @@ export default function GamesList () {
                 <ul className="row flex">
                 { filteredGames.map((game) => (
                     <GameItem
-                        key={game.id}
+                        key={game._id}
+                        id={game._id}
                         name={game.name}
                         image={game.img}
                         platforms={game.platforms}

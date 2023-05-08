@@ -17,7 +17,7 @@ export default function GameCart () {
                     {console.log(state.gamesToAdd)}
                     { state.gamesToAdd.map((game) => {
                         { return (
-                            <div>
+                            <div className="container">
                                 <img className="img-thumbnail" src={game.img}/>
                                 <p>{game.name}</p>
                             </div>

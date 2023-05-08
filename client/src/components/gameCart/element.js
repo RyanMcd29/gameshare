@@ -5,9 +5,6 @@ export default function GameCartElement (game) {
     const { name, image, platform, genres } = game
     
     return (
-        <div>
-            <img className="img-thumbnail" src={image}/>
-            <p>{name}</p>
-        </div>
+       <div></div> 
     )
 }

@@ -10,15 +10,17 @@ export default function GameItem (game) {
 
     const [ isSelected, setSelected ] = useState(false)
     // const [ mouseOver, setMouseOver ] = useState(false)
-
+    console.log(game)
     const submitGame = (platform) => {
         state.gamesToAdd.push({
+            _id: game.id,
             name: game.name,
-            img: game.img,
+            img: game.image,
             genres: game.genres,
             platform: platform.platform
         })
 
+        console.log(state.gamesToAdd)
         setSelected(false)
     }
 
