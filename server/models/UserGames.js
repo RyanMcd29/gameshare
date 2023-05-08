@@ -30,4 +30,5 @@ const UserGamesSchema = new Schema({
 
 const UserGames = model('userGames', UserGamesSchema)
 
+
 module.exports = UserGames;
