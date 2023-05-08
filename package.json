@@ -40,5 +40,6 @@
     "react-router-dom": "^6.11.1",
     "react-transition-group": "^4.4.5",
     "swup": "^3.0.6"
+    
   }
 }
