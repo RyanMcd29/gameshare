@@ -93,6 +93,17 @@ body {
   overflow: hidden;
 }
 
+
+.game-library{
+  height: 100vh;
+}
+.img-thumbnail {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  overflow: hidden;
+}
+
 .game-img:hover {
   filter: brightness(0.5);
 }

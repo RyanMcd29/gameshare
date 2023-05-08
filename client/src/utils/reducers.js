@@ -1,6 +1,7 @@
 import { useReducer } from "react";
 import { 
-    TOGGLE_CART
+    TOGGLE_CART,
+    ADD_TO_CART,
 } from './actions'
 
 export const reducer = ( state, action ) => {
@@ -11,10 +12,15 @@ export const reducer = ( state, action ) => {
                  ...state,
                   cartOpen: !state.cartOpen,
                 };
+        case ADD_TO_CART: 
+                console.log(action.game)
+                return {
+                    ...state,
+                    gamesToAdd: [...state.gamesToAdd, action.game]
+                }
     }
 };
 
 export function useGameReducer(initialState) {
-    console.log('importing reducer')
     return useReducer(reducer, initialState)
 }
