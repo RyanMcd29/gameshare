@@ -33,6 +33,12 @@ query GetUserInfo {
 }
 `;
 
+
+// export const ADD_GAMES = gql`
+// query addGames($games: [ID]!, $users:) {
+//   addGame 
+// }`
+
 export const UPDATE_GAME_REQUEST = gql`
   mutation updateGameRequest($gameRequestId: ID!, $status: String!) {
     _id
@@ -56,3 +62,4 @@ export const UPDATE_GAME_REQUEST = gql`
     status
   }
 `;
+
