@@ -2,33 +2,27 @@ const { gql } = require('apollo-server-express');
 
 const typeDefs = gql `
     type User {
-        _id: ID
+        _id: ID!
         username: String
         email: String
         password: String
-        games: [Game]
-        platform: String
-        borrowRequests: [GameRequest]
-        lendRequests: [GameRequest]
+        games: [UserGames]
     }
-    
-    type Game {
+
+    type UserGames {
         _id: ID!
         title: String
         platform: String
-        borrower: User
-        lender: User
-        borrowRequests: [GameRequest]
-        lendRequests: [GameRequest]
+        gameDetails: [GameLibrary]
     }
 
     type GameLibrary {
         _id: ID!
         name: String!
         img: String!
-        date_released: String
         genres: [String]
         platforms: [String]
+        release_date: String
     }
 
     type GameRequest {
@@ -46,10 +40,10 @@ const typeDefs = gql `
     }
 
     type Query {
-        users: [User!]
+        users: [User]
         user(username: String!): User
-        games(_id: ID!, username: String): [Game]
         gamelibrary: [GameLibrary]
+        usergames: [UserGames]
         gameRequests: [GameRequest!]
         gameRequestsByUser(userId: String!): [GameRequest!]!
     }
@@ -59,10 +53,7 @@ const typeDefs = gql `
         addUser(username: String!, email: String!, password: String!): Auth
         login(email: String!, password: String!): Auth
         deleteUser(_id: ID!): User
-        addGame(title: String!, platform: String!, lenderId: ID!): Game!
-        deleteGame(_id: ID!): Game!
-        createGameRequest(fromUser: String!, toUser: String!, game: String!): GameRequest!
-        updateGameRequest(_id: ID!): Boolean!
+        deleteGame(_id: ID!): UserGames!
     }
 `;
 

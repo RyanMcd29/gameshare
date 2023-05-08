@@ -9,6 +9,9 @@ db.once("open", async () => {
   try {
     //-- remove existing data in db --//
     await User.deleteMany({});
+    await UserGames.deleteMany({});
+    await GameLibrary.deleteMany({})
+    // await GameRequest.deleteMany({});
     await GameLibrary.deleteMany({});
 
     console.log("DATA", data);
