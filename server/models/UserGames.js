@@ -28,6 +28,7 @@ const UserGamesSchema = new Schema({
     timestamps: true 
 });
 
+
 const UserGames = model('userGames', UserGamesSchema)
 
 

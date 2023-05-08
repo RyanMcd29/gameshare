@@ -25,7 +25,6 @@ db.once("open", async () => {
       data.users[2].borrowedGames = [gameLibrary[1]._id];
 
      
-
       const users = await User.insertMany(data.users);
 
       console.log("users", users);
