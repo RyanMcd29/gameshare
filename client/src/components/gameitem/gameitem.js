@@ -6,15 +6,12 @@ export default function GameItem (game) {
 
     const [ state, dispatch ] = useGameContext()
 
-    const { id, name, image, platforms, genres } = game
+    const { id, name, image, platforms } = game
 
     const [ isSelected, setSelected ] = useState(false)
     // const [ mouseOver, setMouseOver ] = useState(false)
 
     const submitGame = (platform) => {
-        console.log(game)
-        console.log(platform)
-        
         state.gamesToAdd.push({
             name: game.name,
             img: game.img,
@@ -22,7 +19,6 @@ export default function GameItem (game) {
             platform: platform.platform
         })
 
-        console.log(state.gamesToAdd)
         setSelected(false)
     }
 

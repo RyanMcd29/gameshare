@@ -2,6 +2,7 @@ import { empty } from "@apollo/client";
 import React, { useEffect, useState } from "react";
 import { useGameContext } from "../utils/GameContext";
 import GameItem from './gameitem/gameitem.js'
+import GameCart from './gameCart/index'
 
 // import { idbPromise } from "../utils/helpers"
 
@@ -44,6 +45,9 @@ export default function GamesList () {
                 ))}
                 </ul>
             ) : (<h3>No games added!</h3> )}      
+            
+            {/* Render if gamestoadd in state */}
+            <GameCart/>
         </div> 
     )
    
