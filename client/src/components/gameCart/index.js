@@ -11,7 +11,16 @@ export default function GameCart () {
     }
 
     function saveGames() {
-        dispatch({ type: SAVE_GAMES })
+        console.log(state.gamesToAdd)
+        const gameIdPlatform = state.gamesToAdd.map(game => {
+            return {
+                _id: game._id,
+                platform: game.platform
+            }           
+        })
+
+        
+        console.log(gameIdPlatform)
     }
 
     return (
@@ -32,7 +41,7 @@ export default function GameCart () {
                     </div>
                 <div className="h-10">
                 { /* Save button */ }
-                    <button className="row btn btn-success m-3">Add Games</button>
+                    <button onClick={saveGames} className="row btn btn-success m-3">Add Games</button>
                 </div>    
                 </div>
     </div>
