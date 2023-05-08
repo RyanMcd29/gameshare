@@ -89,10 +89,14 @@
   width: 18rem;
 }
 
-.game-card img {
-  object-fit: contain;
-  max-height: 18rem;
+.game-img {
+  height: 400px;
+  object-fit:cover;
   overflow: hidden;
+}
+
+.game-img:hover {
+  filter: brightness(0.5);
 }
 
 /* Buttons */

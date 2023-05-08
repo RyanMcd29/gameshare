@@ -1,3 +1,4 @@
+import { Button } from "bootstrap";
 import React, { useState } from "react";
 import { useGameContext } from "../../utils/GameContext";
 
@@ -5,30 +6,36 @@ export default function GameItem (game) {
 
     const [ state, dispatch ] = useGameContext()
 
-    const { name, image, platforms, genres } = game
+    const { id, name, image, platforms } = game
 
     const [ isSelected, setSelected ] = useState(false)
+    // const [ mouseOver, setMouseOver ] = useState(false)
 
-    const submitGame = () => {
-        console.log('hello')
+    const submitGame = (platform) => {
+        state.gamesToAdd.push({
+            name: game.name,
+            img: game.img,
+            genres: game.genres,
+            platform: platform.platform
+        })
+
         setSelected(false)
     }
 
     const renderAddGameForm = () => {
-        console.log('hello')
         setSelected(true)
     }
 
     return (
-        <div>
-            <div className="game-card card">
-                <img src={image}/>
-                <div className="card-body">
+        <div key={id} className="col-sm-6 col-md-3">
+            <div className="card">
+                <img className="card-img-top game-img" src={image}/>
+                <div className= "card-body">
                     <h5 className="card-title">{name}</h5>
                     { isSelected ? (
                         <ul>
                             { platforms.map((platform)=>{
-                                return (<button onClick={submitGame} key={platform} className={platform}>{platform}</button>)
+                                return (<button onClick={()=>submitGame({platform})} value={platform} key={platform} className={platform}>{platform}</button>)
                             })}
                         </ul>)
                     : 
