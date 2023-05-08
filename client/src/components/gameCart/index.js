@@ -2,10 +2,15 @@ import React, { useEffect, useState } from "react";
 import { useGameContext } from "../../utils/GameContext";
 import { SAVE_GAMES, TOGGLE_CART } from "../../utils/actions";
 import CartElement from "./element";
+import { query } from "swup";
+import { Mutation } from "../../../../server/schemas/resolvers";
+import { useMutation } from "@apollo/client";
 
 export default function GameCart () {
     const [state, dispatch] = useGameContext()
     
+    // const [ sendGames, { error, data }] = useMutation(ADD_GAMES);
+
     function toggleCart() {
         dispatch({ type: TOGGLE_CART })
     }
@@ -14,14 +19,29 @@ export default function GameCart () {
         console.log(state.gamesToAdd)
         const gameIdPlatform = state.gamesToAdd.map(game => {
             return {
-                _id: game._id,
+                user_id: "6454f517a3096d974a038e1f",
+                game_id: game._id,
                 platform: game.platform
             }           
         })
 
         
-        console.log(gameIdPlatform)
+        return (gameIdPlatform)
+    
     }
+
+    // const submitCart = async () => {
+    //     const cartGames = saveGames()
+
+    //     try {
+    //         const { data } = await sendGames({
+    //             variables: {cartGames},
+
+    //         })
+    //     } catch (e) {
+    //         console.log(e)
+    //     }
+    // }
 
     return (
         <div className="container">
@@ -46,4 +66,5 @@ export default function GameCart () {
                 </div>
     </div>
     )
+
 }

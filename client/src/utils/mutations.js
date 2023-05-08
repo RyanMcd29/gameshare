@@ -32,3 +32,8 @@ query GetUserInfo {
   }
 }
 `;
+
+// export const ADD_GAMES = gql`
+// query addGames($games: [ID]!, $users:) {
+//   addGame 
+// }`
