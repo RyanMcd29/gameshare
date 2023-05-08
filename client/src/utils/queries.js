@@ -12,14 +12,14 @@ export const QUERY_USER = gql`
 
 export const QUERY_GAMELIBRARY = gql`
     query getGamesLibrary {
-        gamelibrary {
-            _id
-            name
-            img
-            date_released
-            genres
-            platforms
-          }
+      gamelibrary {
+        _id
+        name
+        img
+        genres
+        platforms
+        release_date
+      }
     }
     `;
 

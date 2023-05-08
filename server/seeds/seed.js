@@ -71,6 +71,7 @@ db.once("open", async () => {
     //-- remove existing data in db --//
     await User.deleteMany({});
     await UserGames.deleteMany({});
+    await GameLibrary.deleteMany({})
     // await GameRequest.deleteMany({});
 
     const gameLibrary = await GameLibrary.insertMany(data.games);
