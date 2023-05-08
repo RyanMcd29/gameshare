@@ -1,5 +1,5 @@
 
-const { User } = require('../models');
+const { User, UserGames, GameLibrary} = require('../models');
 const { GameRequests } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
@@ -12,15 +12,14 @@ const resolvers = {
     user: async (parent, { username }) => {
       return User.findOne({ username });
     },
+    usergames: async () => {
+      return UserGames.find();
+    },
+    gamelibrary: async () => {
+      return await GameLibrary.find();
+    },
   },
 
-  Query: {
-      gamelibrary: async () => {
-          return await GameLibrary.find();
-      },
-
-  },
-  
   Mutation: {
     addUser: async (parent, { username, email, password }) => {
       const user = await User.create({ username, email, password });
@@ -43,11 +42,11 @@ const resolvers = {
 
       return { token, user };
     },
-    createGameRequest: async (_, { fromUser, toUser, game }) => {
-      const request = new GameRequests({ fromUser, toUser, game, status: 'pending' });
-      await request.save();
-      return request;
-    }
+    // createGameRequest: async (_, { fromUser, toUser, game }) => {
+    //   const request = new GameRequests({ fromUser, toUser, game, status: 'pending' });
+    //   await request.save();
+    //   return request;
+    // }
 
 
   },
