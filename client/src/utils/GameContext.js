@@ -16,7 +16,7 @@ const GameProvider = ({ value = [], ...props }) => {
         gameLibrary: [],
         // Cart
         gamesToAdd: [],
-        addOpen: false,
+        cartOpen: false,
         genres: [],
         currentGenres: '',
         search: '',

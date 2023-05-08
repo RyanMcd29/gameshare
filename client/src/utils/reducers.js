@@ -1,16 +1,16 @@
 import { useReducer } from "react";
 import { 
-    UPDATE_GAMES
+    TOGGLE_CART
 } from './actions'
 
 export const reducer = ( state, action ) => {
     // eslint-disable-next-line default-case
     switch (action.type) {
-        case UPDATE_GAMES:
+        case TOGGLE_CART:
             return {
-                ...state,
-                gameLibrary: [...action.gameLibrary]
-            }
+                 ...state,
+                  cartOpen: !state.cartOpen,
+                };
     }
 };
 
