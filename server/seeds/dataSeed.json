@@ -1,0 +1,43 @@
+{
+    "games": [
+      {
+        "name": "Red Dead Redemption 2",
+        "platforms": ["PS4", "Xbox One"],
+        "genre": "Action-adventure",
+        "date_released": "2018-10-26",
+        "img":"img"
+      },
+      {
+        "name": "The Legend of Zelda: Breath of the Wild",
+        "platforms": ["Nintendo Switch", "Wii U"],
+        "genre": "Action-adventure",
+        "date_released": "2017-03-03",
+        "img":"img"
+      },
+      {
+        "name": "The Witcher 3: Wild Hunt",
+        "platforms": ["PS4", "Xbox One", "PC"],
+        "genre": "Action role-playing",
+        "date_released": "2015-05-19",
+        "img":"img"
+      }
+    ],
+    "users": [
+      {
+        "username": "Ryan",
+        "email": "ryan@test.com",
+        "password": "password"
+      },
+      {
+        "username": "Will",
+        "email": "will@test.com",
+        "password": "password"
+      },
+      {
+        "username": "Mauxi",
+        "email": "mauxi@test.com",
+        "password": "password"
+      }
+    ]
+  }
+  
