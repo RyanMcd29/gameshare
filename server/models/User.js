@@ -1,6 +1,6 @@
 const  { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
-SALT_WORK_FACTOR = 10;
+const SALT_WORK_FACTOR = 10;
 
 const userSchema = new Schema({
     username: {
@@ -23,13 +23,13 @@ const userSchema = new Schema({
     userGames: [
         {
             type: Schema.Types.ObjectId,
-            ref: 'usergames',
+            ref: 'gamelibrary',
         }
     ],
     borrowedGames: [
         {
             type: Schema.Types.ObjectId,
-            ref: 'usergames'
+            ref: 'gamelibrary'
         }
     ]
 });

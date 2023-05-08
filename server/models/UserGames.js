@@ -1,16 +1,18 @@
 const  { Schema, model } = require ('mongoose');
 
 const UserGamesSchema = new Schema({
-    isBorrowed: {
-        type: Boolean,
-        required: true,
-        default: false
+    isBorrowedBy: {
+        // type: Boolean,
+        // required: true,
+        // default: false
+        type: Schema.Types.ObjectId,
+        ref: 'user'
     },
-    isListed: {
-        type: Boolean,
-        required: true,
-        default: true
-    },
+    // isListed: {
+    //     type: Boolean,
+    //     required: true,
+    //     default: true
+    // },
    gameDetails: [
     {   
         type: Schema.Types.ObjectId,
@@ -26,6 +28,6 @@ const UserGamesSchema = new Schema({
     timestamps: true 
 });
 
-const UserGames = model('usergames', UserGamesSchema)
+const UserGames = model('userGames', UserGamesSchema)
 
 module.exports = UserGames;
