@@ -3,8 +3,6 @@ import { useGameContext } from "../../utils/GameContext";
 import { SAVE_GAMES, TOGGLE_CART } from "../../utils/actions";
 import CartElement from "./element";
 import { query } from "swup";
-import { Mutation } from "../../../../server/schemas/resolvers";
-import { useMutation } from "@apollo/client";
 
 export default function GameCart () {
     const [state, dispatch] = useGameContext()
