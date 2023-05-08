@@ -10,7 +10,8 @@ const gameSchema = new Schema({
         required: true,
     },
     date_released: {
-        type: Date
+        type: Date,
+        dateformat: 'DD/MM/YYYY'
     },
     genres: {
         type: Array
