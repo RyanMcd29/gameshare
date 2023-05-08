@@ -11,7 +11,7 @@
 --orange-peel: rgb(255, 159, 28);
 }
 
-body {
+.backgroundImage {
     
     /* Background Image & Controls */
     background-image: url('../src/assets/images/consoles.png');
@@ -31,6 +31,8 @@ body {
   background-size: cover;
 
 }
+
+
   
 .headerTitle {
   color: var(--baby-powder);
@@ -170,4 +172,80 @@ body {
   transform: translateY(.05rem);
 }
 
-/* Page Transitions */
+/* Request Cards */
+.postcard {
+  flex-wrap: wrap;
+  display: flex;
+  
+  box-shadow: 0 4px 21px -12px rgba(0, 0, 0, 0.66);
+  border-radius: 10px;
+  margin: 0 0 2rem 0;
+  overflow: hidden;
+  position: relative;
+  color: #ffffff;
+}
+
+.postcard__title {
+  font-size: 1.75rem;
+}
+
+  .postcard__img_link {
+    display: contents;
+  }
+
+    .postcard__img {
+    max-height: 180px;
+    width: 100%;
+    object-fit: cover;
+    position: relative;
+  }
+
+    .postcard__text {
+    padding: 1.5rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+    .postcard__bar {
+    width: 50px;
+    height: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    background-color: #424242;
+    transition: width 0.2s ease;
+  }
+
+    .postcard__preview-txt {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: justify;
+    height: 100%;
+  }
+
+    .postcard__tagbox {
+    display: flex;
+    flex-flow: row wrap;
+    font-size: 14px;
+    margin: 20px 0 0 0;
+		padding: 0;
+    justify-content: center;
+  }
+
+      .tag__item {
+      display: inline-block;
+      background: rgba(83, 83, 83, 0.4);
+      border-radius: 3px;
+      padding: 2.5px 10px;
+      margin: 0 5px 5px 0;
+      cursor: default;
+      user-select: none;
+      transition: background-color 0.3s;
+    }
+
+      .postcard__img {
+    max-height: 180px;
+    width: 100%;
+    object-fit: cover;
+    position: relative;
+  }

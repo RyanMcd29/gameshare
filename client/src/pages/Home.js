@@ -1,6 +1,7 @@
 import React from 'react';
 import AnimatedPage from '../components/AnimatedPage';
 import { Link } from 'react-router-dom';
+import Auth from '../utils/auth';
 
 const Home = ({ username }) => {
   const buttonRight = {
@@ -16,7 +17,7 @@ const Home = ({ username }) => {
     <br></br>
     <br></br>
     <div className="d-flex justify-content-center">
-     <h2> {username}'s Dashboard</h2> 
+     <h2> {Auth.getProfile().data.username}'s Dashboard</h2> 
     </div>
      <br></br>
 

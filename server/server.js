@@ -24,6 +24,7 @@ const server = new ApolloServer({
 });
 
 //--- Midderware to parse incoming requests ---//
+// Will- Changed this to false! 3:40pm 07/05/2023 // Changed-back 04:01
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
