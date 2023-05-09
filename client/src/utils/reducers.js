@@ -18,6 +18,7 @@ export const reducer = ( state, action ) => {
                     ...state,
                     gamesToAdd: [...state.gamesToAdd, action.game]
                 }
+        // Todo: Make reducer to remove games from state
     }
 };
 

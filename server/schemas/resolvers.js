@@ -57,6 +57,14 @@ const resolvers = {
         }
       );
     }
+    // Todo: Add game to borrowed games
+
+    // Todo: Remove game from borrowed games
+
+    // Todo: Add remove game from library
+
+
+
     // addGamesToUser : async (parent, { gamesToAdd }) => {
     //   console.log(gamesToAdd)
     // }

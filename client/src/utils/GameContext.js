@@ -27,6 +27,7 @@ const GetUserDetails = () => {
     return userGames
 }
 
+// Add state to find all games not borrowed
 const GameProvider = ({ value = [], ...props }) => {
     
     const [state, dispatch] = useGameReducer({
