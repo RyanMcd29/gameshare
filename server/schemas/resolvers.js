@@ -60,16 +60,28 @@ const resolvers = {
 
     // Todo: Add game to borrowed games
     addGameToBorrowed: async (parent, {userName, gameId}) => {
-      User.findOneAndUpdate({ username: userName }),
+      User.findOneAndUpdate({ borrowedGames: userName }),
       { $push: { userGames: gameId}},
       {
         new: true,
       }
-    }
+    },
     // Todo: Remove game from borrowed games
-
+    removeGameFromBorrowed: async (parent, {userName, gameId}) => {
+      User.findOneAndUpdate({ borrowedGames: userName }),
+      { $pull: { userGames: gameId}},
+      {
+        new: true,
+      }
+    },
     // Todo: Add remove game from library
-
+    removeGameFromOwned: async (parent, {userName, gameId}) => {
+      User.findOneAndUpdate({ username: userName }),
+      { $pull: { userGames: gameId}},
+      {
+        new: true,
+      }
+    },
 
 
     // addGamesToUser : async (parent, { gamesToAdd }) => {
