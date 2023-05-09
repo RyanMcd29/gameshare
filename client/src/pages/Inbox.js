@@ -83,7 +83,7 @@ const Inbox = () => {
 
         <div className="d-flex justify-content-center">  
 
-            <Link to="/GameSearch">
+            <Link to="/games">
                 <button className="button-80 ms-1" role="button" type="button">Find Something to Play <i className="fa-sharp fa-solid fa-search"></i></button>
             </Link>
 

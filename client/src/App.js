@@ -17,9 +17,10 @@ import Footer from './components/Footer';
 // Components - Pages
 import Welcome from './pages/Welcome';
 import Home from './pages/Home';
-import Login from './pages/Login';
+import Login from './pages/login';
 import Signup from './pages/signUp';
 import Inbox from './pages/Inbox';
+import Borrow from './pages/BorrowSearch'
 import GamesList from './components/GamesList';
 
 
@@ -92,11 +93,27 @@ function App() {
                 />
                 <Route 
                   path="/signup" 
-                  element={<Signup />}
+                  element={
+                  <div>
+                    <Header />
+                    <Signup />
+                  </div>}
                 />
                 <Route
                   path="/games"
-                  element={<GamesList/>}
+                  element={
+                  <div>
+                    <Header />
+                    <GamesList/>
+                  </div>}
+                />
+                <Route
+                  path="/borrow"
+                  element={
+                  <div>
+                    <Header />
+                    <Borrow />
+                  </div>}
                 />
                 <Route 
                   path="/inbox" 
