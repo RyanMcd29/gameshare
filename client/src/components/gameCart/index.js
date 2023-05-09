@@ -27,14 +27,15 @@ export default function GameCart() {
       dispatch({ type: CLEAR_CART });
     }
   };
+  
 
   
   //TODO: Game cart's card layout needs to be fixed
   return (
-    <div className="container">
+    <div className="container d-flex">
       <div
         id="cart"
-        className="container col-3 z-3 position-absolute top-0 end-0  w-25 bg-dark"
+        className="container col-3 z-3 position-fixed end-0 w-25 bg-dark mt-5"
       >
         <div className="row h-75">
           <ul className="list-group">

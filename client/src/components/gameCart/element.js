@@ -16,3 +16,5 @@ export default function CartElement ({ name, image, platform }) {
     </div>
   );
 }
+
+

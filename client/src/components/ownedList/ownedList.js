@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const OwnedList = ({
     games,
@@ -7,8 +7,7 @@ const OwnedList = ({
     //     return <h3>No Games Owned!</h3>
     // }
 
-    
-
+  
     return (
         <div>
         {games &&
@@ -27,3 +26,4 @@ const OwnedList = ({
 }
 
 export default OwnedList;
+ 
