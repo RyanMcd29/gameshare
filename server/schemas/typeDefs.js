@@ -8,7 +8,6 @@ const typeDefs = gql `
         password: String
         userGames: [GameLibrary]
         borrowedGames: [GameLibrary]
-   
     }
 
     type UserGames {

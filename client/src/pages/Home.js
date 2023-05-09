@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AnimatedPage from '../components/AnimatedPage';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
@@ -7,45 +7,37 @@ import { useGameContext } from '../utils/GameContext';
 //import Components
 import OwnedList from '../components/ownedList/ownedList';
 
-import { QUERY_USER } from '../utils/queries';
+import { QUERY_USER_GAMES } from '../utils/queries';
+import auth from '../utils/auth';
 
 const Home = () => {
     const [state, dispatch] = useGameContext();
+
+    console.log(state.userGames)
     
-    const { username: userParam } = useParams();
-
-    const { loading, data } = useQuery (QUERY_USER , {
-        variables: { username: userParam },
-    });
-
-    console.log(data);
-
-    const user = data?.me || data?.user || {};
-    // navigate to personal profile page if username is yours
-    if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
-      return <Navigate to="/homepage" />;
-    }
-
-    // if (loading) {
-    //     return <div>Loading...</div>;
+    // const GetUserDetails = () => {
+    //     //get userId
+    //     const userName = auth.getProfile().data.username
+    //     console.log(userName)
+    
+    //     const { loading, data } = useQuery(QUERY_USER_GAMES, {variables: {
+    //         username : userName
+    //     }})
+    
+    //     const userGames = data?.userGames || []
+    //     return userGames
     // }
 
-    // if (!user?.username) {
-    //     return (
-    //     <h4>
-    //         You need to be logged in to see this. Use the navigation links above to
-    //         sign up or log in!
-    //     </h4>
-    //     );
-    // }
+    // const [userDetails, setUserDetails] = useState([])
+
+    // setUserDetails(GetUserDetails)
 
   return (
     <AnimatedPage>
     <br></br>
     <br></br>
     <div className="d-flex justify-content-center">
-     {/* <h2> {Auth.getProfile().data.username}'s Dashboard</h2>  */}
-     <h2>{userParam ? `${user.username}'s` : 'your'}'s Dashboard</h2>
+     <h2> {Auth.getProfile().data.username}'s Dashboard</h2> 
     </div>
      <br></br>
 
@@ -58,18 +50,17 @@ const Home = () => {
                 <div className="container-fluid">
 
                     <div>
-                        <OwnedList games={user.ownedGames} />
                     </div>
 
 
-                    {/* <div className="row">
+                    <div className="row">
                         <div className="col">
                         <div className="p-3 mb-2 bg-success text-white">Game 1</div>
                         </div>
                         <div className="col">
                         <div className="p-3 mb-2 bg-success text-white">Game 2</div>
                         </div>
-                    </div> */}
+                    </div>
 
                 </div>
             <Link to="/games">

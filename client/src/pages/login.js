@@ -32,6 +32,7 @@ const Login = (props) => {
             });
 
             Auth.login(data.login.token);
+            console.log('currently logged in')
         } catch(e) {
             console.error(e);
         }

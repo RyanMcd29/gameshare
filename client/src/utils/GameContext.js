@@ -13,14 +13,15 @@ const GetGameLibrary = () => {
     return games
 }
 
-const GetUserGames = () => {
+const GetUserDetails = () => {
     //get userId
-    const userId = auth.getProfile().data._id
-    console.log("getUserGames", userId)
+    const userName = auth.getProfile().data.username
+    console.log(userName)
+
     const { loading, data } = useQuery(QUERY_USER_GAMES, {variables: {
-        userId : userId
-    }
-    })
+        username : userName
+    }})
+    console.log(data)
 
     const userGames = data?.userGames || []
     return userGames
@@ -37,10 +38,15 @@ const GameProvider = ({ value = [], ...props }) => {
         borrowedGames: []
 
     });
+    
 
-    state.gameLibrary = GetGameLibrary()
-    state.userGames = GetUserGames()
+        state.gameLibrary = GetGameLibrary()
 
+    if (auth.loggedIn) {
+        console.log('Currently logged in')    
+        state.userGames = GetUserDetails()
+    }
+    
     return <Provider value={[ state, dispatch ]} {...props} />;
 };
 
