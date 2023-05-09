@@ -15,7 +15,7 @@ const resolvers = {
     userGames: async (parent, {username}) => {
       if (username) {
         const user = await User.findOne({username})
-        .populate('userGames')
+        .populate('userGames').populate('borrowedGames')
 
         return user
       };

@@ -6,7 +6,9 @@ const typeDefs = gql `
         username: String
         email: String
         password: String
-        userGames: [GameLibrary]!
+        userGames: [GameLibrary]
+        borrowedGames: [GameLibrary]
+   
     }
 
     type UserGames {
