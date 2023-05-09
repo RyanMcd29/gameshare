@@ -36,7 +36,6 @@ const GameProvider = ({ value = [], ...props }) => {
         gamesToAdd: [],
         userGames: [],
         borrowedGames: []
-
     });
     
 
@@ -46,7 +45,7 @@ const GameProvider = ({ value = [], ...props }) => {
         console.log('Currently logged in')    
         state.userGames = GetUserDetails()
     }
-    
+
     return <Provider value={[ state, dispatch ]} {...props} />;
 };
 

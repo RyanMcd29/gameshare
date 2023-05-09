@@ -49,6 +49,14 @@ const resolvers = {
       return { token, user };
     },
 
+    addGamesFromLibrary: async (parent, { userName }, gameID) => {
+       User.findOneAndUpdate({ username: userName }, 
+        { $push: { userGames: { $each: gameID} } },
+        {
+          new: true,
+        }
+      );
+    }
     // addGamesToUser : async (parent, { gamesToAdd }) => {
     //   console.log(gamesToAdd)
     // }

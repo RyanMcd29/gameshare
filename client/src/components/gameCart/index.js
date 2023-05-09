@@ -22,15 +22,13 @@ export default function GameCart () {
 
         console.log(userID)
         console.log(state.gamesToAdd)
-        const gameIdPlatform = state.gamesToAdd.map(game => {
+        const gameIds = state.gamesToAdd.map(game => {
             return {
-                user_id: userID,
                 game_id: game._id,
-                platform: game.platform
             }
         
         })   
-        console.log(gameIdPlatform)
+        console.log(gameIds)
 
         // addGamesToUser({
         //     variables: gameIdPlatform
