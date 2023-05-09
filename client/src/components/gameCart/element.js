@@ -5,6 +5,7 @@ import { TOGGLE_CART } from "../../utils/actions";
 
 export default function CartElement ({ name, image, platform }) {
   
+  
   return (
     <div className="game-cart list-group-item d-flex bg-dark text-white">
       <img className="img-thumbnail" src={image}/>

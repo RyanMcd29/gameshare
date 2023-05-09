@@ -28,6 +28,7 @@ export default function GameCart() {
     }
   };
 
+  
   //TODO: Game cart's card layout needs to be fixed
   return (
     <div className="container">
