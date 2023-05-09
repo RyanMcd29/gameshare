@@ -1,6 +1,5 @@
 const  { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
-const SALT_WORK_FACTOR = 10;
 
 const userSchema = new Schema({
     username: {
