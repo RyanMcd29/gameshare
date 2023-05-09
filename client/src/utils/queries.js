@@ -72,5 +72,12 @@ query UserGames($username: String!) {
   }
 }`
 
+
+// Todo
+// Add query to find all games not borrowed
+
+// Todo: Add mutations for user games and borrow games
+
+
 // export const QUERY_GAMELIBRARY = gql`
 // `

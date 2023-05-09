@@ -49,6 +49,22 @@ const resolvers = {
       return { token, user };
     },
 
+    addGamesFromLibrary: async (parent, { userName }, gameID) => {
+       User.findOneAndUpdate({ username: userName }, 
+        { $push: { userGames: { $each: gameID} } },
+        {
+          new: true,
+        }
+      );
+    }
+    // Todo: Add game to borrowed games
+
+    // Todo: Remove game from borrowed games
+
+    // Todo: Add remove game from library
+
+
+
     // addGamesToUser : async (parent, { gamesToAdd }) => {
     //   console.log(gamesToAdd)
     // }

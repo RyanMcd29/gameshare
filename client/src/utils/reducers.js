@@ -34,16 +34,19 @@ export const reducer = ( state, action ) => {
                   cartOpen: !state.cartOpen,
             };
         case ADD_TO_CART: 
-            console.log(action.game)
-            return {
-                ...state,
-                gamesToAdd: [...state.gamesToAdd, action.game]
-            };
+
+                console.log(action.game)
+                return {
+                    ...state,
+                    gamesToAdd: [...state.gamesToAdd, action.game]
+                }
+        // Todo: Make reducer to remove games from state
         case CLEAR_CART:
             return {
                 ...state,
                 gamesToAdd: []
             };
+
     }
 };
 

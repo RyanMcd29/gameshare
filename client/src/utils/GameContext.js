@@ -27,6 +27,7 @@ const GetUserDetails = () => {
     return userGames
 }
 
+// Add state to find all games not borrowed
 const GameProvider = ({ value = [], ...props }) => {
     
     const [state, dispatch] = useGameReducer({
@@ -36,7 +37,6 @@ const GameProvider = ({ value = [], ...props }) => {
         gamesToAdd: [],
         userGames: [],
         borrowedGames: []
-
     });
     
 
@@ -46,7 +46,7 @@ const GameProvider = ({ value = [], ...props }) => {
         console.log('Currently logged in')    
         state.userGames = GetUserDetails()
     }
-    
+
     return <Provider value={[ state, dispatch ]} {...props} />;
 };
 

@@ -7,24 +7,33 @@ import { ADD_TO_CART } from "../../utils/actions";
 import { CLEAR_CART } from "../../utils/actions";
 import Auth from "../../utils/auth";
 
-export default function GameCart() {
-  const [state, dispatch] = useGameContext();
 
-  const handleCartSubmit = () => {
-    const userID = Auth.getProfile().data._id;
-    const gameIdPlatform = state.gamesToAdd.map((game) => {
-      return {
-        user_id: userID,
-        game_id: game._id,
-        platform: game.platform,
-      };
-    });
-    console.log(gameIdPlatform);
-  };
+export default function GameCart () {
+    const [state, dispatch] = useGameContext()
+    
+    // const [ addGamesToUser, { error, data }] = useMutation(ADD_GAMES_TO_USER);
 
-  const handleClearCart = () => {
-    if (state.gamesToAdd.length > 0) {
-      dispatch({ type: CLEAR_CART });
+    // function toggleCart() {
+    //     dispatch({ type: TOGGLE_CART })
+    // }
+
+    const handleCartSubmit = () => {
+        // Get logged in userID
+        const userID = Auth.getProfile().data._id
+
+        console.log(userID)
+        console.log(state.gamesToAdd)
+        const gameIds = state.gamesToAdd.map(game => {
+            return {
+                game_id: game._id,
+            }
+        
+        })   
+        console.log(gameIds)
+
+        // addGamesToUser({
+        //     variables: gameIdPlatform
+        // })    
     }
   };
   

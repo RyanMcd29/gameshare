@@ -64,3 +64,5 @@ export const UPDATE_GAME_REQUEST = gql`
   }
 `;
 
+
+// Todo: Add mutations for user games and borrow games
