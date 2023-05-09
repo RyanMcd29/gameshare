@@ -10,6 +10,8 @@ import OwnedList from '../components/ownedList/ownedList';
 import { QUERY_USER_GAMES } from '../utils/queries';
 import auth from '../utils/auth';
 
+import UserListGameItem from '../components/UserGameListItem';
+
 const Home = () => {
     const [state, dispatch] = useGameContext();
 
@@ -48,18 +50,15 @@ const Home = () => {
                 <h5 className="card-title"> My Games <i className="fa-sharp fa-solid fa-gamepad ms-1"></i></h5>
                 <br></br>
                 <div className="container-fluid">
-
-                    <div>
-                    </div>
-
-
                     <div className="row">
-                        <div className="col">
-                        <div className="p-3 mb-2 bg-success text-white">Game 1</div>
-                        </div>
-                        <div className="col">
-                        <div className="p-3 mb-2 bg-success text-white">Game 2</div>
-                        </div>
+                    { state.userGames.userGames.map((game) => {
+                        console.log(game)
+                                return <UserListGameItem
+                                    key={game._id}
+                                    name={game.name}
+                                    image={game.img}
+                                    platform={game.platform}/>                          
+                            }) }
                     </div>
 
                 </div>
@@ -75,38 +74,16 @@ const Home = () => {
             <h5 className="card-title">Borrowed Games <i className="fa-sharp fa-solid fa-exchange ms-1"></i></h5>
             <br></br>
                 <div className="container-fluid">
-                <div className="row">
-                    <div className="col">
-                    <div className="p-3 mb-2 bg-success text-white">Game 1</div>
+                    <div className="row">
+                    { state.userGames.borrowedGames.map((game) => {
+                            console.log(game)
+                                    return <UserListGameItem
+                                        key={game._id}
+                                        name={game.name}
+                                        image={game.img}
+                                        platform={game.platform}/>                          
+                                }) }
                     </div>
-                    <div className="col">
-                    <div className="p-3 mb-2 bg-success text-white">Game 2</div>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col">
-                    <div className="p-3 mb-2 bg-success text-white">Game 3</div>
-                    </div>
-                    <div className="col">
-                    <div className="p-3 mb-2 bg-success text-white">Game 4</div>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col">
-                    <div className="p-3 mb-2 bg-success text-white">Game 5</div>
-                    </div>
-                    <div className="col">
-                    <div className="p-3 mb-2 bg-success text-white">Game 6</div>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col">
-                    <div className="p-3 mb-2 bg-success text-white">Game 7</div>
-                    </div>
-                    <div className="col">
-                    <div className="p-3 mb-2 bg-success text-white">Game 8</div>
-                    </div>
-                </div>
             </div>
             <Link to="/games">
                 <button className="btn btn-lg btn-block btn-primary mt-1" type="button">Borrow Games!</button>
