@@ -88,6 +88,9 @@
   }
 }
 
+#cart {
+  top: 100px;
+}
 
 .game-card {
   width: 18rem;
