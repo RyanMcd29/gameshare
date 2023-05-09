@@ -33,7 +33,8 @@ query GetUserInfo {
 }
 `;
 
-
+// export const ADD_GAMES_TO_USER = gql`
+// query AddGamesToUser {}`
 // export const ADD_GAMES = gql`
 // query addGames($games: [ID]!, $users:) {
 //   addGame 

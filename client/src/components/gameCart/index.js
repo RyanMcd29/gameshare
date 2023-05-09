@@ -3,29 +3,38 @@ import { useGameContext } from "../../utils/GameContext";
 import { SAVE_GAMES, TOGGLE_CART } from "../../utils/actions";
 import CartElement from "./element";
 import { query } from "swup";
+import { ADD_GAMES_TO_USER } from "../../utils/mutations";
+import Auth from "../../utils/auth";
+// import { useMutation } from "@apollo/client";
 
 export default function GameCart () {
     const [state, dispatch] = useGameContext()
     
-    // const [ sendGames, { error, data }] = useMutation(ADD_GAMES);
+    // const [ addGamesToUser, { error, data }] = useMutation(ADD_GAMES_TO_USER);
 
-    function toggleCart() {
-        dispatch({ type: TOGGLE_CART })
-    }
+    // function toggleCart() {
+    //     dispatch({ type: TOGGLE_CART })
+    // }
 
-    function saveGames() {
+    const handleCartSubmit = () => {
+        // Get logged in userID
+        const userID = Auth.getProfile().data._id
+
+        console.log(userID)
         console.log(state.gamesToAdd)
         const gameIdPlatform = state.gamesToAdd.map(game => {
             return {
-                user_id: "6454f517a3096d974a038e1f",
+                user_id: userID,
                 game_id: game._id,
                 platform: game.platform
-            }           
-        })
-
+            }
         
-        return (gameIdPlatform)
-    
+        })   
+        console.log(gameIdPlatform)
+
+        // addGamesToUser({
+        //     variables: gameIdPlatform
+        // })    
     }
 
     // const submitCart = async () => {
@@ -59,7 +68,7 @@ export default function GameCart () {
                     </div>
                 <div className="h-10">
                 { /* Save button */ }
-                    <button onClick={saveGames} className="row btn btn-success m-3">Add Games</button>
+                    <button onClick={handleCartSubmit} className="row btn btn-success m-3">Add Games</button>
                 </div>    
                 </div>
     </div>

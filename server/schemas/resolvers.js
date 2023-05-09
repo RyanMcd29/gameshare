@@ -42,6 +42,10 @@ const resolvers = {
 
       return { token, user };
     },
+
+    // addGamesToUser : async (parent, { gamesToAdd }) => {
+    //   console.log(gamesToAdd)
+    // }
     // createGameRequest: async (_, { fromUser, toUser, game }) => {
     //   const request = new GameRequests({ fromUser, toUser, game, status: 'pending' });
     //   await request.save();
