@@ -1,1 +1,0 @@
-import AnimatedPage from '../components/AnimatedPage';

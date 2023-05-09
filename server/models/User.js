@@ -26,12 +26,12 @@ const userSchema = new Schema({
             ref: 'gamelibrary',
         }
     ],
-    // borrowedGames: [
-    //     {
-    //         type: Schema.Types.ObjectId,
-    //         ref: 'gamelibrary'
-    //     }
-    // ]
+    borrowedGames: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'gamelibrary'
+        }
+    ]
 });
 
 // userSchema.pre('save', async function (next) {
