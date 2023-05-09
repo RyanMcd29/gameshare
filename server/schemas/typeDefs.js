@@ -54,6 +54,7 @@ const typeDefs = gql `
         addUser(username: String!, email: String!, password: String!): Auth
         login(email: String!, password: String!): Auth
         addGamesFromLibrary(gameID: [String], username: String! ): User
+        addGamesToBorrowed(gameId: String, username: String! ): User
         removeGameFromOwned(gameID: String, username: String1): User
         removeGameFromBorrowed(gameID: String, username: String!): User
         deleteUser(_id: ID!): User
