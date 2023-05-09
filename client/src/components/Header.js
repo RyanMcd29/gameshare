@@ -23,8 +23,8 @@ const Header = () => {
         <div className="col text-end me-2">
           {Auth.loggedIn() ? (
             <>
-              <Link to="/homepage"> 
-                {Auth.getProfile().data.username}'s profile
+              <Link to="/homepage" className='userNameHeader me-2'> 
+                {Auth.getProfile().data.username}
               </Link>
               {location.pathname !== '/homepage' && location.pathname !== '/' && (
                 <Link to="/homepage">
