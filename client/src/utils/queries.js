@@ -49,5 +49,16 @@ export const QUERY_GAMELIBRARY = gql`
     }
     `;
 
+export const QUERY_USER_GAMES = gql`
+    query getUserGames($user: _id){
+      user(_id: $user){
+        _id
+        name
+        userGames {
+          _id
+        }
+      }
+    }`
+
 // export const QUERY_GAMELIBRARY = gql`
 // `

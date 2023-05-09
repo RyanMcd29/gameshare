@@ -116,10 +116,21 @@ db.once("open", async () => {
     //WILL- store an ARRAY of game OBJECTS in the gamelibrary variable.
     const gameLibrary = await GameLibrary.insertMany(gamesData); 
 
+    gamesData.map((_id) => {
+      UserGames.insert({
+        getGameDetails: _id,
+        platform: "Xbox"
+
+
+    })
+    })
+
     //---------SEEDING OWNED GAME LIBRARIES
     // Games owned by user0 (Ryan) AND user1 (Will), this user owns a copy of ALL of the games in the game library.
     data.users[0].userGames = gameLibrary.map(({_id}) => _id);
     data.users[1].userGames = gameLibrary.map(({_id}) => _id);
+
+
 
 
     //----------SEEDING BORROWED GAME LIBRARIES

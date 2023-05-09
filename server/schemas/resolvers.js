@@ -12,9 +12,15 @@ const resolvers = {
     user: async (parent, { username }) => {
       return User.findOne({ username });
     },
-    usergames: async () => {
-      return UserGames.find();
+    userGames: async (parent, {username}) => {
+      if (username) {
+        const user = await User.findOne({username})
+        .populate('userGames')
+
+        return user
+      };
     },
+
     gamelibrary: async () => {
       return await GameLibrary.find();
     },

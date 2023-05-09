@@ -3,14 +3,15 @@ import AnimatedPage from '../components/AnimatedPage';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import Auth from '../utils/auth';
-
+import { useGameContext } from '../utils/GameContext';
 //import Components
 import OwnedList from '../components/ownedList/ownedList';
 
 import { QUERY_USER } from '../utils/queries';
 
 const Home = () => {
-
+    const [state, dispatch] = useGameContext();
+    
     const { username: userParam } = useParams();
 
     const { loading, data } = useQuery (QUERY_USER , {
