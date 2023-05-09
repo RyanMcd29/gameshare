@@ -5,7 +5,7 @@ export default function UserListGameItem (game) {
 
     return (
         <div className="list-group-item d-flex"> 
-            <img className="img-thumbnail" src={image}/>
+            <img className="img-thumbnail w-25" src={image}/>
             <div className=" m-2 game-cart-details">
                 <p>{name}</p>
                 <p>{platform}</p>

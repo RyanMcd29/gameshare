@@ -45,12 +45,12 @@ const Home = () => {
 
       <div className="card-deck row justify-content-center">
 
-        <div className="card m-4" style={{width: "500px", height: "400px"}}>
+        <div className="card m-4 overflow-scroll" style={{width: "500px", height: "400px"}}>
             <div className="card-body text-center">
                 <h5 className="card-title"> My Games <i className="fa-sharp fa-solid fa-gamepad ms-1"></i></h5>
                 <br></br>
-                <div className="container-fluid">
-                    <div className="row">
+                <div className="vh-75 container-fluid">
+                    <div className="row  overflow-scroll">
                     { state.userGames.userGames.map((game) => {
                         console.log(game)
                                 return <UserListGameItem
@@ -69,7 +69,7 @@ const Home = () => {
     </div>
 
 
-    <div className="card m-4" style={{width: "500px", height: "400px"}}>
+    <div className="card m-4 overflow-scroll" style={{width: "500px", height: "400px"}}>
             <div className="card-body text-center">
             <h5 className="card-title">Borrowed Games <i className="fa-sharp fa-solid fa-exchange ms-1"></i></h5>
             <br></br>
