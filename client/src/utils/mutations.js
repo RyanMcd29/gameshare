@@ -65,6 +65,7 @@ export const UPDATE_GAME_REQUEST = gql`
 `;
 
 
+
 // Todo: Add mutations for user games and borrow games
 export const ADD_GAMES_TO_USER = gql `
   mutation addGames($username: String!, $gameId: [ID]) {
@@ -107,3 +108,4 @@ export const REMOVE_GAME_FROM_BORROWED = gql `
       }
     }
   }`
+

@@ -41,8 +41,15 @@ export default function GameCart () {
 
         console.log(gameIds)
 
+
       submitGames(username, gameIds)
   }
+
+    const handleClearCart = () => {
+      if (state.gamesToAdd.length > 0) {
+        dispatch({ type: CLEAR_CART });
+      }
+    };
   
   
 
@@ -78,3 +85,5 @@ export default function GameCart () {
     </div>
   );
 }
+
+
