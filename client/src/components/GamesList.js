@@ -23,6 +23,11 @@ export default function GamesList () {
 
         setFilteredGames(filterGames)
     }
+
+    useEffect(() => {
+        setFilteredGames(state.gameLibrary)
+    }, [state.gameLibrary])
+    
     
     return (
         <div className="game-library container-sm h-100">

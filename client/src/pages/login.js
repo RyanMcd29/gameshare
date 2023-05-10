@@ -44,10 +44,12 @@ const Login = (props) => {
         });
     };
 
+    // container d-flex justify-content-center align-items-center vCenterLogin
+
     return (
       <AnimatedPage>
-        <main className='container min-vh-100 d-flex justify-content-center align-items-center'>
-            <section className='col-6'>
+        <main className='container d-flex justify-content-center align-items-center vCenterLogin'>
+            <section className='col-6 '>
               <div className='text-center'>
                 <div>
                   <i className="fa-sharp fa-solid fa-ghost fa-4x m-2"></i>

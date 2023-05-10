@@ -52,7 +52,7 @@ const Home = () => {
                     <div className="card-body text-center">
                         <div className="vh-75">
                             <div className="row m-0">
-                            { state.userGames.userGames.map((game) => {
+                            { state.userGames.userGames && state.userGames.userGames.map((game) => {
                                 console.log(game)
                                         return <UserListGameItem
                                             id={game._id}
@@ -79,7 +79,7 @@ const Home = () => {
                     <div className="card-body text-center">
                         <div className="vh-75">
                             <div className="row m-0 ">
-                            { state.userGames.borrowedGames.map((game) => {
+                            { state.userGames.borrowedGames && state.userGames.borrowedGames.map((game) => {
                                 console.log(game)
                                         return <BorrowedGameListItem
                                             id={game._id}

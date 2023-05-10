@@ -46,7 +46,7 @@ const SignUp = () => {
 
     return (
       <AnimatedPage>
-        <main  className='container min-vh-100 d-flex justify-content-center align-items-center'>
+        <main  className='container d-flex justify-content-center align-items-center vCenterSignup'>
        
        <section className='col-6'>
          <div className='text-center'>

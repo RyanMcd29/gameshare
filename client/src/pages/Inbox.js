@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import AnimatedPage from '../components/AnimatedPage';
 import { useMutation } from '@apollo/client';
 import { UPDATE_GAME_REQUEST } from '../utils/mutations';
+import avatar1 from '../assets/images/avatar1.png';
+import avatar2 from '../assets/images/avatar2.png';
 
 import Auth from '../utils/auth';
 
@@ -21,20 +23,19 @@ const Inbox = () => {
             <br></br>
             <div className="card" style={{opacity:0.85}}>
                 <div className="card-body">
-                    <h1 className="card-title text-center">{Auth.getProfile().data.username}'s Game Requests</h1>
+                    <h1 className="card-title text-center">My Game Requests</h1>
                 </div>
             </div>
             {/* style={{width: "500px"}} */}
             <br></br><br></br>
             <section className='container'>
-                {/* Rows to generate dynamically here. */}
-                <div className="row mt-4 justify-content-center">
-                    <div className="card col-10 align-self-center" >
+                <div className="row mt-2 justify-content-center">
+                    <div className="card col-8 align-self-center border-secondary border border-3" >
                         <div className="row no-gutters">
-                            <div className="col-sm-2">
-                                <img className="card-img" src="/images/defaultimg.png" alt="User Photo"/>
+                            <div className="ps-0 pe-0 col-sm-4">
+                                <img className="card-img" src={avatar1} alt="User Photo"/>
                             </div>
-                            <div className="col-sm-7">
+                            <div className="col-sm-8">
                                 <div className="card-body">
                                     <h5 className="card-title">William Cable</h5>
                                     <p className="card-text">Hey! My name is Will and I'd love to borrow your copy of God of War!</p>
@@ -47,15 +48,15 @@ const Inbox = () => {
                 </div>
 
                 <div className="row mt-4 justify-content-center">
-                    <div className="card col-10 align-self-center" >
+                    <div className="card col-8 align-self-center border-secondary border border-3" >
                         <div className="row no-gutters">
-                            <div className="col-sm-2">
-                                <img className="card-img" src="/images/defaultimg.png" alt="User Photo"/>
+                            <div className="ps-0 pe-0 col-sm-4">
+                                <img className="card-img" src={avatar2} alt="User Photo"/>
                             </div>
-                            <div className="col-sm-7">
+                            <div className="col-sm-8">
                                 <div className="card-body">
-                                    <h5 className="card-title">William Cable</h5>
-                                    <p className="card-text">Hey! My name is Will and I'd love to borrow your copy of God of War!</p>
+                                    <h5 className="card-title">Mauxi Moncada</h5>
+                                    <p className="card-text">Hey! My name is Mauxi and I'd love to borrow your copy of Assassins Creed!</p>
                                     <button type="button" className="button-80 me-1">Accept</button>
                                     <button type="button" className="button-80 me-1">Reject</button>
                                 </div>
@@ -65,7 +66,6 @@ const Inbox = () => {
                 </div>
 
             </section>
-
 
             {/* //TODO: uncomment when the inbox page is dynamically loaded */}
             {/* <div className="row justify-content-center mt-4">
@@ -78,15 +78,12 @@ const Inbox = () => {
                 </div>
             </div>   */}
 
-
         <br></br>
 
-        <div className="d-flex justify-content-center">  
-
+        <div className="d-flex justify-content-center mb-4">  
             <Link to="/games">
                 <button className="button-80 ms-1" role="button" type="button">Find Something to Play <i className="fa-sharp fa-solid fa-search"></i></button>
             </Link>
-
         </div>
         </AnimatedPage>
 

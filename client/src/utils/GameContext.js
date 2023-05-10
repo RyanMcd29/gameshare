@@ -45,11 +45,11 @@ const GameProvider = ({ value = [], ...props }) => {
     if (auth.loggedIn === true) {
         console.log('Currently logged in');
         state.userGames = GetUserDetails();
-        
     }
 
-  
     
+    
+
 
     return <Provider value={[ state, dispatch ]} {...props} />;
 };

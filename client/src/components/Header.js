@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-
 import Auth from '../utils/auth';
 
 const Header = () => {
   const location = useLocation();
+
+  // console.log(location);
 
   const logout = () => {
     Auth.logout();
@@ -13,7 +14,7 @@ const Header = () => {
 
   return (
     <header className="headerColor sticky-top">
-      <div className="min-vh-10 d-flex justify-content-center align-items-center">
+      <div className="d-flex justify-content-center align-items-center">
         <div className="col-3 text-start">
           <Link to="/homepage" style={{ textDecoration: 'none' }}>
             <h1 className="headerTitle ms-2 mt-2">GameShare.</h1>
@@ -40,25 +41,15 @@ const Header = () => {
                   </button>
                 </Link>
               )}
-              {location.pathname !== '/' && (
                 <Link to="/login">
                   <button
                     className="button-80 ms-1"
-                    
                     type="button"
                     onClick={logout}
                   >
                     Logout
                   </button>
                 </Link>
-              )}
-              {location.pathname === '/login' && (
-                <Link to="/signup">
-                  <button className="button-80 ms-1" type="button">
-                    Signup
-                  </button>
-                </Link>
-              )}
               {location.pathname === '/signup' && (
                 <Link to="/login">
                   <button className="button-80 ms-1" type="button">

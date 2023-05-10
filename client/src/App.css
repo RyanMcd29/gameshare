@@ -12,8 +12,9 @@
 }
 
 .backgroundImage {
-  background-image: url('../src/assets/images/consoles.png');
-  background-attachment: fixed;
+  /* background-image: url('../src/assets/images/consoles.png'); */
+  background-image: url('../src/assets/images/mario_background3.jpg');
+  background-attachment: fixed; 
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -30,9 +31,21 @@
 
 }
 
+.vCenterWel {
+  margin-top: 15%;
+}
+
+.vCenterLogin {
+  margin-top: 12%;
+}
+
+.vCenterSignup {
+  margin-top: 12%;
+}
+
 .userNameHeader {
   text-decoration: none;
-  color: black;
+  color: white;
   font-size:larger;
 }
   
