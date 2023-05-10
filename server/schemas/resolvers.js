@@ -6,9 +6,6 @@ const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
-    users: async () => {
-      return User.find();
-    },
     user: async (parent, { username }) => {
       return User.findOne({ username });
     },
@@ -20,7 +17,9 @@ const resolvers = {
         return user
       };
     },
-
+    availableGames: async () => {
+      return User.find().populate('userGames');
+    },
     gamelibrary: async () => {
       return await GameLibrary.find();
     },
