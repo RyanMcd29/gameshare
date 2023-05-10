@@ -24,12 +24,6 @@ const userSchema = new Schema({
             type: Schema.Types.ObjectId,
             ref: 'usergames',
         }
-    ],
-    borrowedGames: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'usergames'
-        }
     ]
 });
 
