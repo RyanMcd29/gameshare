@@ -75,7 +75,20 @@ query UserGames($username: String!) {
   }
 }`
 
-
+export const GET_AVAILABLE_GAMES = gql`
+query AvailableGames {
+  availableGames {
+    _id
+    userGames {
+      _id
+      name
+      img
+      genres
+      platforms
+      release_date
+    }
+  }
+}`
 // TODO:
 // Add query to find all games not borrowed
 //FIXME: I've modified the query you had to include the id of the borrowedGames

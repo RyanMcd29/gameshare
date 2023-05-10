@@ -36,19 +36,20 @@ const GameProvider = ({ value = [], ...props }) => {
         // Cart
         gamesToAdd: [],
         userGames: [],
-        borrowedGames: []
+        borrowedGames: [],
+        availableGames: []
     });
     
 
         state.gameLibrary = GetGameLibrary()
 
-    // if (auth.loggedIn) {
-    //     console.log('Currently logged in');
-            
+    if (auth.loggedIn === true) {
+        console.log('Currently logged in');
+        state.userGames = GetUserDetails();
         
-    // }
+    }
 
-    state.userGames = GetUserDetails();
+  
     
 
     return <Provider value={[ state, dispatch ]} {...props} />;
