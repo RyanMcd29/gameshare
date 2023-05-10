@@ -47,7 +47,7 @@ export const reducer = ( state, action ) => {
                 ...state,
                 gamesToAdd: []
             };
-        
+        // todo: add action to remove game from state when requested
         // case REMOVE_FROM_AVAILABLE: 
         //     console.log(state.availableGames)
         //     console.log(action._id)
