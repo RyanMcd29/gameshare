@@ -8,12 +8,13 @@ import { useGameContext } from '../utils/GameContext';
 // import { QUERY_USER_GAMES } from '../utils/queries';
 
 import UserListGameItem from '../components/UserGameListItem';
+import BorrowedGameListItem from '../components/userBorrowedGameListItem'
 
 //-- initialize the state and dispatch using the useGameContext hook --//
 const Home = () => {
     const [state, dispatch] = useGameContext();
 
-    console.log(state.userGames)
+    console.log("userGames State", state.userGames)
     
 
 
@@ -37,6 +38,7 @@ return (
                             { state.userGames.userGames && state.userGames.userGames.map((game) => {
                                 console.log(game)
                                         return <UserListGameItem
+                                            id={game._id}
                                             key={game._id}
                                             name={game.name}
                                             image={game.img}
@@ -62,7 +64,8 @@ return (
                             <div className="row m-0 ">
                             { state.userGames.borrowedGames && state.userGames.borrowedGames.map((game) => {
                                 console.log(game)
-                                        return <UserListGameItem
+                                        return <BorrowedGameListItem
+                                            id={game._id}
                                             key={game._id}
                                             name={game.name}
                                             image={game.img}

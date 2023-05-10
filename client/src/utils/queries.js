@@ -49,3 +49,20 @@ query UserGames($username: String!) {
     }
   }
 }`
+
+
+export const GET_AVAILABLE_GAMES = gql`
+query AvailableGames {
+  availableGames {
+    _id
+    userGames {
+      _id
+      name
+      img
+      genres
+      platforms
+      release_date
+    }
+  }
+}`
+

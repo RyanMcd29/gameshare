@@ -40,7 +40,6 @@ const Header = () => {
                   </button>
                 </Link>
               )}
-              {location.pathname == '/' || location.pathname == '/inbox' && (
                 <Link to="/login">
                   <button
                     className="button-80 ms-1"
@@ -50,14 +49,6 @@ const Header = () => {
                     Logout
                   </button>
                 </Link>
-              )}
-              {/* {location.pathname === '/' && (
-                <Link to="/login">
-                  <button className="button-80 ms-1" type="button">
-                    Logout
-                  </button>
-                </Link>
-              )} */}
               {location.pathname === '/signup' && (
                 <Link to="/login">
                   <button className="button-80 ms-1" type="button">
