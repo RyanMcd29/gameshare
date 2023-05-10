@@ -36,8 +36,7 @@ const GameProvider = ({ value = [], ...props }) => {
         // Cart
         gamesToAdd: [],
         userGames: [],
-        borrowedGames: [],
-        availableGames: []
+        borrowedGames: []
     });
     
 

@@ -5,6 +5,7 @@ import Auth from '../utils/auth';
 import { useGameContext } from '../utils/GameContext';
 import { useQuery } from '@apollo/client';
 import { GET_AVAILABLE_GAMES } from '../utils/queries'
+import BorrowListItem from '../components/BorrowPage/listItem';
 
 
 
