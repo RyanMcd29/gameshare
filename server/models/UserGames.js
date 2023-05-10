@@ -29,7 +29,7 @@ const UserGamesSchema = new Schema({
 });
 
 
-const UserGames = model('usergames', UserGamesSchema)
+const UserGames = model('UserGames', UserGamesSchema)
 
 
 
