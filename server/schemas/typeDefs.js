@@ -7,7 +7,6 @@ const typeDefs = gql `
         email: String
         password: String
         userGames: [GameLibrary]
-        borrowedGames: [GameLibrary]
     }
 
     type UserGames {
@@ -15,6 +14,8 @@ const typeDefs = gql `
         title: String
         platform: String
         gameDetails: [GameLibrary]
+        isBorrowedBy: [User]
+
     }
 
     type GameLibrary {
