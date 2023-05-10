@@ -1,15 +1,10 @@
 import React from 'react';
 import AnimatedPage from '../components/AnimatedPage';
 import { Link } from 'react-router-dom';
-import Auth from '../utils/auth';
 
-const Borrow = ({ username }) => {
-  const buttonRight = {
-    position: 'absolute',
-    top: '10px',
-    right: '10px'
-  };
 
+const Borrow = () => {
+  
   return (
     <AnimatedPage>
     <br></br>

@@ -44,8 +44,7 @@ const Login = (props) => {
         });
     };
 
-    // container d-flex justify-content-center align-items-center vCenterLogin
-
+    
     return (
       <AnimatedPage>
         <main className='container d-flex justify-content-center align-items-center vCenterLogin'>

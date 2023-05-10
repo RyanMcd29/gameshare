@@ -1,5 +1,7 @@
 import React from "react";
 
+
+//-- Deconstructing the "game" object --//
 export default function UserListGameItem (game) {
     const { name, image, platform } = game;
 

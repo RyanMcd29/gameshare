@@ -3,7 +3,7 @@ import {
     TOGGLE_CART,
     ADD_TO_CART,
     CLEAR_CART,
-   
+      
 } from './actions'
 
 
