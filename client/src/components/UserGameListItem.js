@@ -4,7 +4,7 @@ export default function UserListGameItem (game) {
     const { name, image, platform } = game;
 
     return (
-        <div className="list-group-item d-flex"> 
+        <div className="list-group-item d-flex border border-dark-subtle p-1"> 
             <img className="img-thumbnail w-25" src={image}/>
             <div className=" m-2 game-cart-details">
                 <p>{name}</p>
