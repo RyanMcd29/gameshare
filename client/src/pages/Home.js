@@ -11,6 +11,7 @@ import { QUERY_USER_GAMES } from '../utils/queries';
 import auth from '../utils/auth';
 
 import UserListGameItem from '../components/UserGameListItem';
+import BorrowedGameListItem from '../components/userBorrowedGameListItem'
 
 const Home = () => {
     const [state, dispatch] = useGameContext();
@@ -80,7 +81,7 @@ const Home = () => {
                             <div className="row m-0 ">
                             { state.userGames.borrowedGames.map((game) => {
                                 console.log(game)
-                                        return <UserListGameItem
+                                        return <BorrowedGameListItem
                                             id={game._id}
                                             key={game._id}
                                             name={game.name}

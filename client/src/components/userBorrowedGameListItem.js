@@ -3,7 +3,7 @@ import React from "react";
 import auth from "../utils/auth";
 import { REMOVE_GAME_FROM_BORROWED } from "../utils/mutations";
 
-export default function UserListGameItem (game) {
+export default function BorrowedGameListItem (game) {
     const { name, image, platform, id } = game;
 
     const [removeGameFromBorrowed, {error, data}] = useMutation(REMOVE_GAME_FROM_BORROWED);
