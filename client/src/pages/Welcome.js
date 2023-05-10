@@ -1,11 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import '../../src/App.css';
 import AnimatedPage from '../components/AnimatedPage';
+import Auth from '../utils/auth';
 
 // vCenterWel
 
 const Welcome = () => {
+
+    const location = useLocation();
+
+    console.log(location);
 
     return (
         <AnimatedPage>
@@ -24,9 +29,20 @@ const Welcome = () => {
                     </header>
 
                     <div className='row text-center'>
-                        <Link to="/login">
-                            <button>Lets Get Started!</button>
-                        </Link>
+
+                        {Auth.loggedIn() ? (
+                            <>
+                            <Link to="/homepage">
+                                <button>My Dashboard!</button>
+                            </Link>
+                            </>
+                        ) : (
+                            <Link to="/login">
+                                <button>Lets get Started!</button>
+                            </Link>
+                        )
+                        }
+
                     </div>
                 </div> 
             </div>

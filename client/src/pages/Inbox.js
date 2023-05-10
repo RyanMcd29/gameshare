@@ -23,7 +23,7 @@ const Inbox = () => {
             <br></br>
             <div className="card" style={{opacity:0.85}}>
                 <div className="card-body">
-                    <h1 className="card-title text-center">{Auth.getProfile().data.username}'s Game Requests</h1>
+                    <h1 className="card-title text-center">My Game Requests</h1>
                 </div>
             </div>
             {/* style={{width: "500px"}} */}
