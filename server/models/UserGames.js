@@ -21,7 +21,7 @@ const UserGamesSchema = new Schema({
    ],
    platform: {
         type: String,
-        required: true
+
    }
 },
 { 

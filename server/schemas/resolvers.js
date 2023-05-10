@@ -20,6 +20,10 @@ const resolvers = {
         return user
       };
     },
+    // Get games borrowed by user
+    borrowedGames: async (parent, {userId}) => {
+      return UserGames.find({ isBorrowedBy: { _id: userId} })
+    },
 
     gamelibrary: async () => {
       return await GameLibrary.find();
@@ -37,7 +41,7 @@ const resolvers = {
       if (!user) {
         throw new AuthenticationError('No user found with this email address');
       }
-
+      
       // const correctPw = await user.isCorrectPassword(password);
 
       // if (!correctPw) {
@@ -48,6 +52,33 @@ const resolvers = {
 
       return { token, user };
     },
+    // add game to userGames
+    addGameToUser: async (parent, {gameId, userId, platform}) => {
+      const userGame = await UserGames.create({gameDetails: gameId, platform: platform},{new: true})
+      // Update user games
+      console.log(userGame[0]._id)
+      const newGameId = userGame[0]._id
+
+      
+      const user = await User.findOneAndUpdate(
+        { _id: userId },
+        { $addToSet: { userGames: newGameId}},
+        { new: true }
+      )
+    
+      
+    
+    return userGame
+
+      // const user = await User.findOneAndUpdate(
+      //   { _id: userId }, 
+      //   { $push: { userGames: userGame._id } },
+      //   { new: true }
+      // )
+
+      // console.log(user)
+    },
+
 
     addGamesFromLibrary: async (parent, {username, gameId} ) => {
       return User.findOneAndUpdate(
