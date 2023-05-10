@@ -45,22 +45,17 @@ const typeDefs = gql `
         user(username: String!): User
         gamelibrary: [GameLibrary]
         userGames(username: String!): User
-        borrowedGames:(userName: String!): UserGames
-
-
-        gameRequests: [GameRequest!]
-        gameRequestsByUser(userId: String!): [GameRequest!]!
-
-
+        borrowedGames(userId: ID): UserGames
     }
 
 
     type Mutation {
         addUser(username: String!, email: String!, password: String!): Auth
         login(email: String!, password: String!): Auth
-        addGameToUser(gameId: ID, username: String, Platform: String)
+        addGameToUser(gameId: ID, userId: ID, platform: String): UserGames
 
         addGamesFromLibrary(gameId: [ID], username: String! ): User
+
         addGameToBorrowed(gameId: ID, username: String! ): User
         removeGameFromOwned(gameId: ID, username: String!): User
         removeGameFromBorrowed(gameId: ID, username: String!): User
