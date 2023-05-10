@@ -99,7 +99,7 @@ const Home = () => {
     <div className="d-flex justify-content-center">  
 
         <Link to="https://rawg.io/" target="_blank">
-            <button className="button-80 ms-1" role="button" type="button">Visit Gaming Website!<i className="fa-sharp fa-solid fa-paper-plane ms-2"></i></button>
+            <button className="button-80 ms-1" role="button" type="button">Learn More About Games!<i className="fa-sharp fa-solid fa-paper-plane ms-2"></i></button>
         </Link>
 
     </div>

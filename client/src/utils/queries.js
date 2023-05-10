@@ -49,6 +49,9 @@ export const QUERY_GAMELIBRARY = gql`
     }
     `;
 
+
+
+
 export const QUERY_USER_GAMES = gql`
 query UserGames($username: String!) {
   userGames(username: $username) {
@@ -73,11 +76,29 @@ query UserGames($username: String!) {
 }`
 
 
-// Todo
+// TODO:
 // Add query to find all games not borrowed
-
-// Todo: Add mutations for user games and borrow games
-
+//FIXME: I've modified the query you had to include the id of the borrowedGames
+//TODO: uncomment if you are happy to swap this with the old query, this one
+// will  filter out any games where the borrowedGames array is not null
 
 // export const QUERY_GAMELIBRARY = gql`
-// `
+//   query getGamesLibrary {
+//     gamelibrary {
+//       _id
+//       name
+//       img
+//       genres
+//       platforms
+//       release_date
+//     }
+//     borrowedGames {
+//       _id
+//     }
+//   }
+// `;
+
+// TODO: Add mutations for user games and borrow games
+
+
+
