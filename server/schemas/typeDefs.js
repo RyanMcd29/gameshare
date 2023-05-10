@@ -61,7 +61,9 @@ const typeDefs = gql `
         addGameToBorrowed(gameId: ID, username: String! ): User
         removeGameFromOwned(gameId: ID, username: String!): User
         removeGameFromBorrowed(gameId: ID, username: String!): User
-        
+
+        removeUserGame(gameId: ID, userId: ID): UserGames
+        removeBorrowerFromGame(gameId: ID, userId: ID): UserGames        
         
         deleteUser(_id: ID!): User
         deleteGame(_id: ID!): UserGames!

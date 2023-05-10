@@ -103,21 +103,43 @@ const resolvers = {
       })
     },
     // Todo: Remove game from borrowed games
-    removeGameFromBorrowed: async (parent, {username, gameId}) => {
-      return User.findOneAndUpdate({ username: username },
-      { $pull: { borrowedGames: gameId}},
-      {
-        new: true,
-      })
+    removeBorrowerFromGame: async (parent, {gameId, userId}) => {
+      return UserGames.findOneAndUpdate(
+        { _id: gameId },
+        {$pull: {isBorrowedBy: userId}}
+        {new: true})
     },
+
+    // removeGameFromBorrowed: async (parent, {username, gameId}) => {
+    //   return User.findOneAndUpdate({ username: username },
+    //   { $pull: { borrowedGames: gameId}},
+    //   {
+    //     new: true,
+    //   })
+    // },
     // Todo: Add remove game from library
-    removeGameFromOwned: async (parent, {username, gameId}) => {
-      return User.findOneAndUpdate({ username: username },
-      { $pull: { userGames: gameId}},
-      {
-       new: true
-      })
-    },
+    removeUserGame: async (parent, { userId, gameId }) => {
+      const game = await UserGames.findOneAndDelete(
+        {_id: gameId },
+        {new: true}
+      )
+      if (userId) {
+          const user = await User.findOneAndUpdate(
+            { _id: userId },
+            { $pull: { userGames: gameId }}
+          )
+        }
+
+      return game 
+    }
+
+    // removeGameFromOwned: async (parent, {username, gameId}) => {
+    //   return User.findOneAndUpdate({ username: username },
+    //   { $pull: { userGames: gameId}},
+    //   {
+    //    new: true
+    //   })
+    // },
 
 
     // addGamesToUser : async (parent, { gamesToAdd }) => {
