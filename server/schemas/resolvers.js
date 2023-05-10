@@ -28,7 +28,8 @@ const resolvers = {
 
     // Get games borrowed by user
     borrowedGames: async (parent, {userId}) => {
-      return UserGames.find({ isBorrowedBy: { _id: userId} })
+      return UserGames.find({ isBorrowedBy: {$in: userId }})
+      // .populate('gameDetails').populate('isBorrowedBy')
     },
 
     gamelibrary: async () => {
@@ -71,8 +72,17 @@ const resolvers = {
         { $addToSet: { userGames: newGameId}},
         { new: true }
       )
+
     return userGame
 
+    },
+    // Add borrower to game
+    addBorrowerToGame: async (parent, {gameId, userId}) => {
+      return UserGames.findOneAndUpdate(
+        {_id: gameId},
+        {$addToSet: { isBorrowedBy: userId } },
+        {new : true}
+      )
     },
 
 

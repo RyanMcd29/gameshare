@@ -14,7 +14,7 @@ const typeDefs = gql `
         title: String
         platform: String
         gameDetails: [GameLibrary]
-        isBorrowedBy: [User]
+        isBorrowedBy: User
     }
 
     type GameLibrary {
@@ -44,6 +44,7 @@ const typeDefs = gql `
         users: [User]
         user(username: String!): User
         gamelibrary: [GameLibrary]
+
         allGames: [UserGames]
         userGames(username: String!): User
         borrowedGames(userId: ID): UserGames
@@ -56,10 +57,12 @@ const typeDefs = gql `
         addGameToUser(gameId: ID, userId: ID, platform: String): UserGames
         
         addGamesFromLibrary(gameId: [ID], username: String! ): User
-
+        addBorrowerToGame(gameId: ID, userId: ID): UserGames
         addGameToBorrowed(gameId: ID, username: String! ): User
         removeGameFromOwned(gameId: ID, username: String!): User
         removeGameFromBorrowed(gameId: ID, username: String!): User
+        
+        
         deleteUser(_id: ID!): User
         deleteGame(_id: ID!): UserGames!
     }
