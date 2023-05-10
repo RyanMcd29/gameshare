@@ -13,7 +13,7 @@ const Header = () => {
 
   return (
     <header className="headerColor sticky-top">
-      <div className="row min-vh-10 d-flex justify-content-center align-items-center">
+      <div className="min-vh-10 d-flex justify-content-center align-items-center">
         <div className="col-3 text-start">
           <Link to="/homepage" style={{ textDecoration: 'none' }}>
             <h1 className="headerTitle ms-2 mt-2">GameShare.</h1>
