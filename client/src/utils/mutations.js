@@ -66,3 +66,44 @@ export const UPDATE_GAME_REQUEST = gql`
 
 
 // Todo: Add mutations for user games and borrow games
+export const ADD_GAMES_TO_USER = gql `
+  mutation addGames($username: String!, $gameId: [ID]) {
+    addGamesFromLibrary(username: $username, gameId: $gameId) {
+      _id
+      email
+      userGames {
+        _id
+      }
+    }
+  }
+`
+
+export const REMOVE_GAME_FROM_USER = gql `
+  mutation RemoveGameFromOwned($username: String!, $gameId: ID) {
+    removeGameFromOwned(username: $username, gameId: $gameId) {
+      username
+      userGames {
+        _id
+      }
+    }
+  }`
+
+export const ADD_GAME_TO_BORROWED = gql `
+  mutation AddGameToBorrowed($username: String!, $gameId: ID) {
+    addGameToBorrowed(username: $username, gameId: $gameId) {
+      _id
+      borrowedGames {
+        _id
+      }
+    }
+  }`
+
+export const REMOVE_GAME_FROM_BORROWED = gql `
+  mutation RemoveGameFromBorrowed($username: String!, $gameId: ID) {
+    removeGameFromBorrowed(username: $username, gameId: $gameId) {
+      _id
+      borrowedGames {
+        _id
+      }
+    }
+  }`

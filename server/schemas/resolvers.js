@@ -49,38 +49,37 @@ const resolvers = {
       return { token, user };
     },
 
-    addGamesFromLibrary: async (parent, { userName }, gameID) => {
-       User.findOneAndUpdate({ username: userName }, 
-        { $push: { userGames: { $each: gameID} } },
-        {
-          new: true,
-        }
+    addGamesFromLibrary: async (parent, {username, gameId} ) => {
+      return User.findOneAndUpdate(
+        { username: username }, 
+        { $push: { userGames: {$each: gameId }} },
+        { new: true }
       );
     },
 
     // Todo: Add game to borrowed games
-    addGameToBorrowed: async (parent, {userName, gameId}) => {
-      User.findOneAndUpdate({ borrowedGames: userName }),
-      { $push: { userGames: gameId}},
+    addGameToBorrowed: async (parent, {username, gameId}) => {
+      return User.findOneAndUpdate({ username: username },
+      { $push: { borrowedGames: gameId}},
       {
         new: true,
-      }
+      })
     },
     // Todo: Remove game from borrowed games
-    removeGameFromBorrowed: async (parent, {userName, gameId}) => {
-      User.findOneAndUpdate({ borrowedGames: userName }),
-      { $pull: { userGames: gameId}},
+    removeGameFromBorrowed: async (parent, {username, gameId}) => {
+      return User.findOneAndUpdate({ username: username },
+      { $pull: { borrowedGames: gameId}},
       {
         new: true,
-      }
+      })
     },
     // Todo: Add remove game from library
-    removeGameFromOwned: async (parent, {userName, gameId}) => {
-      User.findOneAndUpdate({ username: userName }),
+    removeGameFromOwned: async (parent, {username, gameId}) => {
+      return User.findOneAndUpdate({ username: username },
       { $pull: { userGames: gameId}},
       {
-        new: true,
-      }
+       new: true
+      })
     },
 
 
