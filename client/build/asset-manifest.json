@@ -1,16 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.054941bb.css",
-    "main.js": "/static/js/main.88d019e7.js",
+    "main.css": "/static/css/main.b8be03e8.css",
+    "main.js": "/static/js/main.eba1a7e3.js",
     "static/js/787.f480428d.chunk.js": "/static/js/787.f480428d.chunk.js",
-    "static/media/consoles.png": "/static/media/consoles.daa2b7c5cff86f0057c7.png",
+    "static/media/mario_background3.jpg": "/static/media/mario_background3.376c2f18bfa8526138cd.jpg",
+    "static/media/avatar2.png": "/static/media/avatar2.dd3c6b68a744aa7209e7.png",
+    "static/media/avatar1.png": "/static/media/avatar1.cf08b308bd4304202008.png",
     "index.html": "/index.html",
-    "main.054941bb.css.map": "/static/css/main.054941bb.css.map",
-    "main.88d019e7.js.map": "/static/js/main.88d019e7.js.map",
+    "main.b8be03e8.css.map": "/static/css/main.b8be03e8.css.map",
+    "main.eba1a7e3.js.map": "/static/js/main.eba1a7e3.js.map",
     "787.f480428d.chunk.js.map": "/static/js/787.f480428d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.054941bb.css",
-    "static/js/main.88d019e7.js"
+    "static/css/main.b8be03e8.css",
+    "static/js/main.eba1a7e3.js"
   ]
 }

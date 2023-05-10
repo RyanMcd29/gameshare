@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import '../../src/App.css';
 import AnimatedPage from '../components/AnimatedPage';
 
+// vCenterWel
+
 const Welcome = () => {
 
     return (
