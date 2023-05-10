@@ -27,6 +27,7 @@ const resolvers = {
     },
 
     // Get games borrowed by user
+    // Not working will use array.filter on all games above
     borrowedGames: async (parent, {userId}) => {
       return UserGames.find({ isBorrowedBy: {$in: userId }})
       // .populate('gameDetails').populate('isBorrowedBy')
@@ -59,7 +60,7 @@ const resolvers = {
 
       return { token, user };
     },
-    // add game to userGames
+    // FIX add game to userGames
     addGameToUser: async (parent, {gameId, userId, platform}) => {
       const userGame = await UserGames.create({gameDetails: gameId, platform: platform},{new: true})
       // Update user games
@@ -106,7 +107,7 @@ const resolvers = {
     removeBorrowerFromGame: async (parent, {gameId, userId}) => {
       return UserGames.findOneAndUpdate(
         { _id: gameId },
-        {$pull: {isBorrowedBy: userId}}
+        {$pull: {isBorrowedBy: userId}},
         {new: true})
     },
 
