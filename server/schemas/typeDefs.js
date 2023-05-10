@@ -10,7 +10,7 @@ const typeDefs = gql `
     }
 
     type UserGames {
-        _id: ID!
+        _id: ID
         title: String
         platform: String
         gameDetails: [GameLibrary]
@@ -44,6 +44,7 @@ const typeDefs = gql `
         users: [User]
         user(username: String!): User
         gamelibrary: [GameLibrary]
+        allGames: [UserGames]
         userGames(username: String!): User
         borrowedGames(userId: ID): UserGames
     }
@@ -53,7 +54,7 @@ const typeDefs = gql `
         addUser(username: String!, email: String!, password: String!): Auth
         login(email: String!, password: String!): Auth
         addGameToUser(gameId: ID, userId: ID, platform: String): UserGames
-
+        
         addGamesFromLibrary(gameId: [ID], username: String! ): User
 
         addGameToBorrowed(gameId: ID, username: String! ): User

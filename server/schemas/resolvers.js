@@ -20,6 +20,12 @@ const resolvers = {
         return user
       };
     },
+    // get all games
+
+    allGames: async () => {
+      return UserGames.find().populate('gameDetails').populate('isBorrowedBy')
+    },
+
     // Get games borrowed by user
     borrowedGames: async (parent, {userId}) => {
       return UserGames.find({ isBorrowedBy: { _id: userId} })
@@ -59,24 +65,14 @@ const resolvers = {
       console.log(userGame[0]._id)
       const newGameId = userGame[0]._id
 
-      
+
       const user = await User.findOneAndUpdate(
         { _id: userId },
         { $addToSet: { userGames: newGameId}},
         { new: true }
       )
-    
-      
-    
     return userGame
 
-      // const user = await User.findOneAndUpdate(
-      //   { _id: userId }, 
-      //   { $push: { userGames: userGame._id } },
-      //   { new: true }
-      // )
-
-      // console.log(user)
     },
 
 
