@@ -65,4 +65,61 @@ export const UPDATE_GAME_REQUEST = gql`
 `;
 
 
-// Todo: Add mutations for user games and borrow games
+// TODO: Add mutations for user games
+// FIXME: Check the mutations syntax, the user games mutation needs 
+//to take in the ID of the game to be added and the ID of the user who is adding
+export const ADD_USER_GAME = gql`
+  mutation addUserGame($gameId: ID!) {
+    addUserGame(gameId: $gameId) {
+      _id
+      username
+      email
+      userGames {
+        _id
+        name
+        img
+        platforms
+        release_date
+        genres
+      }
+      borrowedGames {
+        _id
+        name
+        img
+        genres
+        platforms
+        release_date
+      }
+    }
+  }
+`;
+
+
+//TODO: Add mutation for borrowed games
+//FIXME: the borrowed games mutation needs to take in the ID of the game that is being borrowed, 
+//the ID of the user who is borrowing it, and the ID of the user who owns the game
+export const BORROW_GAME = gql`
+  mutation borrowGame($gameId: ID!, $fromUserId: ID!) {
+    borrowGame(gameId: $gameId, fromUserId: $fromUserId) {
+      _id
+      username
+      email
+      userGames {
+        _id
+        name
+        img
+        platforms
+        release_date
+        genres
+      }
+      borrowedGames {
+        _id
+        name
+        img
+        genres
+        platforms
+        release_date
+      }
+    }
+  }
+`;
