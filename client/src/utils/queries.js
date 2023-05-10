@@ -101,4 +101,3 @@ query UserGames($username: String!) {
 // TODO: Add mutations for user games and borrow games
 
 
-
