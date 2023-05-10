@@ -32,9 +32,8 @@ export default function GameCart () {
     const handleCartSubmit = () => {
         // Get logged in userID
         const username = Auth.getProfile().data.username
-
-        console.log(username)
-        console.log(state.gamesToAdd)
+          console.log(username)
+          console.log(state.gamesToAdd)
         const gameIds = state.gamesToAdd.map(game => {
             return game._id
         })   
@@ -51,10 +50,27 @@ export default function GameCart () {
       }
     };
   
+
+// useEffect(() => {
+//   const cartState = localStorage.getItem('gameCartState');
+
+//   if(cartState) {
+//       dispatch({ type: SAVE_GAMES, games: JSON.parse(cartState) });
+//   }
+// }, []);
   
 
+// useEffect(() => {
+//   localStorage.setItem('gameCartState', JSON.stringify(state.gamesToAdd));
+// }, [state.gamesToAdd]);
+
+
+
+
+
+
   
-  //TODO: Game cart's card layout needs to be fixed
+  //TODO: Game cart's card layout can def be prettier
   return (
     <div className="container d-flex">
       <div
@@ -63,7 +79,7 @@ export default function GameCart () {
       >
         <div className="row h-75">
           <ul className="list-group">
-            {state.gamesToAdd.map((game) => (
+            {state.gamesToAdd && state.gamesToAdd.map((game) => (
               <CartElement
                 key={game._id}
                 name={game.name}
@@ -77,7 +93,7 @@ export default function GameCart () {
           <button onClick={handleCartSubmit} className="row btn btn-success m-3">
             Add Games
           </button>
-          <button className="row btn btn-danger m-3">
+          <button onClick={handleClearCart} className="row btn btn-danger m-3">
             Clear
           </button>
         </div>
