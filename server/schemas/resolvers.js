@@ -10,6 +10,11 @@ const resolvers = {
       return User.findOne({ username });
     },
 
+    allGames: async () => {
+      return UserGames.find()
+      .populate('gameDetails').populate('isBorrowedBy')
+    },
+
     userGames: async (parent, {userId}) => {
       if (userId) {
         const user = await User.findOne({ userId })
