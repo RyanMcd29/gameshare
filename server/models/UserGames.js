@@ -6,7 +6,7 @@ const UserGamesSchema = new Schema({
         // required: true,
         // default: false
         type: Schema.Types.ObjectId,
-        ref: 'user'
+        ref: 'User'
     },
     // isListed: {
     //     type: Boolean,
@@ -21,7 +21,7 @@ const UserGamesSchema = new Schema({
    ],
    platform: {
         type: String,
-        required: true
+
    }
 },
 { 
@@ -29,7 +29,7 @@ const UserGamesSchema = new Schema({
 });
 
 
-const UserGames = model('userGames', UserGamesSchema)
+const UserGames = model('usergames', UserGamesSchema)
 
 
 

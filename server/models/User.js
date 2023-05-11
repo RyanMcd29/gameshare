@@ -22,13 +22,7 @@ const userSchema = new Schema({
     userGames: [
         {
             type: Schema.Types.ObjectId,
-            ref: 'gamelibrary',
-        }
-    ],
-    borrowedGames: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'gamelibrary'
+            ref: 'usergames',
         }
     ]
 });
