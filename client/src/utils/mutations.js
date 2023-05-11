@@ -93,6 +93,15 @@ mutation RemoveGameFromUser($username: String!, $gameId: ID) {
   }
 }`
 
+export const REMOVE_GAME_FROM_USER_GAME = gql `
+  mutation RemoveUserGame($gameId: ID, $userId: ID) {
+    removeUserGame(gameId: $gameId, userId: $userId) {
+      _id
+      title
+      platform
+    }
+  }`
+
 export const ADD_GAME_TO_BORROWED = gql `
   mutation AddGameToBorrowed($username: String!, $gameId: ID) {
     addGameToBorrowed(username: $username, gameId: $gameId) {

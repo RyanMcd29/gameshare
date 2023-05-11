@@ -1,18 +1,18 @@
 import { useMutation } from "@apollo/client";
 import React from "react";
 import auth from "../utils/auth";
-import { REMOVE_BORROWER_FROM_GAME, REMOVE_GAME_FROM_USER } from "../utils/mutations";
+import {  REMOVE_GAME_FROM_USER_GAME } from "../utils/mutations";
 
 
 //-- Deconstructing the "game" object --//
 export default function UserListGameItem (game) {
     const { name, image, platform, id } = game;
 
-    const [removeBorrowerFromGame, {error, data}] = useMutation(REMOVE_BORROWER_FROM_GAME);
+    const [removeGameFromUserGame, {error, data}] = useMutation(REMOVE_GAME_FROM_USER_GAME);
 
     const processRemoveFromUserGames = (userId, gameId) => {
         try {
-            const { data } = removeBorrowerFromGame({
+            const { data } = removeGameFromUserGame({
                 variables: { userId: userId, gameId: gameId}
             })
         } catch (err) {
