@@ -27,6 +27,7 @@ const resolvers = {
     availableGames: async () => {
       return User.find().populate('userGames');
     },
+    
     gamelibrary: async () => {
       return await GameLibrary.find();
     },
@@ -75,22 +76,7 @@ const resolvers = {
     return userGame
   },
 
-    addGamesFromLibrary: async (parent, {username, gameId} ) => {
-      return User.findOneAndUpdate(
-        { username: username }, 
-        { $push: { userGames: {$each: gameId }} },
-        { new: true }
-      );
-    },
 
-    // Todo: Add game to borrowed games
-    addGameToBorrowed: async (parent, {username, gameId}) => {
-      return User.findOneAndUpdate({ username: username },
-      { $push: { borrowedGames: gameId}},
-      {
-        new: true,
-      })
-    },
     // Add borrower to game
     addBorrowerToGame: async (parent, {gameId, userId}) => {
       return UserGames.findOneAndUpdate(
@@ -107,22 +93,6 @@ const resolvers = {
         {new: true})
     },
 
-    // Todo: Remove game from borrowed games
-    removeGameFromBorrowed: async (parent, {username, gameId}) => {
-      return User.findOneAndUpdate({ username: username },
-      { $pull: { borrowedGames: gameId}},
-      {
-        new: true,
-      })
-    },
-    // Todo: Add remove game from library
-    removeGameFromOwned: async (parent, {username, gameId}) => {
-      return User.findOneAndUpdate({ username: username },
-      { $pull: { userGames: gameId}},
-      {
-       new: true
-      })
-    },
 
     removeUserGame: async (parent, { userId, gameId }) => {
       const game = await UserGames.findOneAndDelete(

@@ -55,18 +55,11 @@ const typeDefs = gql `
         addUser(username: String!, email: String!, password: String!): Auth
         login(email: String!, password: String!): Auth
         addGameToUserGames(gameId: ID, userId: ID, platform: String): UserGames
-        
-        addGamesFromLibrary(gameId: [ID], username: String! ): User
         addBorrowerToGame(gameId: ID, userId: ID): UserGames
         addGameToBorrowed(gameId: ID, username: String! ): User
-        removeGameFromOwned(gameId: ID, username: String!): User
-        removeGameFromBorrowed(gameId: ID, username: String!): User
-
         removeUserGame(gameId: ID, userId: ID): UserGames
         removeBorrowerFromGame(gameId: ID, userId: ID): UserGames        
-        
         deleteUser(_id: ID!): User
-        deleteGame(_id: ID!): UserGames!
     }
 `;
 
