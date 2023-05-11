@@ -1,5 +1,12 @@
+require('dotenv').config()
+
+const API_KEY = process.env.REACT_APP_API_KEY;
+
+
+console.log(API_KEY)
+
 // const db = require('../config/connection')
-const API = "https://api.rawg.io/api/games?page_size=10&rating&key=6d36d11c17574c6e960f36f8e674bd9b"
+const API = ""
 // const { GameLibrary } = require ("../models/games")
 const axios = require("axios")
 
@@ -30,7 +37,7 @@ function destructureGames (games) {
 // }
 
 const getGameDetails = async () => {
-    const games = await axios.get(API)
+    const games = await axios.get("https://api.rawg.io/api/games?page_size=10&rating&key="+API_KEY)
     try {    
         const gamesData = await destructureGames(games.data.results)
         return gamesData
