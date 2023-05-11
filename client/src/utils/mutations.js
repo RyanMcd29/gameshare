@@ -93,6 +93,20 @@ export const ADD_GAME_TO_BORROWED = gql `
     }
   }`
 
+export const ADD_BORROWER_TO_GAME = gql `
+  mutation AddBorrower($gameId: ID, $userId: ID) {
+    addBorrowerToGame(gameId: $gameId, userId: $userId) {
+      _id
+      title
+      platform
+      isBorrowedBy {
+        _id
+      }
+    }
+  }
+`
+
+
 export const REMOVE_GAME_FROM_BORROWED = gql `
   mutation RemoveGameFromBorrowed($username: String!, $gameId: ID) {
     removeGameFromBorrowed(username: $username, gameId: $gameId) {
