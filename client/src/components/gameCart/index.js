@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useGameContext } from "../../utils/GameContext";
 import { ADD_USER_GAMES, CLEAR_CART, TOGGLE_CART } from "../../utils/actions";
 import CartElement from "./element";
-import { ADD_GAMES_TO_USER } from "../../utils/mutations";
+import { ADD_GAMES_TO_USER, ADD_GAME_TO_USER_GAME } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 import { useMutation } from "@apollo/client";
+import auth from "../../utils/auth";
 
 
 export default function GameCart () {
@@ -13,19 +14,35 @@ export default function GameCart () {
     const [state, dispatch] = useGameContext()
     
     //-- Use addGamesToUser from Apollo Client --//
-    const [ addGamesToUser, { error, data }] = useMutation(ADD_GAMES_TO_USER);
+    const [ addGameToUserUserGames, { error, data }] = useMutation(ADD_GAME_TO_USER_GAME);
 
 
     //-- Submit games to user --//
-    const submitGames = async (username, gameIds) => {
-      try {
-        const { data } = addGamesToUser({
-          variables: {username : username, gameId : gameIds}
-        })
+    const submitGames = async (gameIdsandPlatform) => {
+      console.log(gameIdsandPlatform)
+
+      const userId = auth.getProfile().data._id
+
+      console.log(userId, gameIdsandPlatform)
+        gameIdsandPlatform.forEach(game => {
+          console.log(game.id, userId, game.platform)
+          try {
+            const { data } = addGameToUserUserGames({
+              variables: { gameId: game._id, userId: userId, platform: game.platform  }
+            })
+          } catch (err) {
+            console.err(err)
+          }
+          
+        });
+      // try {
+      //   const { data } = addGamesToUser({
+      //     variables: {username : username, gameId : gameIds}
+      //   })
       
-      } catch (err) {
-        console.error(err)  
-      }
+      // } catch (err) {
+      //   console.error(err)  
+      // }
     }
 
   
@@ -40,14 +57,14 @@ export default function GameCart () {
         const username = Auth.getProfile().data.username
           console.log(username)
           console.log(state.gamesToAdd)
-        const gameIds = state.gamesToAdd.map(game => {
-            return game._id
+        const gameIdsandPlatform = state.gamesToAdd.map(game => {
+            return ({ id: game._id, platform: game.platform})
         })   
 
-        console.log(gameIds)
+        console.log("gameId&platform", gameIdsandPlatform)
 
 
-      submitGames(username, gameIds)
+      submitGames(gameIdsandPlatform)
   }
 
     //-- Clear Cart --//
