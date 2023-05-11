@@ -6,7 +6,7 @@ const typeDefs = gql `
         username: String
         email: String
         password: String
-        userGames: [GameLibrary]
+        userGames: [UserGames]
     }
 
     type UserGames {
@@ -46,7 +46,7 @@ const typeDefs = gql `
         gamelibrary: [GameLibrary]
 
         allGames: [UserGames]
-        userGames(username: String!): User
+        userGames(userId: ID): User
         borrowedGames(userId: ID): UserGames
     }
 
@@ -54,7 +54,7 @@ const typeDefs = gql `
     type Mutation {
         addUser(username: String!, email: String!, password: String!): Auth
         login(email: String!, password: String!): Auth
-        addGameToUser(gameId: ID, userId: ID, platform: String): UserGames
+        addGameToUserGames(gameId: ID, userId: ID, platform: String): UserGames
         
         addGamesFromLibrary(gameId: [ID], username: String! ): User
         addBorrowerToGame(gameId: ID, userId: ID): UserGames

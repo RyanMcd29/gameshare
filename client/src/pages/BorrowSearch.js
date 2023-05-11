@@ -10,22 +10,24 @@ import BorrowListItem from '../components/BorrowPage/listItem';
 
 
 
-
-const Borrow = ({ username }) => {
+const Borrow = () => {
 
     const GetAvailableGames = () => {
         const { loading, data } = useQuery(GET_AVAILABLE_GAMES)
-        const availableGames = data?.availableGames || []
+        const availableGames = data?.allGames || []
         
-        var gamesList = []
+        var alLGamesWithoutBorrower = availableGames.filter((game)=>{
+            if (game.isBorrowedBy === null) {
+                return game
+            }
 
-        console.log("availablegames",availableGames)
-        availableGames.map((user) => {
-            console.log()
-            gamesList = gamesList.concat(user.userGames)
-        
         })
 
+        const gamesList = alLGamesWithoutBorrower.filter((game)=>{
+            if (game.platform != null) {
+                return game
+            }
+        })
         return gamesList
     }
 
@@ -33,7 +35,7 @@ const Borrow = ({ username }) => {
 
     const [state, dispatch] = useGameContext()
 
-    const [ filteredGames, setFilteredGames ] = useState(state.gameLibrary)
+    const [ filteredGames, setFilteredGames ] = useState([])
     const [ search, setSearch ] = useState('')
     
     state.availableGames = GetAvailableGames()
@@ -41,16 +43,18 @@ const Borrow = ({ username }) => {
     const searchItems = (searchValue) => {
         setSearch(searchValue)
         
-        const filterGames = state.availableGames.filter((game) => {
-            return Object.values(game.name).join('').toLowerCase().includes(search.toLowerCase())
-        })
+        if (state.availableGames){
+            const filterGames = state.availableGames.filter((game) => {
+                console.log("game details", game.gameDetails[0].name)
+                return Object.values(game.gameDetails[0].name).join('').toLowerCase().includes(search.toLowerCase())
+            })
 
-        setFilteredGames(filterGames)
+            console.log("filteredGames:", filterGames)
+            setFilteredGames(filterGames)
+
+        }   
     }
 
-
-
-  
   return (
     <AnimatedPage>
     <br></br>
@@ -62,7 +66,7 @@ const Borrow = ({ username }) => {
 
       <div className="card-deck row justify-content-center">
 
-    <div className="card m-4" style={{width: "500px", height: "400px"}}>
+    <div className="card m-4 cardScroll" style={{width: "500px", height: "400px"}}>
             <div className="card-body text-center">
             <h5 className="card-title">Request Games to Borrow: <i className="fa-sharp fa-solid fa-exchange"></i></h5>
                 <input 
@@ -75,16 +79,16 @@ const Borrow = ({ username }) => {
                 <div className="container-fluid">
                 <div className="row">
                     { filteredGames.length ? (
-                    <div className="h-75" >
+                    <div className="h-75">
                         <ul className="row flex">
                         { filteredGames.map((game) => (
                             <BorrowListItem
                                 key={game._id}
                                 id={game._id}
-                                name={game.name}
-                                image={game.img}
-                                platforms={game.platforms}
-                                genres={game.genres}
+                                name={game.gameDetails[0].name}
+                                image={game.gameDetails[0].img}
+                                platforms={game.platform}
+                                genres={game.gameDetails[0].genres}
                             />
                         ))}
                         </ul>
