@@ -1,17 +1,18 @@
 import { useMutation } from "@apollo/client";
 import React from "react";
 import auth from "../utils/auth";
-import { REMOVE_GAME_FROM_BORROWED } from "../utils/mutations";
+import { REMOVE_BORROWER_FROM_GAME, REMOVE_GAME_FROM_BORROWED } from "../utils/mutations";
 
 export default function BorrowedGameListItem (game) {
     const { name, image, platform, id } = game;
 
-    const [removeGameFromBorrowed, {error, data}] = useMutation(REMOVE_GAME_FROM_BORROWED);
+    const [removeBorrowerFromGame, {error, data}] = useMutation(REMOVE_BORROWER_FROM_GAME);
 
-    const processRemoveFromBorrowedGames = (username, id) => {
+    const processRemoveFromUserGames = (userId, gameId) => {
+        console.log(userId, gameId)
         try {
-            const { data } = removeGameFromBorrowed({
-                variables: { username: username, gameId: id}
+            const { data } = removeBorrowerFromGame({
+                variables: { userId: userId, gameId: gameId}
             })
         } catch (err) {
             console.error(err)
@@ -19,10 +20,10 @@ export default function BorrowedGameListItem (game) {
     }
 
     const removeGame = () => {
-        console.log(id)
-        const username = auth.getProfile().data.username
+        const gameId = id
+        const userId = auth.getProfile().data._id
 
-        processRemoveFromBorrowedGames(username, id)
+        processRemoveFromUserGames(userId, gameId)
     }
     return (
         <div className="list-group-item d-flex border border-dark-subtle p-1"> 

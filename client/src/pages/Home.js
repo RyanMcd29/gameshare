@@ -20,8 +20,11 @@ const Home = () => {
     const GamesBorrowedByUser = () => {
         const userId = auth.getProfile().data._id
         return state.userGameLibrary.filter((game) => {
-            if (game.isBorrowedBy._id === userId){
-                return game
+            console.log("game in library", game.isBorrowedBy)
+            if (game.isBorrowedBy != null ){
+                if (game.isBorrowedBy._id === userId){
+                    return game
+                }
             }
         }
         )
@@ -78,8 +81,8 @@ return (
                             { borrowedGames && borrowedGames.map((game) => {
                                 console.log(game.gameDetails[0])
                                         return <BorrowedGameListItem
-                                            id={game.gameDetails[0]._id}
-                                            key={game.gameDetails[0]._id}
+                                            id={game._id}
+                                            key={game._id}
                                             name={game.gameDetails[0].name}
                                             image={game.gameDetails[0].img}
                                             platform={game.platform}/>                          
