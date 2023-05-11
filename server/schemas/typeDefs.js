@@ -41,7 +41,7 @@ const typeDefs = gql `
     }
 
     type Query {
-        users: [User]
+        availableGames: [User]
         user(username: String!): User
         gamelibrary: [GameLibrary]
 

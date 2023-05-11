@@ -3,7 +3,8 @@ import {
     TOGGLE_CART,
     ADD_TO_CART,
     CLEAR_CART,
-   
+    REMOVE_FROM_AVAILABLE,
+
 } from './actions'
 
 
@@ -26,10 +27,25 @@ export const reducer = ( state, action ) => {
                 ...state,
                 gamesToAdd: []
             };
+
+        // todo: add action to remove game from state when requested
+        // case REMOVE_FROM_AVAILABLE: 
+        //     console.log(state.availableGames)
+        //     console.log(action._id)
+        //     let newState = state.availableGames.filter((game) => {
+        //         return game._id !== action._id
+        //     });
+
+        //     console.log("newState", newState)
+
+
+
         default:
             return state;
+
     }
 };
+
 
 
 export function useGameReducer(initialState) {

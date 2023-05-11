@@ -1,72 +1,3 @@
-// const db = require('../config/connection');
-// const { GameLibrary, User, UserGames } = require('../models');
-// const userData = require('./userData.json');
-// // const userGameData = require('./userGames.json')
-// const getGameDetails = require('./gamesData')
-
-// db.once('open', async () => {
-//     try {
-//         // Clear database
-//         await GameLibrary.deleteMany({});
-//         await User.deleteMany({})
-//         // await UserGames.deleteMany({})
-
-//         // Call game data from api
-//         const gamesData = await getGameDetails
-
-//         // Create data
-//         await GameLibrary.create(gamesData)
-//         await User.insertMany(userData);
-//         // await UserGames.insertMany(userGameData)
-        
-//         process.exit()
-//     } catch (err) {
-//         throw err;
-//     }
-// })
-
-
-
-
-// const db = require('../config/connection');
-// const { GameLibrary, User, UserGames } = require('../models');
-// const userData = require('./userData.json');
-// // const userGameData = require('./userGames.json')
-// const getGameDetails = require('./gamesData')
-
-// db.once('open', async () => {
-//     try {
-//         // Clear database
-//         await GameLibrary.deleteMany({});
-//         await User.deleteMany({})
-//         // await UserGames.deleteMany({})
-
-//         // Call game data from api
-//         const gamesData = await getGameDetails
-
-//         // Create data
-//         await GameLibrary.create(gamesData)
-//         await User.insertMany(userData);
-//         // await UserGames.insertMany(userGameData)
-
-//         process.exit()
-//     } catch (err) {
-//         throw err;
-//     }
-// })
-
-// const User = require('./models/User');
-// const UserGames = require('./models/UserGames');
-// const GameRequests = require('./models/GameRequests');
-
-
-//-----------------Old shit ^^^---------------
-
-//-----------Maybe salvaged shit >>>-----------------
-
-
-//----------------------------------------------------
-
 const { User, GameLibrary, UserGames } = require("../models");
 const data = require("./dataSeed.json");
 const db = require("../config/connection");
@@ -77,27 +8,6 @@ db.once("open", async () => {
   console.log("db connected");
 
   try {
-
-    //-----------Maybe salvaged shit >>>-----------------
-
-    // Clear database
-    // await GameLibrary.deleteMany({});
-    // await User.deleteMany({})
-    // await UserGames.deleteMany({})
-
-    // Call game data from api
-    // const gamesData = await getGameDetails
-
-    // Create data
-    // await GameLibrary.create(gamesData)
-    // await User.insertMany(userData);
-    // await UserGames.insertMany(userGameData)
-
-            
-
-    //----------------------------------------------------
-
-
 
     //-- remove existing data in db --//
     await User.deleteMany({});
@@ -110,26 +20,14 @@ db.once("open", async () => {
     console.log("DATA", data);
     console.log("GAMESDATA", gamesData);
 
-    //creating all the games, storing them as an array in 'gameLibrary'
-    //const gameLibrary = await GameLibrary.insertMany(data.games); // Luca
-
-    //WILL- store an ARRAY of game OBJECTS in the gamelibrary variable.
+    // Store an ARRAY of game OBJECTS in the gamelibrary variable.
     const gameLibrary = await GameLibrary.insertMany(gamesData); 
 
-    // gamesData.map((_id) => {
-    //   UserGames.insert({
-    //     getGameDetails: _id,
-    //     platform: "Xbox"
-
-
-    // })
-    // })
-
+    
     //---------SEEDING OWNED GAME LIBRARIES
     // Games owned by user0 (Ryan) AND user1 (Will), this user owns a copy of ALL of the games in the game library.
     data.users[0].userGames = gameLibrary.map(({_id}) => _id);
     data.users[1].userGames = gameLibrary.map(({_id}) => _id);
-
 
 
 

@@ -1,16 +1,20 @@
-import { Button } from "bootstrap";
 import React, { useState } from "react";
 import { ADD_TO_CART } from "../../utils/actions";
 import { useGameContext } from "../../utils/GameContext";
 
+
+//--- Component tp display a single game item ---//
 export default function GameItem (game) {
 
     const [ state, dispatch ] = useGameContext()
 
+    //-- Deconstruct the game object ---//
     const { id, name, image, platforms } = game
 
+    // Local state for wheter 'add game' button is clicked or not ---//
     const [ isSelected, setSelected ] = useState(false)
-    // const [ mouseOver, setMouseOver ] = useState(false)
+    
+    //-- Submit game to cart ---//
     const submitGame = async (platform) => {
         await dispatch({
             type: ADD_TO_CART,
@@ -24,6 +28,7 @@ export default function GameItem (game) {
         setSelected(false)   
     }
 
+    //-- Function to render platform options menu --//
     const renderAddGameForm = () => {
         setSelected(true)
     }

@@ -1,19 +1,18 @@
-import { empty } from "@apollo/client";
 import React, { useEffect, useState } from "react";
 import { useGameContext } from "../utils/GameContext";
 import GameItem from './gameitem/gameitem.js'
 import GameCart from './gameCart/index'
-import { Row } from "react-bootstrap";
 
-// import { idbPromise } from "../utils/helpers"
-
+//--- Component rendering the list of games ---//
 export default function GamesList () {
-    // load state
+    //-- load state --//
     const [ state, dispatch ] = useGameContext()
-
+    
+    //-- State to hold the list of games based on the search criteria --//
     const [ filteredGames, setFilteredGames ] = useState(state.gameLibrary)
     const [ search, setSearch ] = useState('')
 
+    //-- Function to update the search criteria and update the list --//
     const searchItems = (searchValue) => {
         setSearch(searchValue)
         
@@ -24,6 +23,7 @@ export default function GamesList () {
         setFilteredGames(filterGames)
     }
 
+    //-- useEffect hook to update the game list when the state.gameLibrary changes --//
     useEffect(() => {
         setFilteredGames(state.gameLibrary)
     }, [state.gameLibrary])
@@ -43,8 +43,8 @@ export default function GamesList () {
                         placeholder="search"
                         onChange={(e) => searchItems(e.target.value)}
                     />
-                </div>
-                </div>
+            </div>
+        </div>
             
             { filteredGames.length ? (
                 <div className="h-75" >

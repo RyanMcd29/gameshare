@@ -5,8 +5,7 @@ import Auth from '../utils/auth';
 const Header = () => {
   const location = useLocation();
 
-  // console.log(location);
-
+  //-- User logout --//
   const logout = () => {
     Auth.logout();
   };

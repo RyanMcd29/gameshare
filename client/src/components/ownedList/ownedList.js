@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
+//-- Deconstructing "games" from the parent component --//
 const OwnedList = ({
     games,
 }) => {
@@ -8,6 +9,7 @@ const OwnedList = ({
     // }
 
   
+    //-- Create a card for each game --//
     return (
         <div>
         {games &&

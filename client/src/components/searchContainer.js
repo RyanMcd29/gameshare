@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import API from '../utils/API'
+import React, { useState } from 'react'
 
+//--- Updates the  'search' state variable according to the user's input ---//
 const SearchContainer = () => {
     const [result, setResult] = useState({});
     const [search, setSearch] = useState('')
@@ -9,12 +9,6 @@ const SearchContainer = () => {
             setSearch(e.target.value)
             console.log(search)
 
-    // setGameResults([])
-    //     API.search(search)
-    //         .then((res) => setResult(res.data)
-    //         .catch((err) => console.log(err)))
-    //         console.log(result);
-        
     
     return (
         <div>

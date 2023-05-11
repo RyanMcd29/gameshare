@@ -1,14 +1,10 @@
 
 const { User, UserGames, GameLibrary} = require('../models');
-const { GameRequests } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
-    users: async () => {
-      return User.find();
-    },
     user: async (parent, { username }) => {
       return User.findOne({ username });
     },

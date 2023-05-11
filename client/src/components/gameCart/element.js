@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { useGameContext } from "../../utils/GameContext";
-import { TOGGLE_CART } from "../../utils/actions";
+import React from "react";
 
 
+//-- Component that renders a single game in the cart --//
 export default function CartElement ({ name, image, platform }) {
-  
   
   return (
     <div className="game-cart list-group-item d-flex bg-dark text-white">

@@ -1,70 +1,65 @@
-# Getting Started with Create React App
+# GameShare
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
+GameShare is a MERN application that allows users to borrow games between each other. Think of GameShare as your personal gaming library, but with the added bonus of sharing with other gamers! 
+Did you ever see a new game you wanted to play, but didn't want to spend the money on.?With GameShare, you can easily browse and search for available games to borrow from other users, without breaking the bank.
 
-## Available Scripts
+Sharing is caring, and that's what GameShare is all about - bringing together gamers from all over to share their love for gaming. Whether you're on a tight budget, unsure if you'll like a game you want to buy, or just running out of things to play, GameShare has got you covered.
 
-In the project directory, you can run:
+Sign up for GameShare today and join the fun of sharing gaming with other users!
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+-------------------
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies Used
 
-### `npm run build`
+> MongoDB/ Mongoose
+> Express
+> React JS
+> Node.js
+> JWT
+> GraphQL
+> Bootstrap
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Usage/ Deployed Application: 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+> Start sharing today: <URL here>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+------
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Application Documentation
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Welcome to GameShare
+![welcome-page]()
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+### User's Dashboard
+![dashboard]()
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+### So many games to choose from!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+![game-list]()
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+## Our Gaming Team
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+* [Mauxi Moncada](https://github.com/MoMoncada)
 
-### Deployment
+* [Ryan McDiarmid](https://github.com/RyanMcd29)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+* [Will Cable](https://github.com/Cableman687)
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+------------
+
+## License
+[MIT License](https://opensource.org/license/mit/)

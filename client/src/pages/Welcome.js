@@ -4,8 +4,8 @@ import '../../src/App.css';
 import AnimatedPage from '../components/AnimatedPage';
 import Auth from '../utils/auth';
 
-// vCenterWel
 
+//--- Renders the Welcome page ---//
 const Welcome = () => {
 
     const location = useLocation();
