@@ -1,7 +1,7 @@
 import React, { createContext, useContext } from "react";
 import { useGameReducer } from './reducers'
 import { useQuery } from "@apollo/client";
-import { QUERY_GAMELIBRARY, QUERY_USER_GAMES } from "./queries";
+import { GET_AVAILABLE_GAMES, QUERY_GAMELIBRARY, QUERY_USER_GAMES } from "./queries";
 import auth from "./auth";
 
 //-- New Context and extracts the Provier component from the context --/
@@ -15,18 +15,38 @@ const GetGameLibrary = () => {
     return games
 }
 
+const GetUserGameLibrary= () => {
+    const { loading, data } = useQuery(GET_AVAILABLE_GAMES)
+    const availableGames = data?.allGames || []
+
+    const allGamesWithDetails= availableGames.filter((game)=>{
+
+        console.log(game.gameDetails)
+
+        if (game.platform != null) {
+            return game
+        }
+    })
+    
+    console.log(allGamesWithDetails)
+    return allGamesWithDetails
+}
+
+
+
 //-- Retrieves the details of the logged-in user --//
 const GetUserDetails = () => {
     //get userId
-    const userName = auth.getProfile().data.username
-    console.log(userName)
+    const userId = auth.getProfile().data._id
+    console.log("userId", userId)
 
     const { loading, data } = useQuery(QUERY_USER_GAMES, {variables: {
-        username : userName
+        userId : userId
     }})
-    console.log(data)
 
     const userGames = data?.userGames || [] // Extract the user's games array from the fetched data, or an empty array if there is no data
+
+    console.log(userGames)
     return userGames
 }
 
@@ -37,16 +57,18 @@ const GameProvider = ({ value = [], ...props }) => {
         // Data from api
         gameLibrary: [],
         // Cart
+        userGameLibrary:[],
+        availableGames: [],
         gamesToAdd: [],
         userGames: [],
         borrowedGames: []
     });
     
 
-        state.gameLibrary = GetGameLibrary()
+    state.gameLibrary = GetGameLibrary()
+    state.userGameLibrary = GetUserGameLibrary()
 
-    if (auth.loggedIn === true) {
-        console.log('Currently logged in');
+    if (auth.loggedIn() === true) {
         state.userGames = GetUserDetails();
     }
 

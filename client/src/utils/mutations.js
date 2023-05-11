@@ -59,7 +59,12 @@ export const UPDATE_GAME_REQUEST = gql`
   }
 `;
 
-
+export const ADD_GAME_TO_USER_GAMES = gql `
+mutation addGameToUserGames($gameId: ID, $userId: ID, $platform: String) {
+  addGameToUserGames(gameId: $gameId, userId: $userId, platform: $platform) {
+    _id
+  }
+}`
 
 export const ADD_GAMES_TO_USER = gql `
   mutation addGames($username: String!, $gameId: [ID]) {
@@ -83,6 +88,25 @@ export const REMOVE_GAME_FROM_USER = gql `
     }
   }`
 
+export const REMOVE_GAME_FROM_OWNED = gql `
+mutation RemoveGameFromUser($username: String!, $gameId: ID) {
+  removeGameFromOwned(username: $username, gameId: $gameId) {
+    username
+    userGames {
+      _id
+    }
+  }
+}`
+
+export const REMOVE_GAME_FROM_USER_GAME = gql `
+  mutation RemoveUserGame($gameId: ID, $userId: ID) {
+    removeUserGame(gameId: $gameId, userId: $userId) {
+      _id
+      title
+      platform
+    }
+  }`
+
 export const ADD_GAME_TO_BORROWED = gql `
   mutation AddGameToBorrowed($username: String!, $gameId: ID) {
     addGameToBorrowed(username: $username, gameId: $gameId) {
@@ -92,6 +116,29 @@ export const ADD_GAME_TO_BORROWED = gql `
       }
     }
   }`
+
+export const ADD_BORROWER_TO_GAME = gql `
+  mutation AddBorrower($gameId: ID, $userId: ID) {
+    addBorrowerToGame(gameId: $gameId, userId: $userId) {
+      _id
+      title
+      platform
+      isBorrowedBy {
+        _id
+      }
+    }
+  }
+`
+
+export const REMOVE_BORROWER_FROM_GAME = gql `
+mutation RemoveBorrowerFromGame($gameId: ID, $userId: ID) {
+  removeBorrowerFromGame(gameId: $gameId, userId: $userId) {
+    _id
+    isBorrowedBy {
+      _id
+    }
+  }
+}`
 
 export const REMOVE_GAME_FROM_BORROWED = gql `
   mutation RemoveGameFromBorrowed($username: String!, $gameId: ID) {
