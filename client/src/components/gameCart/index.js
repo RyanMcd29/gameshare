@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useGameContext } from "../../utils/GameContext";
 import { ADD_USER_GAMES, CLEAR_CART, TOGGLE_CART } from "../../utils/actions";
 import CartElement from "./element";
-import { ADD_GAMES_TO_USER, ADD_GAME_TO_USER_GAME } from "../../utils/mutations";
+import { ADD_GAMES_TO_USER, ADD_GAME_TO_USER_GAMES } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 import { useMutation } from "@apollo/client";
 import auth from "../../utils/auth";
@@ -14,7 +14,7 @@ export default function GameCart () {
     const [state, dispatch] = useGameContext()
     
     //-- Use addGamesToUser from Apollo Client --//
-    const [ addGameToUserUserGames, { error, data }] = useMutation(ADD_GAME_TO_USER_GAME);
+    const [ addGameToUserUserGames, { error, data }] = useMutation(ADD_GAME_TO_USER_GAMES);
 
 
     //-- Submit games to user --//
@@ -28,7 +28,7 @@ export default function GameCart () {
           console.log(game.id, userId, game.platform)
           try {
             const { data } = addGameToUserUserGames({
-              variables: { gameId: game._id, userId: userId, platform: game.platform  }
+              variables: { gameId: game.id, userId: userId, platform: game.platform  }
             })
           } catch (err) {
             console.err(err)

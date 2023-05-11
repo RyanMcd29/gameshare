@@ -59,9 +59,9 @@ export const UPDATE_GAME_REQUEST = gql`
   }
 `;
 
-export const ADD_GAME_TO_USER_GAME = gql `
-mutation addGameToUserGame($gameId: ID, $userId: ID, $platform: String) {
-  addGameToUser(gameId: $gameId, userId: $userId, platform: $platform) {
+export const ADD_GAME_TO_USER_GAMES = gql `
+mutation addGameToUserGames($gameId: ID, $userId: ID, $platform: String) {
+  addGameToUserGames(gameId: $gameId, userId: $userId, platform: $platform) {
     _id
   }
 }`

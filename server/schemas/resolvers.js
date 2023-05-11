@@ -52,7 +52,10 @@ const resolvers = {
     },
 
     addGameToUserGames: async (parent, {gameId, userId, platform}) => {
-      const userGame = await UserGames.create({gameDetails: gameId, platform: platform},{new: true})
+      const userGame = await UserGames.create(
+        {gameDetails: gameId, platform: platform},
+        {new: true}
+      )
       // Update user games
       console.log(userGame[0]._id)
       const newGameId = userGame[0]._id
