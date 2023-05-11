@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import AnimatedPage from '../components/AnimatedPage';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
@@ -17,21 +17,16 @@ const Home = () => {
     console.log("user",state.userGames)
     console.log("userGames State", state.userGameLibrary)
 
-    const GamesBorrowedByUser = () => {
-        const userId = auth.getProfile().data._id
-        return state.userGameLibrary.filter((game) => {
-            console.log("game in library", game.isBorrowedBy)
-            if (game.isBorrowedBy != null ){
-                if (game.isBorrowedBy._id === userId){
-                    return game
-                }
-            }
-        }
-        )
-    }
-
-    const [borrowedGames, SetBorrowedGame] = useState(GamesBorrowedByUser())
     
+    const [userGame, setUserGames ] = useState([])
+    const [borrowedGames, SetBorrowedGames] = useState([])
+    
+    useEffect(()=>{
+        setUserGames(state.userGames.userGames)
+        SetBorrowedGames(state.borrowedGames)
+    })
+
+    console.log("userGame",userGame)
     console.log("borrowed games", borrowedGames)
 
 return (
@@ -51,7 +46,7 @@ return (
                     <div className="card-body text-center">
                         <div className="vh-75">
                             <div className="row m-0">
-                            { state.userGames.userGames && state.userGames.userGames.map((game) => {
+                            { userGame && userGame.map((game) => {
                                 console.log(game)
                                         return <UserListGameItem
                                             id={game._id}

@@ -68,6 +68,19 @@ const GetUserDetails = () => {
     return userGames
 }
 
+const GamesBorrowedByUser = (gameLibrary) => {
+    const userId = auth.getProfile().data._id
+    return gameLibrary.filter((game) => {
+        console.log("game in library", game.isBorrowedBy)
+        if (game.isBorrowedBy != null ){
+            if (game.isBorrowedBy._id === userId){
+                return game
+            }
+        }
+    }
+    )
+}
+
 //--  Add state to find all games not borrowed --//
 const GameProvider = ({ value = [], ...props }) => {
     
@@ -89,6 +102,7 @@ const GameProvider = ({ value = [], ...props }) => {
 
     if (auth.loggedIn() === true) {
         state.userGames = GetUserDetails();
+        state.borrowedGames = GamesBorrowedByUser(state.userGameLibrary)
     }
 
     
