@@ -96,11 +96,9 @@ const GameProvider = ({ value = [], ...props }) => {
     });
     
 
-
     state.gameLibrary = GetGameLibrary()
     state.userGameLibrary = GetUserGameLibrary()
     state.availableGames = GetAvailableGames()
-
 
     if (auth.loggedIn() === true) {
         state.userGames = GetUserDetails();
