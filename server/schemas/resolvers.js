@@ -91,6 +91,22 @@ const resolvers = {
         new: true,
       })
     },
+    // Add borrower to game
+    addBorrowerToGame: async (parent, {gameId, userId}) => {
+      return UserGames.findOneAndUpdate(
+        {_id: gameId},
+        {$addToSet: { isBorrowedBy: userId } },
+        {new : true}
+      )
+    },
+
+    removeBorrowerFromGame: async (parent, {gameId, userId}) => {
+      return UserGames.findOneAndUpdate(
+        { _id: gameId },
+        {$pull: {isBorrowedBy: userId}},
+        {new: true})
+    },
+
     // Todo: Remove game from borrowed games
     removeGameFromBorrowed: async (parent, {username, gameId}) => {
       return User.findOneAndUpdate({ username: username },
