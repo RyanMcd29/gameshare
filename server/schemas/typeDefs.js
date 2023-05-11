@@ -6,7 +6,7 @@ const typeDefs = gql `
         username: String
         email: String
         password: String
-        userGames: [GameLibrary]
+        userGames: [UserGames]
     }
 
     type UserGames {
@@ -46,7 +46,7 @@ const typeDefs = gql `
         gamelibrary: [GameLibrary]
 
         allGames: [UserGames]
-        userGames(username: String!): User
+        userGames(userId: ID): User
         borrowedGames(userId: ID): UserGames
     }
 

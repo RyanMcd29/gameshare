@@ -14,7 +14,7 @@ import auth from '../utils/auth';
 //-- initialize the state and dispatch using the useGameContext hook --//
 const Home = () => {
     const [state, dispatch] = useGameContext();
-
+    console.log("user",state.userGames)
     console.log("userGames State", state.userGameLibrary)
 
     const GamesBorrowedByUser = () => {
