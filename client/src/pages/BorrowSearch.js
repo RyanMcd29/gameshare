@@ -49,7 +49,7 @@ const Borrow = ({ username }) => {
     }
 
 
-const Borrow = () => {
+
   
   return (
     <AnimatedPage>
