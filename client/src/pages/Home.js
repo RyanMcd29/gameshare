@@ -56,8 +56,8 @@ return (
                                         return <UserListGameItem
                                             id={game._id}
                                             key={game._id}
-                                            name={game.name}
-                                            image={game.img}
+                                            name={game.gameDetails[0].name}
+                                            image={game.gameDetails[0].img}
                                             platform={game.platform}/>                          
                                     }) }
                             </div>

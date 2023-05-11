@@ -37,15 +37,16 @@ const GetUserGameLibrary= () => {
 //-- Retrieves the details of the logged-in user --//
 const GetUserDetails = () => {
     //get userId
-    const userName = auth.getProfile().data.username
-    console.log(userName)
+    const userId = auth.getProfile().data._id
+    console.log("userId", userId)
 
     const { loading, data } = useQuery(QUERY_USER_GAMES, {variables: {
-        username : userName
+        userId : userId
     }})
-    console.log(data)
 
     const userGames = data?.userGames || [] // Extract the user's games array from the fetched data, or an empty array if there is no data
+
+    console.log(userGames)
     return userGames
 }
 
@@ -67,8 +68,7 @@ const GameProvider = ({ value = [], ...props }) => {
     state.gameLibrary = GetGameLibrary()
     state.userGameLibrary = GetUserGameLibrary()
 
-    if (auth.loggedIn === true) {
-        console.log('Currently logged in');
+    if (auth.loggedIn() === true) {
         state.userGames = GetUserDetails();
     }
 
