@@ -51,6 +51,22 @@ const resolvers = {
       return { token, user };
     },
 
+    addGameToUserGames: async (parent, {gameId, userId, platform}) => {
+      const userGame = await UserGames.create({gameDetails: gameId, platform: platform},{new: true})
+      // Update user games
+      console.log(userGame[0]._id)
+      const newGameId = userGame[0]._id
+
+
+      const user = await User.findOneAndUpdate(
+        { _id: userId },
+        { $addToSet: { userGames: newGameId}},
+        { new: true }
+      )
+
+    return userGame
+  },
+
     addGamesFromLibrary: async (parent, {username, gameId} ) => {
       return User.findOneAndUpdate(
         { username: username }, 
