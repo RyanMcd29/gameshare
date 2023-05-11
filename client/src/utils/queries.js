@@ -52,10 +52,12 @@ query UserGames($username: String!) {
 
 
 export const GET_AVAILABLE_GAMES = gql`
-query AvailableGames {
-  availableGames {
+query allGames {
+  allGames {
     _id
-    userGames {
+    title
+    platform
+    gameDetails {
       _id
       name
       img
@@ -63,6 +65,10 @@ query AvailableGames {
       platforms
       release_date
     }
+    isBorrowedBy {
+      _id
+    }
   }
 }`
+
 

@@ -7,25 +7,29 @@ import { useGameContext } from '../utils/GameContext';
 import { useQuery } from '@apollo/client';
 import { GET_AVAILABLE_GAMES } from '../utils/queries'
 import BorrowListItem from '../components/BorrowPage/listItem';
+import { handleError } from '@apollo/client/link/http/parseAndCheckHttpResponse';
 
 
 
 
-const Borrow = ({ username }) => {
+const Borrow = () => {
 
     const GetAvailableGames = () => {
         const { loading, data } = useQuery(GET_AVAILABLE_GAMES)
-        const availableGames = data?.availableGames || []
-        
-        var gamesList = []
+        const availableGames = data?.allGames || []
 
-        console.log("availablegames",availableGames)
-        availableGames.map((user) => {
-            console.log()
-            gamesList = gamesList.concat(user.userGames)
-        
+        var alLGamesWithoutBorrower = availableGames.filter((game)=>{
+            if (game.isBorrowedBy === null) {
+                return game
+            }
+
         })
 
+        const gamesList = alLGamesWithoutBorrower.filter((game)=>{
+            if (game.platform != null) {
+                return game
+            }
+        })
         return gamesList
     }
 
@@ -33,7 +37,7 @@ const Borrow = ({ username }) => {
 
     const [state, dispatch] = useGameContext()
 
-    const [ filteredGames, setFilteredGames ] = useState(state.gameLibrary)
+    const [ filteredGames, setFilteredGames ] = useState([])
     const [ search, setSearch ] = useState('')
     
     state.availableGames = GetAvailableGames()
@@ -41,16 +45,16 @@ const Borrow = ({ username }) => {
     const searchItems = (searchValue) => {
         setSearch(searchValue)
         
-        const filterGames = state.availableGames.filter((game) => {
-            return Object.values(game.name).join('').toLowerCase().includes(search.toLowerCase())
-        })
+        if (state.availableGames){
+            const filterGames = state.availableGames.filter((game) => {
+                console.log("game details", game.gameDetails[0].name)
+                return Object.values(game.gameDetails[0].name).join('').toLowerCase().includes(search.toLowerCase())
+            })
+            setFilteredGames(filterGames)
 
-        setFilteredGames(filterGames)
+        }   
     }
 
-
-const Borrow = () => {
-  
   return (
     <AnimatedPage>
     <br></br>
@@ -81,10 +85,10 @@ const Borrow = () => {
                             <BorrowListItem
                                 key={game._id}
                                 id={game._id}
-                                name={game.name}
-                                image={game.img}
-                                platforms={game.platforms}
-                                genres={game.genres}
+                                name={game.gameDetails[0].name}
+                                image={game.gameDetails[0].img}
+                                platforms={game.platform}
+                                genres={game.gameDetails[0].genres}
                             />
                         ))}
                         </ul>
