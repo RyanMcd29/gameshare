@@ -24,7 +24,7 @@ const Home = () => {
     useEffect(()=>{
         setUserGames(state.userGames.userGames)
         SetBorrowedGames(state.borrowedGames)
-    })
+    }, [state.borrowedGames])
 
     console.log("userGame",userGame)
     console.log("borrowed games", borrowedGames)
