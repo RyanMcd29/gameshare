@@ -66,7 +66,7 @@ const Borrow = () => {
 
       <div className="card-deck row justify-content-center">
 
-    <div className="card m-4" style={{width: "500px", height: "400px"}}>
+    <div className="card m-4 cardScroll" style={{width: "500px", height: "400px"}}>
             <div className="card-body text-center">
             <h5 className="card-title">Request Games to Borrow: <i className="fa-sharp fa-solid fa-exchange"></i></h5>
                 <input 
@@ -79,7 +79,7 @@ const Borrow = () => {
                 <div className="container-fluid">
                 <div className="row">
                     { filteredGames.length ? (
-                    <div className="h-75" >
+                    <div className="h-75">
                         <ul className="row flex">
                         { filteredGames.map((game) => (
                             <BorrowListItem

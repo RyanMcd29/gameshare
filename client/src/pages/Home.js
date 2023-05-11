@@ -90,7 +90,7 @@ return (
                             </div>
                         </div>
                     </div>
-                    <Link to="/games" className='row text-center sticky-bottom p-0 m-0'>
+                    <Link to="/borrow" className='row text-center sticky-bottom p-0 m-0'>
                         <button className="btn btn-lg btn-block btn-primary p-2 mb-1" type="button">Borrow Games!</button>
                     </Link>
                 </div>
