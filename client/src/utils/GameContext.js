@@ -43,10 +43,9 @@ const GetUserDetails = () => {
     const { loading, data } = useQuery(QUERY_USER_GAMES, {variables: {
         userId : userId
     }})
-
     const userGames = data?.userGames || [] // Extract the user's games array from the fetched data, or an empty array if there is no data
 
-    console.log(userGames)
+    console.log("userGameData",userGames)
     return userGames
 }
 

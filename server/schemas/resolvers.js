@@ -7,12 +7,12 @@ const { model } = require('mongoose');
 const resolvers = {
   Query: {
     user: async (parent, { username }) => {
-      return User.findOne({ username });
+      return User.findOne({ username: username });
     },
 
     userGames: async (parent, {userId}) => {
       if (userId) {
-        const user = await User.findOne({ userId })
+        const user = await User.findOne({ _id: userId })
         .populate({path: 'userGames',
                     populate: {
                       path: 'gameDetails'
