@@ -16,18 +16,25 @@ Sign up for GameShare today and join the fun of sharing gaming with other users!
 ## Technologies Used
 
 > MongoDB/ Mongoose
+
 > Express
+
 > React JS
+
 > Node.js
+
 > JWT
+
 > GraphQL
+
 > Bootstrap
 
 
 ## Usage/ Deployed Application: 
 
+* GitHub repo: https://github.com/RyanMcd29/project-3
 
-> Start sharing today: <URL here>
+* Deployed Page: https://enigmatic-harbor-58701.herokuapp.com/
 
 
 
@@ -37,16 +44,12 @@ Sign up for GameShare today and join the fun of sharing gaming with other users!
 
 
 ### Welcome to GameShare
-![welcome-page]()
+![welcome-page](./client/src/assets/images/login-page.png)
 
 
 ### User's Dashboard
-![dashboard]()
+![dashboard](./client/src/assets/images/dashboard-page.png)
 
-
-### So many games to choose from!
-
-![game-list]()
 
 
 
