@@ -20,6 +20,10 @@ const resolvers = {
         return user
       };
     },
+    allGames: async() => {
+      return UserGames.find().populate('gameDetails').populate('isBorrowedBy')
+    },
+
     availableGames: async () => {
       return User.find().populate('userGames');
     },
@@ -27,6 +31,7 @@ const resolvers = {
       return await GameLibrary.find();
     },
   },
+
 
   Mutation: {
     addUser: async (parent, { username, email, password }) => {

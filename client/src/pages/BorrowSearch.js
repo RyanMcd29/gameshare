@@ -35,7 +35,7 @@ const Borrow = () => {
 
     const [state, dispatch] = useGameContext()
 
-    const [ filteredGames, setFilteredGames ] = useState()
+    const [ filteredGames, setFilteredGames ] = useState([])
     const [ search, setSearch ] = useState('')
     
     state.availableGames = GetAvailableGames()
@@ -43,11 +43,13 @@ const Borrow = () => {
     const searchItems = (searchValue) => {
         setSearch(searchValue)
         
-        if (state.availableGames.length){
+        if (state.availableGames){
             const filterGames = state.availableGames.filter((game) => {
                 console.log("game details", game.gameDetails[0].name)
                 return Object.values(game.gameDetails[0].name).join('').toLowerCase().includes(search.toLowerCase())
             })
+
+            console.log("filteredGames:", filterGames)
             setFilteredGames(filterGames)
 
         }   
