@@ -84,6 +84,21 @@ const resolvers = {
       })
     },
 
+    removeUserGame: async (parent, { userId, gameId }) => {
+      const game = await UserGames.findOneAndDelete(
+        {_id: gameId },
+        {new: true}
+      )
+      if (userId) {
+          const user = await User.findOneAndUpdate(
+            { _id: userId },
+            { $pull: { userGames: gameId }}
+          )
+        }
+
+      return game 
+    }
+
 
     // addGamesToUser : async (parent, { gamesToAdd }) => {
     //   console.log(gamesToAdd)
