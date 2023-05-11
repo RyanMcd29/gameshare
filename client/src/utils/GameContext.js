@@ -1,7 +1,7 @@
 import React, { createContext, useContext } from "react";
 import { useGameReducer } from './reducers'
 import { useQuery } from "@apollo/client";
-import { QUERY_GAMELIBRARY, QUERY_USER_GAMES } from "./queries";
+import { GET_AVAILABLE_GAMES, QUERY_GAMELIBRARY, QUERY_USER_GAMES } from "./queries";
 import auth from "./auth";
 
 //-- New Context and extracts the Provier component from the context --/
@@ -14,6 +14,25 @@ const GetGameLibrary = () => {
     const games = data?.gamelibrary || []
     return games
 }
+
+const GetUserGameLibrary= () => {
+    const { loading, data } = useQuery(GET_AVAILABLE_GAMES)
+    const availableGames = data?.allGames || []
+
+    const allGamesWithDetails= availableGames.filter((game)=>{
+
+        console.log(game.gameDetails)
+
+        if (game.platform != null) {
+            return game
+        }
+    })
+    
+    console.log(allGamesWithDetails)
+    return allGamesWithDetails
+}
+
+
 
 //-- Retrieves the details of the logged-in user --//
 const GetUserDetails = () => {
@@ -37,13 +56,16 @@ const GameProvider = ({ value = [], ...props }) => {
         // Data from api
         gameLibrary: [],
         // Cart
+        userGameLibrary:[],
+        availableGames: [],
         gamesToAdd: [],
         userGames: [],
         borrowedGames: []
     });
     
 
-        state.gameLibrary = GetGameLibrary()
+    state.gameLibrary = GetGameLibrary()
+    state.userGameLibrary = GetUserGameLibrary()
 
     if (auth.loggedIn === true) {
         console.log('Currently logged in');

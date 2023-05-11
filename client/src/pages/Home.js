@@ -9,14 +9,27 @@ import { useGameContext } from '../utils/GameContext';
 
 import UserListGameItem from '../components/UserGameListItem';
 import BorrowedGameListItem from '../components/userBorrowedGameListItem'
+import auth from '../utils/auth';
 
 //-- initialize the state and dispatch using the useGameContext hook --//
 const Home = () => {
     const [state, dispatch] = useGameContext();
 
-    console.log("userGames State", state.userGames)
-    
+    console.log("userGames State", state.userGameLibrary)
 
+    const GamesBorrowedByUser = () => {
+        const userId = auth.getProfile().data._id
+        return state.userGameLibrary.filter((game) => {
+            if (game.isBorrowedBy._id === userId){
+                return game
+            }
+        }
+        )
+    }
+
+    const [borrowedGames, SetBorrowedGame] = useState(GamesBorrowedByUser())
+    
+    console.log("borrowed games", borrowedGames)
 
 return (
     <AnimatedPage>
@@ -62,13 +75,13 @@ return (
                     <div className="card-body text-center">
                         <div className="vh-75">
                             <div className="row m-0 ">
-                            { state.userGames.borrowedGames && state.userGames.borrowedGames.map((game) => {
-                                console.log(game)
+                            { borrowedGames && borrowedGames.map((game) => {
+                                console.log(game.gameDetails[0])
                                         return <BorrowedGameListItem
-                                            id={game._id}
-                                            key={game._id}
-                                            name={game.name}
-                                            image={game.img}
+                                            id={game.gameDetails[0]._id}
+                                            key={game.gameDetails[0]._id}
+                                            name={game.gameDetails[0].name}
+                                            image={game.gameDetails[0].img}
                                             platform={game.platform}/>                          
                                     }) }
                             </div>

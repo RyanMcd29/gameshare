@@ -7,8 +7,6 @@ import { useGameContext } from '../utils/GameContext';
 import { useQuery } from '@apollo/client';
 import { GET_AVAILABLE_GAMES } from '../utils/queries'
 import BorrowListItem from '../components/BorrowPage/listItem';
-import { handleError } from '@apollo/client/link/http/parseAndCheckHttpResponse';
-
 
 
 
@@ -18,6 +16,8 @@ const Borrow = () => {
         const { loading, data } = useQuery(GET_AVAILABLE_GAMES)
         const availableGames = data?.allGames || []
 
+
+        
         var alLGamesWithoutBorrower = availableGames.filter((game)=>{
             if (game.isBorrowedBy === null) {
                 return game
