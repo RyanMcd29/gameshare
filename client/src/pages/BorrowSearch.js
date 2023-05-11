@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import AnimatedPage from '../components/AnimatedPage';
 import { Link } from 'react-router-dom';
 
@@ -12,24 +12,24 @@ import BorrowListItem from '../components/BorrowPage/listItem';
 
 const Borrow = () => {
 
-    const GetAvailableGames = () => {
-        const { loading, data } = useQuery(GET_AVAILABLE_GAMES)
-        const availableGames = data?.allGames || []
+    // const GetAvailableGames = () => {
+    //     const { loading, data } = useQuery(GET_AVAILABLE_GAMES)
+    //     const availableGames = data?.allGames || []
         
-        var alLGamesWithoutBorrower = availableGames.filter((game)=>{
-            if (game.isBorrowedBy === null) {
-                return game
-            }
+    //     var alLGamesWithoutBorrower = availableGames.filter((game)=>{
+    //         if (game.isBorrowedBy === null) {
+    //             return game
+    //         }
 
-        })
+    //     })
 
-        const gamesList = alLGamesWithoutBorrower.filter((game)=>{
-            if (game.platform != null) {
-                return game
-            }
-        })
-        return gamesList
-    }
+    //     const gamesList = alLGamesWithoutBorrower.filter((game)=>{
+    //         if (game.platform != null) {
+    //             return game
+    //         }
+    //     })
+    //     return gamesList
+    // }
 
 
 
@@ -38,8 +38,12 @@ const Borrow = () => {
     const [ filteredGames, setFilteredGames ] = useState([])
     const [ search, setSearch ] = useState('')
     
-    state.availableGames = GetAvailableGames()
-    
+    // state.availableGames = GetAvailableGames()
+    useEffect(()=>(
+        setFilteredGames(state.availableGames)
+
+    ),[state.availableGames])
+
     const searchItems = (searchValue) => {
         setSearch(searchValue)
         

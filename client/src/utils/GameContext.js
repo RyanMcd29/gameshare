@@ -32,6 +32,25 @@ const GetUserGameLibrary= () => {
     return allGamesWithDetails
 }
 
+const GetAvailableGames = () => {
+    const { loading, data } = useQuery(GET_AVAILABLE_GAMES)
+    const availableGames = data?.allGames || []
+    
+    var alLGamesWithoutBorrower = availableGames.filter((game)=>{
+        if (game.isBorrowedBy === null) {
+            return game
+        }
+
+    })
+
+    const gamesList = alLGamesWithoutBorrower.filter((game)=>{
+        if (game.platform != null) {
+            return game
+        }
+    })
+    return gamesList
+}
+
 
 
 //-- Retrieves the details of the logged-in user --//
@@ -43,11 +62,23 @@ const GetUserDetails = () => {
     const { loading, data } = useQuery(QUERY_USER_GAMES, {variables: {
         userId : userId
     }})
-
     const userGames = data?.userGames || [] // Extract the user's games array from the fetched data, or an empty array if there is no data
 
-    console.log(userGames)
+    console.log("userGameData",userGames)
     return userGames
+}
+
+const GamesBorrowedByUser = (gameLibrary) => {
+    const userId = auth.getProfile().data._id
+    return gameLibrary.filter((game) => {
+        console.log("game in library", game.isBorrowedBy)
+        if (game.isBorrowedBy != null ){
+            if (game.isBorrowedBy._id === userId){
+                return game
+            }
+        }
+    }
+    )
 }
 
 //--  Add state to find all games not borrowed --//
@@ -67,9 +98,11 @@ const GameProvider = ({ value = [], ...props }) => {
 
     state.gameLibrary = GetGameLibrary()
     state.userGameLibrary = GetUserGameLibrary()
+    state.availableGames = GetAvailableGames()
 
     if (auth.loggedIn() === true) {
         state.userGames = GetUserDetails();
+        state.borrowedGames = GamesBorrowedByUser(state.userGameLibrary)
     }
 
     
