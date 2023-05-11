@@ -1,21 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import AnimatedPage from '../components/AnimatedPage';
-import { useMutation } from '@apollo/client';
-import { UPDATE_GAME_REQUEST } from '../utils/mutations';
 import avatar1 from '../assets/images/avatar1.png';
 import avatar2 from '../assets/images/avatar2.png';
 
-import Auth from '../utils/auth';
 
+//--- Renders Inbox Page ---//
 const Inbox = () => {
-    //TODO: Add functions to actually do something with the accept and reject buttons
+    
     const handleAccept = () => {
-        console.log('Request Accepted');
+        console.log('New feature coming soon...');
     };
 
     const handleReject = () => {
-        console.log('Request Rejected');
+        console.log('New feature coming soon...');
     };
 
     return (
@@ -26,7 +24,6 @@ const Inbox = () => {
                     <h1 className="card-title text-center">My Game Requests</h1>
                 </div>
             </div>
-            {/* style={{width: "500px"}} */}
             <br></br><br></br>
             <section className='container'>
                 <div className="row mt-2 justify-content-center">
@@ -57,8 +54,8 @@ const Inbox = () => {
                                 <div className="card-body">
                                     <h5 className="card-title">Mauxi Moncada</h5>
                                     <p className="card-text">Hey! My name is Mauxi and I'd love to borrow your copy of Assassins Creed!</p>
-                                    <button type="button" className="button-80 me-1">Accept</button>
-                                    <button type="button" className="button-80 me-1">Reject</button>
+                                    <button type="button" className="button-80 me-1" onClick={handleAccept}>Accept</button>
+                                    <button type="button" className="button-80 me-1" onClick={handleReject}>Reject</button>
                                 </div>
                             </div>
                         </div>
@@ -66,17 +63,6 @@ const Inbox = () => {
                 </div>
 
             </section>
-
-            {/* //TODO: uncomment when the inbox page is dynamically loaded */}
-            {/* <div className="row justify-content-center mt-4">
-                <div className="col-md-10">
-                    <div className="card">
-                        <div className="card-body">
-                            <h2 className="card-title mb-3 text-center">You don't have any requests!</h2>
-                         </div>
-                    </div>
-                </div>
-            </div>   */}
 
         <br></br>
 

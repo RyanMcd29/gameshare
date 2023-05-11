@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import AnimatedPage from '../components/AnimatedPage';
 import { Link } from 'react-router-dom';
+
 import Auth from '../utils/auth';
 import { useGameContext } from '../utils/GameContext';
 import { useQuery } from '@apollo/client';
@@ -48,6 +49,8 @@ const Borrow = ({ username }) => {
     }
 
 
+const Borrow = () => {
+  
   return (
     <AnimatedPage>
     <br></br>

@@ -1,6 +1,5 @@
 
 const { User, UserGames, GameLibrary} = require('../models');
-const { GameRequests } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 

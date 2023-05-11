@@ -3,6 +3,8 @@ import React from "react";
 import auth from "../utils/auth";
 import { REMOVE_GAME_FROM_USER } from "../utils/mutations";
 
+
+//-- Deconstructing the "game" object --//
 export default function UserListGameItem (game) {
     const { name, image, platform, id } = game;
 

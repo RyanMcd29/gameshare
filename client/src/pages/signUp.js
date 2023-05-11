@@ -4,7 +4,7 @@ import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 import AnimatedPage from '../components/AnimatedPage';
 
-//-- Import authorization class --//
+//--- Import authorization class ---//
 import Auth from '../utils/auth';
 
 const SignUp = () => {
