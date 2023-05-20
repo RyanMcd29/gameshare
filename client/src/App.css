@@ -126,6 +126,29 @@
 .game-library{
   height: 100vh;
 }
+
+.card-img-overlay{
+  opacity: 0;
+  transition: .3s ease;
+  background-color: rgba(black, 0.8);
+}
+
+.card:hover .card-img-overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+  opacity: 1;
+}
+
+.addGameBtn {
+  font-size: 400%;
+  position: absolute;
+  top: 0%;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+}
 .img-thumbnail {
   width: 120px;
   height: 120px;
