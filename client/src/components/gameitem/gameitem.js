@@ -41,7 +41,7 @@ export default function GameItem (game) {
     // onFocus={() =>renderGameDetails(true)} onPointerLeave={() => {renderGameDetails(false)}}
 
     return (
-        <div key={id} className="col-sm-6 col-md-3">
+        <div key={id} className="col-sm-6 col-md-3 mb-3">
             <div className="card">
                 <img  className="card-img-top game-img" src={image}/>
                         <div className= "card-img-overlay">
@@ -49,7 +49,7 @@ export default function GameItem (game) {
                             { isSelected ? (
                                 <ul>
                                     { platforms.map((platform)=>{
-                                        return (<button className={"btn " + platform.toLowerCase()} onClick={()=>submitGame({platform})} value={platform} key={platform}>{platform}</button>)
+                                        return (<button className={"platform-btn " + platform.toLowerCase().replace(' ', '-')} onClick={()=>submitGame({platform})} value={platform} key={platform}>{platform}</button>)
                                     })}
                                 </ul>)
                             : 
