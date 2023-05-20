@@ -42,9 +42,9 @@ export default function BorrowListItem (game) {
         <img className="img-thumbnail" src={image}/>
         <div className=" m-2 game-cart-details">
           <p>{name}</p>
-          <p>{platforms}</p>
+          <p className={platforms.toLowerCase().replace(' ', '-')}> {platforms}</p>
         </div>
-        <button onClick={()=>requestGame()}className="btn btn-primary h-50 position-absolute top-0 end-0">Request</button>
+        <button onClick={()=>requestGame()} className="btn btn-primary position-absolute top-50 end-0 translate-middle-y mx-2">Request</button>
       </div>
     )
 

@@ -45,7 +45,7 @@ export default function GameItem (game) {
             <div className="card">
                 <img  className="card-img-top game-img" src={image}/>
                         <div className= "card-img-overlay">
-                            <h5 className="card-title fs-3 text-light p-2">{name}</h5>
+                            <h5 className="card-title fs-3 text-light p-2 fw-bold">{name}</h5>
                             { isSelected ? (
                                 <ul>
                                     { platforms.map((platform)=>{
