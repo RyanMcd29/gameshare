@@ -107,7 +107,7 @@ const GameProvider = ({ value = [], ...props }) => {
     if (auth.loggedIn() === true) {
         // Games belonging to user
         state.userGames = GetUserDetails();
-        //
+        // 
         state.borrowedGames = GamesBorrowedByUser(state.userGameLibrary)
     }
 

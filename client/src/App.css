@@ -113,6 +113,10 @@
   top: 100px;
 }
 
+.game-cart {
+  position: absolute;
+}
+
 .game-card {
   width: 18rem;
 }
