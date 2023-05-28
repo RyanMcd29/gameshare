@@ -151,6 +151,13 @@
   border: none;
   opacity: 80%;
 }
+
+.borrow-img {
+  height: 120px;
+  object-fit: cover;
+  overflow: hidden;
+}
+
 .img-thumbnail {
   width: 120px;
   height: 120px;

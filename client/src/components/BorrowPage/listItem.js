@@ -38,14 +38,35 @@ export default function BorrowListItem (game) {
     }
 
     return (
-        <div className="game-cart list-group-item d-flex bg-dark text-white">
-        <img className="img-thumbnail" src={image}/>
-        <div className=" m-2 game-cart-details">
-          <p>{name}</p>
-          <p className={platforms.toLowerCase().replace(' ', '-')}> {platforms}</p>
-        </div>
-        <button onClick={()=>requestGame()} className="btn btn-primary position-absolute top-50 end-0 translate-middle-y mx-2">Request</button>
-      </div>
+          <div className="card mb-3">
+            <div className="row g-0">
+              <div className="col-4">
+                <img src={image} className="borrow-img card-img"/>
+              </div>
+              <div className="col-6">
+                <div className="card-body">
+                  <h6>{name}</h6>
+                  <p className={platforms.toLowerCase().replace(' ', '-')}>{platforms}</p>
+                </div>
+              <div className="col-2">
+                <button onClick={()=>requestGame()} className="btn btn-primary position-absolute top-50 end-0 translate-middle-y mx-2">Request</button>
+              </div>
+              </div>
+            </div>
+          </div>
+
+      //   <div className="game-cart list-group-item d-flex">
+      //   <div className="img-thumbnail img-container">
+      //     <img className="img-fluid" src={image}/>
+      //   </div>
+
+
+      //   <div className=" m-2 game-cart-details">
+      //     <p>{name}</p>
+      //     <p className={platforms.toLowerCase().replace(' ', '-')}> {platforms}</p>
+      //   </div>
+      //   <button onClick={()=>requestGame()} className="btn btn-primary position-absolute top-50 end-0 translate-middle-y mx-2">Request</button>
+      // </div>
     )
 
 }
