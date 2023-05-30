@@ -14,20 +14,21 @@ import auth from '../utils/auth';
 //-- initialize the state and dispatch using the useGameContext hook --//
 const Home = () => {
     const [state, dispatch] = useGameContext();
-    console.log("user",state.userGames)
-    console.log("userGames State", state.userGameLibrary)
+    //console.log("user",state.userGames)
+    //console.log("userGames State", state.userGameLibrary)
 
-    
+
     const [userGame, setUserGames ] = useState([])
     const [borrowedGames, SetBorrowedGames] = useState([])
+
+    console.log("state", state);
     
     useEffect(()=>{
         setUserGames(state.userGames.userGames)
         SetBorrowedGames(state.borrowedGames)
-    }, [state.borrowedGames])
+    }, [state.userGames.userGames, state.borrowedGames])
 
-    console.log("userGame",userGame)
-    console.log("borrowed games", borrowedGames)
+    //console.log("borrowed games", borrowedGames)
 
 return (
     <AnimatedPage>
@@ -47,7 +48,7 @@ return (
                         <div className="vh-75">
                             <div className="row m-0">
                             { userGame && userGame.map((game) => {
-                                console.log(game)
+                                //console.log(game)
                                         return <UserListGameItem
                                             id={game._id}
                                             key={game._id}
@@ -74,7 +75,7 @@ return (
                         <div className="vh-75">
                             <div className="row m-0 ">
                             { borrowedGames && borrowedGames.map((game) => {
-                                console.log(game.gameDetails[0])
+                                // console.log(game.gameDetails[0])
                                         return <BorrowedGameListItem
                                             id={game._id}
                                             key={game._id}

@@ -19,18 +19,6 @@ function destructureGames (games) {
     // createGameLibrary(destructuredGames)
 }
 
-// Connect to DB and create game document (not working)
-// async function createGameLibrary(games) {
-//     db.once('open', async () => {
-//         try {
-//             await GameLibrary.deleteMany({});
-//             await GameLibrary.create(games)
-//         } catch (error) {
-//             throw error
-//         }
-//     })
-// }
-
 const getGameDetails = async () => {
     const games = await axios.get('https://api.rawg.io/api/games?page_size=10&rating&key='+ API_KEY)
     try {    

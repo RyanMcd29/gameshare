@@ -1,12 +1,15 @@
 import React, { createContext, useContext } from "react";
 import { useGameReducer } from './reducers'
-import { useQuery } from "@apollo/client";
+import { useQuery , useMutation } from "@apollo/client";
 import { GET_AVAILABLE_GAMES, QUERY_GAMELIBRARY, QUERY_USER_GAMES } from "./queries";
+import { ADD_REQUESTOR_TO_STATE } from "./mutations";
 import auth from "./auth";
 
 //-- New Context and extracts the Provier component from the context --/
 const GameContext = createContext()
 const { Provider } = GameContext;
+
+
 
 //-- Creates a component that queries the API to retrieve all the games available in the game library --//
 const GetGameLibrary = () => {
@@ -17,18 +20,19 @@ const GetGameLibrary = () => {
 
 const GetUserGameLibrary= () => {
     const { loading, data } = useQuery(GET_AVAILABLE_GAMES)
+
     const availableGames = data?.allGames || []
 
     const allGamesWithDetails= availableGames.filter((game)=>{
 
-        console.log(game.gameDetails)
+        //console.log(game.gameDetails)
 
         if (game.platform != null) {
             return game
         }
     })
     
-    console.log(allGamesWithDetails)
+    //console.log(allGamesWithDetails)
     return allGamesWithDetails
 }
 
@@ -53,25 +57,27 @@ const GetAvailableGames = () => {
 
 
 
+
+
 //-- Retrieves the details of the logged-in user --//
 const GetUserDetails = () => {
     //get userId
     const userId = auth.getProfile().data._id
-    console.log("userId", userId)
+    //console.log("userId", userId)
 
     const { loading, data } = useQuery(QUERY_USER_GAMES, {variables: {
         userId : userId
     }})
     const userGames = data?.userGames || [] // Extract the user's games array from the fetched data, or an empty array if there is no data
 
-    console.log("userGameData",userGames)
+    //console.log("userGameData",userGames)
     return userGames
 }
 
 const GamesBorrowedByUser = (gameLibrary) => {
     const userId = auth.getProfile().data._id
     return gameLibrary.filter((game) => {
-        console.log("game in library", game.isBorrowedBy)
+        //console.log("game in library", game.isBorrowedBy)
         if (game.isBorrowedBy != null ){
             if (game.isBorrowedBy._id === userId){
                 return game
@@ -79,6 +85,44 @@ const GamesBorrowedByUser = (gameLibrary) => {
         }
     }
     )
+}
+
+//New - Will - Addition of game requests to State
+const GetRequestedGames = () => {
+    //get userId
+    const userId = auth.getProfile().data._id
+
+    const { loading, data } = useQuery(QUERY_USER_GAMES, {variables: {
+        userId : userId
+    }})
+
+    // const userData = data?.userGames.userGames[0].isRequestedBy;
+    // const userDataOne = data?.userGames.userGames[1];
+
+    // console.log("data", data);
+    // if(data.userGames === null){
+    //     return [];
+    // }
+
+    // let n = data?.userGames.userGames.length;
+    const requestedGamesArray = [];
+
+    // if(!n){
+    //     return [];
+    // }
+
+    // for(let i = 0; i < n; i++){
+        
+        
+    //     requestedGamesArray.push(data?.userGames.userGames[i])
+    // }
+
+
+
+
+    console.log("requestedGamesArray", requestedGamesArray)
+    return requestedGamesArray;
+
 }
 
 //--  Add state to find all games not borrowed --//
@@ -92,17 +136,20 @@ const GameProvider = ({ value = [], ...props }) => {
         availableGames: [],
         gamesToAdd: [],
         userGames: [],
-        borrowedGames: []
+        borrowedGames: [],
+        requestedGames: [],
     });
     
 
-    state.gameLibrary = GetGameLibrary()
-    state.userGameLibrary = GetUserGameLibrary()
-    state.availableGames = GetAvailableGames()
+    state.gameLibrary = GetGameLibrary();
+    state.userGameLibrary = GetUserGameLibrary();
+    state.availableGames = GetAvailableGames();
+    // GetRequestedGames();
 
     if (auth.loggedIn() === true) {
         state.userGames = GetUserDetails();
         state.borrowedGames = GamesBorrowedByUser(state.userGameLibrary)
+        state.requestedGames = GetRequestedGames();
     }
 
     

@@ -1,21 +1,25 @@
 import React from "react";
 import { useMutation } from "@apollo/client";
 import auth from "../../utils/auth";
-import { ADD_BORROWER_TO_GAME, ADD_GAME_TO_BORROWED } from "../../utils/mutations";
+import {ADD_REQUESTOR_TO_GAME ,  ADD_BORROWER_TO_GAME,  ADD_GAME_TO_BORROWED } from "../../utils/mutations";
 import { useGameContext } from "../../utils/GameContext";
 import { REMOVE_FROM_AVAILABLE } from "../../utils/actions";
 
 export default function BorrowListItem (game) {
     const [state, dispatch] = useGameContext()
 
-    const [ addBorrowerToGame, { error, data }] = useMutation(ADD_BORROWER_TO_GAME)
+    // const [ addBorrowerToGame] = useMutation(ADD_BORROWER_TO_GAME);
+
+    const [ addRequestorToGame] = useMutation(ADD_REQUESTOR_TO_GAME);
 
     const processGameRequest = async (userId, gameId) => {
-        console.log(userId, gameId)
+        // console.log(userId, gameId)
         try {
-          const { data } = addBorrowerToGame({
+          const data  = addRequestorToGame({
             variables: {userId: userId, gameId : gameId}
           })
+
+          console.log(data)
         
         } catch (err) {
           console.error(err)  
@@ -30,6 +34,7 @@ export default function BorrowListItem (game) {
         const userId = auth.getProfile().data._id
         // call to remove game from state
         // dispatch({ type: REMOVE_FROM_AVAILABLE, _id: id })
+        console.log(userId);
         processGameRequest(userId, gameId)
 
         // Remove game from state 

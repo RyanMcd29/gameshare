@@ -6,6 +6,10 @@ const { model } = require('mongoose');
 
 const resolvers = {
   Query: {
+    allGames: async() => {
+      return UserGames.find().populate('gameDetails').populate('isBorrowedBy')
+    },
+
     user: async (parent, { username }) => {
       return User.findOne({ username: username });
     },
@@ -14,14 +18,13 @@ const resolvers = {
       if (userId) {
         const user = await User.findOne({ _id: userId })
         .populate({path: 'userGames',
-                    populate: {
-                      path: 'gameDetails'
-                    }})
-        return user
+                    populate: {path: 'gameDetails'},
+      }).populate({path: 'userGames',
+                    populate:  {path: 'isRequestedBy'},
+})
+        console.log("pracUser", user);
+                    return user
       };
-    },
-    allGames: async() => {
-      return UserGames.find().populate('gameDetails').populate('isBorrowedBy')
     },
 
     availableGames: async () => {
@@ -31,6 +34,17 @@ const resolvers = {
     gamelibrary: async () => {
       return await GameLibrary.find();
     },
+
+    // requestedGames: async (parent, {userId}) => {
+    //   if (userId) {
+    //     const user = await User.findOne({ _id: userId })
+    //     .populate({path: 'userGames',
+    //                 populate: {
+    //                   path: 'gameDetails'
+    //                 }})
+    //     return user
+    //   };
+    // }
   },
 
 
@@ -63,7 +77,7 @@ const resolvers = {
         {new: true}
       )
       // Update user games
-      console.log(userGame[0]._id)
+      //console.log(userGame[0]._id)
       const newGameId = userGame[0]._id
 
 
@@ -82,6 +96,15 @@ const resolvers = {
       return UserGames.findOneAndUpdate(
         {_id: gameId},
         {$addToSet: { isBorrowedBy: userId } },
+        {new : true}
+      )
+    },
+
+    // Add requestor to game
+    addRequestorToGame: async (parent, {gameId, userId}) => {
+      return UserGames.findOneAndUpdate(
+        {_id: gameId},
+        {$addToSet: { isRequestedBy: userId } },
         {new : true}
       )
     },
@@ -108,16 +131,6 @@ const resolvers = {
 
       return game 
     }
-
-
-    // addGamesToUser : async (parent, { gamesToAdd }) => {
-    //   console.log(gamesToAdd)
-    // }
-    // createGameRequest: async (_, { fromUser, toUser, game }) => {
-    //   const request = new GameRequests({ fromUser, toUser, game, status: 'pending' });
-    //   await request.save();
-    //   return request;
-    // }
 
 
   },

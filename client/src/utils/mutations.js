@@ -107,6 +107,41 @@ export const REMOVE_GAME_FROM_USER_GAME = gql `
     }
   }`
 
+  //New - Will
+  export const ADD_GAME_TO_REQUESTED = gql `
+  mutation AddGameToRequested($username: String!, $gameId: ID) {
+    addGameToRequested(username: $username, gameId: $gameId) {
+      _id
+      requestedGames {
+        _id
+      }
+    }
+  }`
+//New - Will
+export const ADD_REQUESTOR_TO_GAME = gql `
+  mutation AddRequestor($gameId: ID, $userId: ID) {
+    addRequestorToGame(gameId: $gameId, userId: $userId) {
+      _id
+      title
+      platform
+      isRequestedBy {
+        _id
+      }
+    }
+  }
+`
+//New - Will
+export const ADD_REQUESTOR_TO_STATE = gql`
+  mutation AddRequstorToState($userId: ID) {
+    AddRequestorToState (userId: $userId) {
+      _id
+      username
+      email
+    }
+  }
+`
+
+
 export const ADD_GAME_TO_BORROWED = gql `
   mutation AddGameToBorrowed($username: String!, $gameId: ID) {
     addGameToBorrowed(username: $username, gameId: $gameId) {

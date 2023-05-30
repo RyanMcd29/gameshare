@@ -1,20 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import AnimatedPage from '../components/AnimatedPage';
-import avatar1 from '../assets/images/avatar1.png';
-import avatar2 from '../assets/images/avatar2.png';
 
+import { useGameContext } from '../utils/GameContext';
+import RequestedGameListItem from '../components/RequestedGameListItem'
 
 //--- Renders Inbox Page ---//
 const Inbox = () => {
-    
-    const handleAccept = () => {
-        console.log('New feature coming soon...');
-    };
 
-    const handleReject = () => {
-        console.log('New feature coming soon...');
-    };
+    const [state, dispatch] = useGameContext();    
+    const [requestedGames, SetRequestedGames] = useState([])
+    
+    useEffect(()=>{
+        SetRequestedGames(state.requestedGames)
+    } , [state.requestedGames])
 
     return (
         <AnimatedPage>
@@ -26,7 +25,27 @@ const Inbox = () => {
             </div>
             <br></br><br></br>
             <section className='container'>
-                <div className="row mt-2 justify-content-center">
+
+            {/* Dynamic Request List */}
+            <div className="card-body text-center">
+                <div className="vh-75">
+                    <div className="row m-0 ">
+                    { requestedGames && requestedGames.map((game) => {
+                        console.log("game",game)
+                                return <RequestedGameListItem
+                                    id={game._id}
+                                    key={game._id}
+                                    platform={game.platform}
+                                    username={game.isRequestedBy.username}
+                                    
+                                    />                          
+                            }) }
+                    </div>
+                </div>
+            </div> 
+
+
+                {/* <div className="row mt-2 justify-content-center">
                     <div className="card col-8 align-self-center border-secondary border border-3" >
                         <div className="row no-gutters">
                             <div className="ps-0 pe-0 col-sm-4">
@@ -60,7 +79,7 @@ const Inbox = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
             </section>
 

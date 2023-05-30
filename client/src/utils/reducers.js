@@ -17,7 +17,7 @@ export const reducer = ( state, action ) => {
                   cartOpen: !state.cartOpen,
             };
         case ADD_TO_CART: 
-            console.log(action.game)
+            //console.log(action.game)
             return {
                 ...state,
                 gamesToAdd: [...state.gamesToAdd, action.game]

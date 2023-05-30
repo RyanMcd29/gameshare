@@ -35,8 +35,8 @@ export default function GamesList () {
         <div className="row h-100">
             <div className="col-9 h-100">
                 <div className="row">
-                <div class="input-group mb-3 col">
-                    <span class="input-group-text">Search for a Game</span>
+                <div className="input-group mb-3 col">
+                    <span className="input-group-text">Search for a Game</span>
                     <input 
                         className="text-bg-dark form-control"
                         icon="search"

@@ -2,16 +2,19 @@ const  { Schema, model } = require ('mongoose');
 
 const UserGamesSchema = new Schema({
     isBorrowedBy: {
-        // type: Boolean,
-        // required: true,
-        // default: false
+
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
-    // isListed: {
-    //     type: Boolean,
-    //     required: true,
-    //     default: true
+    isRequestedBy: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+        
+    },
+    // requestSentTo: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'User'
+        
     // },
    gameDetails: [
     {   
