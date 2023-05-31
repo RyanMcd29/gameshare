@@ -37,11 +37,17 @@ const Inbox = () => {
                                     console.log("Requestor", game.isRequestedBy[i]);
                                     console.log("Length", game.isRequestedBy.length);
 
+                                    // console.log("owner", Auth.getProfile().data.username)
+
                                     return <RequestedGameListItem
                                     id={game._id}
                                     key={game._id}
+                                    image={game.gameDetails[0].img}
+                                    gamename={game.gameDetails[0].name}
                                     platform={game.platform}
-                                    username={[game.isRequestedBy[i].username]}
+                                    username={game.isRequestedBy[0].username}
+                                    
+            
                                     /> 
                                 }
                          
