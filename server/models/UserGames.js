@@ -6,11 +6,13 @@ const UserGamesSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
-    isRequestedBy: {
+    isRequestedBy: [
+    {
         type: Schema.Types.ObjectId,
         ref: 'User'
         
-    },
+    }
+    ],
     // requestSentTo: {
     //     type: Schema.Types.ObjectId,
     //     ref: 'User'

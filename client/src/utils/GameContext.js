@@ -104,18 +104,18 @@ const GetRequestedGames = () => {
     //     return [];
     // }
 
-    // let n = data?.userGames.userGames.length;
+    let n = data?.userGames.userGames.length || 0;
     const requestedGamesArray = [];
 
     // if(!n){
     //     return [];
     // }
 
-    // for(let i = 0; i < n; i++){
+    for(let i = 0; i < n; i++){
         
-        
-    //     requestedGamesArray.push(data?.userGames.userGames[i])
-    // }
+        requestedGamesArray.push(data?.userGames.userGames[i]);
+
+    }
 
 
 

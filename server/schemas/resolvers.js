@@ -21,9 +21,10 @@ const resolvers = {
                     populate: {path: 'gameDetails'},
       }).populate({path: 'userGames',
                     populate:  {path: 'isRequestedBy'},
-})
-        console.log("pracUser", user);
-                    return user
+      })
+
+        return user
+        
       };
     },
 
@@ -34,17 +35,6 @@ const resolvers = {
     gamelibrary: async () => {
       return await GameLibrary.find();
     },
-
-    // requestedGames: async (parent, {userId}) => {
-    //   if (userId) {
-    //     const user = await User.findOne({ _id: userId })
-    //     .populate({path: 'userGames',
-    //                 populate: {
-    //                   path: 'gameDetails'
-    //                 }})
-    //     return user
-    //   };
-    // }
   },
 
 

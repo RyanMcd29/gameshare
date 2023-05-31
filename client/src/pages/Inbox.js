@@ -32,13 +32,19 @@ const Inbox = () => {
                     <div className="row m-0 ">
                     { requestedGames && requestedGames.map((game) => {
                         console.log("game",game)
-                                return <RequestedGameListItem
+                                for(let i = 0; game.isRequestedBy.length; i++){
+
+                                    console.log("Requestor", game.isRequestedBy[i]);
+                                    console.log("Length", game.isRequestedBy.length);
+
+                                    return <RequestedGameListItem
                                     id={game._id}
                                     key={game._id}
                                     platform={game.platform}
-                                    username={game.isRequestedBy.username}
-                                    
-                                    />                          
+                                    username={[game.isRequestedBy[i].username]}
+                                    /> 
+                                }
+                         
                             }) }
                     </div>
                 </div>
