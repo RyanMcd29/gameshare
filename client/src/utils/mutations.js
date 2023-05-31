@@ -185,3 +185,25 @@ export const REMOVE_GAME_FROM_BORROWED = gql `
     }
   }`
 
+export const ACCEPT_BORROW_REQUEST = gql `
+  mutation acceptBorrowRequest($gameId: ID, $userId: ID) {
+    acceptBorrowRequest(gameId: $gameId, userId: $userId) {
+      isRequestedBy {
+        _id
+      }
+      isBorrowedBy {
+        _id
+      }
+    }
+  }`
+
+export const REJECT_BORROW_REQUEST = gql`
+  mutation rejectBorrowRequest($gameId: ID, $userId: ID) {
+    rejectBorrowRequest(gameId: $gameId, userId: $userId) {
+      _id
+      isRequestedBy {
+        _id
+      }
+      platform
+    }
+  }`

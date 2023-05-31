@@ -39,6 +39,7 @@ const Inbox = () => {
                                     gamename={game.gameDetails[0].name}
                                     platform={game.platform}
                                     username={user.username}
+                                    userId={user._id}
                                 />
                             })
                         })}

@@ -50,11 +50,16 @@ const typeDefs = gql `
         addRequestorToGame(gameId: ID, userId: ID): UserGames
         addGameToRequested(gameId: ID, username: String! ): User
         
+        acceptBorrowRequest(gameId: ID, userId: ID): UserGames
+        rejectBorrowRequest(gameId: ID, userId: ID): UserGames
+
         addBorrowerToGame(gameId: ID, userId: ID): UserGames
         addGameToBorrowed(gameId: ID, username: String! ): User
         removeUserGame(gameId: ID, userId: ID): UserGames
         removeBorrowerFromGame(gameId: ID, userId: ID): UserGames        
         deleteUser(_id: ID!): User
+
+
     }
 `;
 

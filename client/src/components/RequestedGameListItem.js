@@ -1,22 +1,43 @@
 import { useMutation } from "@apollo/client";
 import React from "react";
 import auth from "../utils/auth";
-// import {  REMOVE_GAME_FROM_USER_GAME } from "../utils/mutations";
+import {  ACCEPT_BORROW_REQUEST, REJECT_BORROW_REQUEST } from "../utils/mutations";
 
 
 //-- Deconstructing the "game" object --//
 export default function RequestedGameListItem (game) {
 
+    const [ acceptBorrowRequest] = useMutation(ACCEPT_BORROW_REQUEST)
+
+    const [ rejectBorrowRequest] = useMutation(REJECT_BORROW_REQUEST)
+
+    
     let owner = auth.getProfile().data.username
-    const { username, image, platform, id, gamename } = game;
+    
+    const { username, userId, image, platform, id, gamename } = game;
     // console.log("game", game);
+    
+    const handleAccept = () => {
+        console.log("accepted ", userId)
 
-    const handleAccept = function(){
+        try {
+            const { data } = acceptBorrowRequest({
+                variables: {userId: userId, gameId: id}
+            })
+        } catch(err) {
+                console.error(err)
+            }
+        }
 
-    }
-
-    const handleReject = function(){
-        
+    const handleReject = ()=>{
+        console.log("rejected ",userId)
+        try {
+            const { data } = rejectBorrowRequest({
+                variables: {userId: userId, gameId: id}
+            })
+        } catch(err) {
+                console.error(err)
+            }
     }
 
     
