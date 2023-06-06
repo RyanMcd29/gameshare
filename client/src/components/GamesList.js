@@ -7,6 +7,9 @@ import GameCart from './gameCart/index'
 export default function GamesList () {
     //-- load state --//
     const [ state, dispatch ] = useGameContext()
+
+    // Cart active
+    const [cartActive, setCartActive] = useState(false)
     
     //-- State to hold the list of games based on the search criteria --//
     const [ filteredGames, setFilteredGames ] = useState(state.gameLibrary)
@@ -23,6 +26,10 @@ export default function GamesList () {
         setFilteredGames(filterGames)
     }
 
+    const toggleCart = () => {
+        setCartActive(!cartActive)
+    }
+
     //-- useEffect hook to update the game list when the state.gameLibrary changes --//
     useEffect(() => {
         setFilteredGames(state.gameLibrary)
@@ -32,8 +39,8 @@ export default function GamesList () {
     return (
         <div className="game-library container-sm h-100">
             {/* Search Bar */}
-        <div className="row h-100">
-            <div className="col-9 h-100">
+        <div className="row m-3 h-100">
+            <div className="col-12 h-100">
                 <div className="row">
                 <div class="input-group mb-3 col">
                     <span class="input-group-text">Search for a Game</span>
@@ -43,11 +50,20 @@ export default function GamesList () {
                         placeholder="search"
                         onChange={(e) => searchItems(e.target.value)}
                     />
+                    {/* <p onClick={()=>{toggleCart()}}>Cart</p> */}
+                    {/* <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                        Open Cart
+                    </button>
+                    { cartActive && ( */}
+                        {/* <div className="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel"> */}
+                            <GameCart/>
+                        {/* </div> */}
+                    {/* ) } */}
             </div>
         </div>
             
             { filteredGames.length ? (
-                <div className="h-75" >
+                <div className="z-0 h-75" >
                     <ul className="row flex">
                     { filteredGames.map((game) => (
                         <GameItem
@@ -66,9 +82,7 @@ export default function GamesList () {
             {/* Render if gamestoadd in state */}
             
             </div>
-            <div className="col-3">
-                <GameCart/>
-            </div>
+
             </div> 
         </div>
     )

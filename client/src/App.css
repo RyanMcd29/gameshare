@@ -113,6 +113,10 @@
   top: 100px;
 }
 
+.game-cart {
+  position: absolute;
+}
+
 .game-card {
   width: 18rem;
 }
@@ -126,6 +130,38 @@
 .game-library{
   height: 100vh;
 }
+
+.card-img-overlay{
+  opacity: 0;
+  transition: .3s ease;
+  background-color: rgba(black, 0.8);
+}
+
+.card:hover .card-img-overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+  opacity: 1;
+}
+
+.addGameBtn {
+  font-weight: bolder;
+  font-size: 500%;
+  position: absolute;
+  top: 0%;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  opacity: 80%;
+}
+
+.borrow-img {
+  height: 120px;
+  object-fit: cover;
+  overflow: hidden;
+}
+
 .img-thumbnail {
   width: 120px;
   height: 120px;
@@ -135,6 +171,55 @@
 
 .game-img:hover {
   filter: brightness(0.5);
+}
+
+.platform-btn {
+  border-radius: 10px;
+  padding: 10px;
+  font-size: large;
+  font-weight: bolder;
+  border: #fff;
+}
+
+/* platform classes */
+.xbox {
+  background-color: green;
+  color: white;
+}
+
+.pc {
+  background-color: black;
+  color: white;
+}
+
+.playstation {
+  background-color: blue;
+  color: white;
+}
+
+.apple-macintosh {
+  background-color: white;
+  color: black;
+}
+
+.android {
+  background-color: lightgreen;
+  color: white;
+}
+
+.ios {
+  color: black;
+  background-color: white;
+}
+
+.nintendo {
+  background-color: red;
+  color: white;
+}
+
+.linux {
+  background-color: goldenrod;
+  color: black;
 }
 
 /* Buttons */

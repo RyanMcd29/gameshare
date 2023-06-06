@@ -95,13 +95,19 @@ const GameProvider = ({ value = [], ...props }) => {
         borrowedGames: []
     });
     
-
+    // Games From Database
     state.gameLibrary = GetGameLibrary()
+
+    // Games Belonging to Users
     state.userGameLibrary = GetUserGameLibrary()
+
+    // Games available to borrow
     state.availableGames = GetAvailableGames()
 
     if (auth.loggedIn() === true) {
+        // Games belonging to user
         state.userGames = GetUserDetails();
+        // 
         state.borrowedGames = GamesBorrowedByUser(state.userGameLibrary)
     }
 
