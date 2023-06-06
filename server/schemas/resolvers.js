@@ -125,8 +125,10 @@ const resolvers = {
     acceptBorrowRequest: async(parent, {gameId, userId}) => {
       return UserGames.findOneAndUpdate(
         {_id: gameId},
-        {$addToSet: { isBorrowedBy: userId }},
-        {$set: { isRequestedBy: [] } },
+        {
+          $set: { isRequestedBy: [] },
+          $addToSet: { isBorrowedBy: userId }
+        },
       )
     },
 // TODO: Fix rejext borrow request

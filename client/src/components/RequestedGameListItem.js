@@ -20,6 +20,8 @@ export default function RequestedGameListItem (game) {
     const handleAccept = () => {
         console.log("accepted ", userId)
 
+        // Clear game from state.
+
         try {
             const { data } = acceptBorrowRequest({
                 variables: {userId: userId, gameId: id}
