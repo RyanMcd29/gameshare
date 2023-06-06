@@ -4,6 +4,7 @@ import {
     ADD_TO_CART,
     CLEAR_CART,
     REMOVE_FROM_AVAILABLE,
+    CLEAR_GAME_REQUESTS,
 
 } from './actions'
 
@@ -27,6 +28,13 @@ export const reducer = ( state, action ) => {
                 ...state,
                 gamesToAdd: []
             };
+        case CLEAR_GAME_REQUESTS:
+            console.log(action._id)
+            console.log(state.reqeustedGames)
+            return{
+                ...state
+            };
+
 
         // todo: add action to remove game from state when requested
         // case REMOVE_FROM_AVAILABLE: 

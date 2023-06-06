@@ -7,7 +7,7 @@ const { model } = require('mongoose');
 const resolvers = {
   Query: {
     allGames: async() => {
-      return UserGames.find().populate('gameDetails').populate('isBorrowedBy')
+      return UserGames.find().populate('gameDetails').populate('isBorrowedBy').populate('isOwnedBy')
     },
 
     user: async (parent, { username }) => {
@@ -62,8 +62,9 @@ const resolvers = {
     },
 
     addGameToUserGames: async (parent, {gameId, userId, platform}) => {
+      console.log(userId)
       const userGame = await UserGames.create(
-        {gameDetails: gameId, platform: platform},
+        {gameDetails: gameId, platform: platform, isOwnedBy: userId},
         {new: true}
       )
       // Update user games
@@ -131,7 +132,7 @@ const resolvers = {
         },
       )
     },
-// TODO: Fix rejext borrow request
+
     rejectBorrowRequest: async(parent, {gameId, userId}) => {
       console.log(gameId, userId)
       return UserGames.findOneAndUpdate(

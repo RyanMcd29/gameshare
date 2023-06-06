@@ -1,6 +1,11 @@
 const  { Schema, model } = require ('mongoose');
 
 const UserGamesSchema = new Schema({
+    isOwnedBy: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
+
     isBorrowedBy: {
 
         type: Schema.Types.ObjectId,

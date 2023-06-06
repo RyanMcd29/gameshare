@@ -14,6 +14,10 @@ query allGames {
       platforms
       release_date
     }
+    isOwnedBy {
+      _id
+      username
+    }
     isBorrowedBy {
       _id
     }

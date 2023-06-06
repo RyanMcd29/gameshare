@@ -14,6 +14,7 @@ const typeDefs = gql `
         title: String
         platform: String
         gameDetails: [GameLibrary]
+        isOwnedBy: User
         isBorrowedBy: User
         isRequestedBy: [User]
     }
