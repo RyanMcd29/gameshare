@@ -28,7 +28,7 @@ const Home = () => {
         SetBorrowedGames(state.borrowedGames)
     }, [state.userGames.userGames, state.borrowedGames])
 
-    //console.log("borrowed games", borrowedGames)
+    // console.log("borrowed games", borrowedGames)
 
 return (
     <AnimatedPage>
@@ -81,7 +81,8 @@ return (
                                             key={game._id}
                                             name={game.gameDetails[0].name}
                                             image={game.gameDetails[0].img}
-                                            platform={game.platform}/>                          
+                                            platform={game.platform}/>
+                                                                      
                                     }) }
                             </div>
                         </div>
