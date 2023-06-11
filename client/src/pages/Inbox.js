@@ -30,28 +30,15 @@ const Inbox = () => {
             <div className="card-body text-center">
                 <div className="vh-75">
                     <div className="row m-0 ">
-                        {requestedGames.map((game)=>{
-                            return game.isRequestedBy.map((user) => {
-                                return <RequestedGameListItem
-                                    id={game._id}
-                                    key={game._id}
-                                    image={game.gameDetails[0].img}
-                                    gamename={game.gameDetails[0].name}
-                                    platform={game.platform}
-                                    username={user.username}
-                                    userId={user._id}
-                                />
-                            })
-                        })}
-                    
-                    {/* { requestedGames && requestedGames.map((game) => {
+                    { requestedGames && requestedGames.map((game) => {
                         console.log("game",game)
                                 for(let i = 0; game.isRequestedBy.length; i++){
 
-                                    console.log("Requestor", game.isRequestedBy[i]);
-                                    console.log("Length", game.isRequestedBy.length);
-                                        
+                                    // console.log("Requestor", game.isRequestedBy[i]);
+                                    // console.log("Length", game.isRequestedBy.length);
                                     // console.log("owner", Auth.getProfile().data.username)
+
+                                    
 
                                     return <RequestedGameListItem
                                     id={game._id}
@@ -59,13 +46,12 @@ const Inbox = () => {
                                     image={game.gameDetails[0].img}
                                     gamename={game.gameDetails[0].name}
                                     platform={game.platform}
-                                    username={game.isRequestedBy[i].username}
-                                    
-            
+                                    username={game.isRequestedBy[0].username}
+                                    userId={game.isRequestedBy[0]._id}
                                     /> 
                                 }
                          
-                            }) } */}
+                            }) }
                     </div>
                 </div>
             </div> 

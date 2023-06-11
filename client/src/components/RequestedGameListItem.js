@@ -27,9 +27,13 @@ export default function RequestedGameListItem (game) {
 
         // Clear game from state.
         // dispatch(type)
+
+        console.log(userId);
+
         try {
             const { data } = acceptBorrowRequest({
                 variables: {userId: userId, gameId: id}
+                
             })
         } catch(err) {
                 console.error(err)
