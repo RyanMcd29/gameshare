@@ -4,7 +4,7 @@ import {
     ADD_TO_CART,
     CLEAR_CART,
     REMOVE_FROM_AVAILABLE,
-    CLEAR_GAME_REQUESTS,
+    PROCESS_BORROW_REQUEST,
 
 } from './actions'
 
@@ -28,9 +28,11 @@ export const reducer = ( state, action ) => {
                 ...state,
                 gamesToAdd: []
             };
-        case CLEAR_GAME_REQUESTS:
+        case PROCESS_BORROW_REQUEST:
+            console.log("action object", action.game)
             let games = state.requestedGames.map((game)=>{
-                 if (game.id != action.game) {
+                console.log(game._id, action.game.id)
+                 if (game._id === action.game.id) {
                     return {
                         ...game,
                         isRequestedBy: []

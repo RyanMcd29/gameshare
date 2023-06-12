@@ -1,7 +1,7 @@
 import { useMutation } from "@apollo/client";
 import React from "react";
 import auth from "../utils/auth";
-import { CLEAR_GAME_REQUESTS } from "../utils/actions";
+import { PROCESS_BORROW_REQUEST } from "../utils/actions";
 import { ACCEPT_BORROW_REQUEST, REJECT_BORROW_REQUEST } from "../utils/mutations";
 import { useGameContext } from "../utils/GameContext";
 
@@ -25,10 +25,10 @@ export default function RequestedGameListItem (game) {
     const handleAccept = () => {
         console.log("accepted ", userId)
 
-        // Clear game from state.
+        // Clear game from state and update borrowed games state
         dispatch({
-            type: CLEAR_GAME_REQUESTS,
-            game: id
+            type: PROCESS_BORROW_REQUEST,
+            game: game
         })
 
         console.log(userId);
