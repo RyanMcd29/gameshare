@@ -53,7 +53,7 @@ const Borrow = () => {
             <div className="card-body text-center">
             <h5 className="card-title">Request Games to Borrow: <i className="fa-sharp fa-solid fa-exchange"></i></h5>
                 <input 
-                            className="text-bg-dark form-control"
+                            className="bg-dark text-white text-body-emphasis form-control"
                             icon="search"
                             placeholder="search"
                             onChange={(e) => searchItems(e.target.value)}
