@@ -1,20 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import AnimatedPage from '../components/AnimatedPage';
-import avatar1 from '../assets/images/avatar1.png';
-import avatar2 from '../assets/images/avatar2.png';
 
+import { useGameContext } from '../utils/GameContext';
+import RequestedGameListItem from '../components/RequestedGameListItem'
 
 //--- Renders Inbox Page ---//
 const Inbox = () => {
-    
-    const handleAccept = () => {
-        console.log('New feature coming soon...');
-    };
 
-    const handleReject = () => {
-        console.log('New feature coming soon...');
-    };
+    const [state, dispatch] = useGameContext();    
+    const [requestedGames, SetRequestedGames] = useState([])
+    
+    useEffect(()=>{
+        console.log("game requests updated", state.requestedGames)
+        SetRequestedGames(state.requestedGames)
+    }, [state.requestedGames])
 
     return (
         <AnimatedPage>
@@ -26,7 +26,34 @@ const Inbox = () => {
             </div>
             <br></br><br></br>
             <section className='container'>
-                <div className="row mt-2 justify-content-center">
+
+            {/* Dynamic Request List */}
+            <div className="card-body text-center">
+                <div className="vh-75">
+                    <div className="row m-0 ">
+                    { requestedGames && requestedGames.map((game) => {
+                                for(let i = 0; game.isRequestedBy.length; i++){
+                                    // console.log("Requestor", game.isRequestedBy[i]);
+                                    // console.log("Length", game.isRequestedBy.length);
+                                    // console.log("owner", Auth.getProfile().data.username)
+                                    return <RequestedGameListItem
+                                    id={game._id}
+                                    key={game._id}
+                                    image={game.gameDetails[0].img}
+                                    gamename={game.gameDetails[0].name}
+                                    platform={game.platform}
+                                    username={game.isRequestedBy[0].username}
+                                    userId={game.isRequestedBy[0]._id}
+                                    /> 
+                                }
+                         
+                            }) }
+                    </div>
+                </div>
+            </div> 
+
+
+                {/* <div className="row mt-2 justify-content-center">
                     <div className="card col-8 align-self-center border-secondary border border-3" >
                         <div className="row no-gutters">
                             <div className="ps-0 pe-0 col-sm-4">
@@ -60,7 +87,7 @@ const Inbox = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
             </section>
 

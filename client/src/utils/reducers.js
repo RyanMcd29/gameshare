@@ -4,6 +4,7 @@ import {
     ADD_TO_CART,
     CLEAR_CART,
     REMOVE_FROM_AVAILABLE,
+    CLEAR_GAME_REQUESTS,
 
 } from './actions'
 
@@ -17,7 +18,7 @@ export const reducer = ( state, action ) => {
                   cartOpen: !state.cartOpen,
             };
         case ADD_TO_CART: 
-            console.log(action.game)
+            //console.log(action.game)
             return {
                 ...state,
                 gamesToAdd: [...state.gamesToAdd, action.game]
@@ -27,6 +28,25 @@ export const reducer = ( state, action ) => {
                 ...state,
                 gamesToAdd: []
             };
+        case CLEAR_GAME_REQUESTS:
+            let games = state.requestedGames.map((game)=>{
+                 if (game.id != action.game) {
+                    return {
+                        ...game,
+                        isRequestedBy: []
+                    }
+                 }
+                 return game
+            })
+
+            console.log("newstate", games)
+
+            return {
+                ...state,
+                requestedGames: games
+            }
+            
+
 
         // todo: add action to remove game from state when requested
         // case REMOVE_FROM_AVAILABLE: 

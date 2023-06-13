@@ -10,8 +10,6 @@ const Welcome = () => {
 
     const location = useLocation();
 
-    console.log(location);
-
     return (
         <AnimatedPage>
             <div className='container align-middle justify-content-center align-items-center vCenterWel'>

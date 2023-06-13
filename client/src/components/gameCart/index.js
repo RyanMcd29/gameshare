@@ -19,13 +19,13 @@ export default function GameCart () {
 
     //-- Submit games to user --//
     const submitGames = async (gameIdsandPlatform) => {
-      console.log(gameIdsandPlatform)
+      // console.log(gameIdsandPlatform)
 
       const userId = auth.getProfile().data._id
 
-      console.log(userId, gameIdsandPlatform)
+      // console.log(userId, gameIdsandPlatform)
         gameIdsandPlatform.forEach(game => {
-          console.log(game.id, userId, game.platform)
+          // console.log(game.id, userId, game.platform)
           try {
             const { data } = addGameToUserUserGames({
               variables: { gameId: game.id, userId: userId, platform: game.platform  }
@@ -35,14 +35,7 @@ export default function GameCart () {
           }
           
         });
-      // try {
-      //   const { data } = addGamesToUser({
-      //     variables: {username : username, gameId : gameIds}
-      //   })
-      
-      // } catch (err) {
-      //   console.error(err)  
-      // }
+
     }
 
   
@@ -55,13 +48,13 @@ export default function GameCart () {
     const handleCartSubmit = () => {
         // Get logged in userID
         const username = Auth.getProfile().data.username
-          console.log(username)
-          console.log(state.gamesToAdd)
+          //console.log(username)
+          //console.log(state.gamesToAdd)
         const gameIdsandPlatform = state.gamesToAdd.map(game => {
             return ({ id: game._id, platform: game.platform})
         })   
 
-        console.log("gameId&platform", gameIdsandPlatform)
+        //console.log("gameId&platform", gameIdsandPlatform)
 
 
       submitGames(gameIdsandPlatform)

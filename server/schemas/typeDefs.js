@@ -14,7 +14,9 @@ const typeDefs = gql `
         title: String
         platform: String
         gameDetails: [GameLibrary]
+        isOwnedBy: User
         isBorrowedBy: User
+        isRequestedBy: [User]
     }
 
     type GameLibrary {
@@ -26,15 +28,6 @@ const typeDefs = gql `
         release_date: String
     }
 
-    type GameRequest {
-        _id: ID!
-        fromUser: String
-        toUser: String
-        game: String
-        status: String
-
-    }
-
     type Auth {
         token: ID!
         user: User
@@ -44,7 +37,6 @@ const typeDefs = gql `
         availableGames: [User]
         user(username: String!): User
         gamelibrary: [GameLibrary]
-
         allGames: [UserGames]
         userGames(userId: ID): User
         borrowedGames(userId: ID): UserGames
@@ -55,11 +47,20 @@ const typeDefs = gql `
         addUser(username: String!, email: String!, password: String!): Auth
         login(email: String!, password: String!): Auth
         addGameToUserGames(gameId: ID, userId: ID, platform: String): UserGames
+        
+        addRequestorToGame(gameId: ID, userId: ID): UserGames
+        addGameToRequested(gameId: ID, username: String! ): User
+        
+        acceptBorrowRequest(gameId: ID, userId: ID): UserGames
+        rejectBorrowRequest(gameId: ID, userId: ID): UserGames
+
         addBorrowerToGame(gameId: ID, userId: ID): UserGames
         addGameToBorrowed(gameId: ID, username: String! ): User
         removeUserGame(gameId: ID, userId: ID): UserGames
         removeBorrowerFromGame(gameId: ID, userId: ID): UserGames        
         deleteUser(_id: ID!): User
+
+
     }
 `;
 

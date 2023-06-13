@@ -12,27 +12,6 @@ import BorrowListItem from '../components/BorrowPage/listItem';
 
 const Borrow = () => {
 
-    // const GetAvailableGames = () => {
-    //     const { loading, data } = useQuery(GET_AVAILABLE_GAMES)
-    //     const availableGames = data?.allGames || []
-        
-    //     var alLGamesWithoutBorrower = availableGames.filter((game)=>{
-    //         if (game.isBorrowedBy === null) {
-    //             return game
-    //         }
-
-    //     })
-
-    //     const gamesList = alLGamesWithoutBorrower.filter((game)=>{
-    //         if (game.platform != null) {
-    //             return game
-    //         }
-    //     })
-    //     return gamesList
-    // }
-
-
-
     const [state, dispatch] = useGameContext()
 
     const [ filteredGames, setFilteredGames ] = useState([])
@@ -49,11 +28,11 @@ const Borrow = () => {
         
         if (state.availableGames){
             const filterGames = state.availableGames.filter((game) => {
-                console.log("game details", game.gameDetails[0].name)
+                //console.log("game details", game.gameDetails[0].name)
                 return Object.values(game.gameDetails[0].name).join('').toLowerCase().includes(search.toLowerCase())
             })
 
-            console.log("filteredGames:", filterGames)
+            //console.log("filteredGames:", filterGames)
             setFilteredGames(filterGames)
 
         }   
@@ -80,7 +59,7 @@ const Borrow = () => {
                             onChange={(e) => searchItems(e.target.value)}
                 />
             <br></br>
-                <div className="container-fluid">
+            <div className="container-fluid">
                 <div className="row">
                     { filteredGames.length ? (
                     <div className="h-75">

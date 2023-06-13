@@ -17,8 +17,8 @@ db.once("open", async () => {
     // Call game data from api
     const gamesData = await getGameDetails
 
-    console.log("DATA", data);
-    console.log("GAMESDATA", gamesData);
+    //console.log("DATA", data);
+    //console.log("GAMESDATA", gamesData);
 
     // Store an ARRAY of game OBJECTS in the gamelibrary variable.
     const gameLibrary = await GameLibrary.insertMany(gamesData); 

@@ -9,7 +9,7 @@ export default function BorrowedGameListItem (game) {
     const [removeBorrowerFromGame, {error, data}] = useMutation(REMOVE_BORROWER_FROM_GAME);
 
     const processRemoveFromUserGames = (userId, gameId) => {
-        console.log(userId, gameId)
+        // console.log(userId, gameId)
         try {
             const { data } = removeBorrowerFromGame({
                 variables: { userId: userId, gameId: gameId}
