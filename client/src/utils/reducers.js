@@ -29,11 +29,23 @@ export const reducer = ( state, action ) => {
                 gamesToAdd: []
             };
         case CLEAR_GAME_REQUESTS:
-            console.log(action._id)
-            console.log(state.reqeustedGames)
-            return{
-                ...state
-            };
+            let games = state.requestedGames.map((game)=>{
+                 if (game.id != action.game) {
+                    return {
+                        ...game,
+                        isRequestedBy: []
+                    }
+                 }
+                 return game
+            })
+
+            console.log("newstate", games)
+
+            return {
+                ...state,
+                requestedGames: games
+            }
+            
 
 
         // todo: add action to remove game from state when requested

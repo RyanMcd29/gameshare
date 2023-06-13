@@ -1,11 +1,16 @@
 import { useMutation } from "@apollo/client";
 import React from "react";
 import auth from "../utils/auth";
-import {  ACCEPT_BORROW_REQUEST, REJECT_BORROW_REQUEST } from "../utils/mutations";
+import { CLEAR_GAME_REQUESTS } from "../utils/actions";
+import { ACCEPT_BORROW_REQUEST, REJECT_BORROW_REQUEST } from "../utils/mutations";
+import { useGameContext } from "../utils/GameContext";
+
+
 
 
 //-- Deconstructing the "game" object --//
 export default function RequestedGameListItem (game) {
+    const [state, dispatch] = useGameContext();
 
     const [ acceptBorrowRequest] = useMutation(ACCEPT_BORROW_REQUEST)
 
@@ -21,6 +26,10 @@ export default function RequestedGameListItem (game) {
         console.log("accepted ", userId)
 
         // Clear game from state.
+        dispatch({
+            type: CLEAR_GAME_REQUESTS,
+            game: id
+        })
 
         console.log(userId);
 

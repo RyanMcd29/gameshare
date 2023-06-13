@@ -18,9 +18,6 @@ export default function BorrowListItem (game) {
           const data  = addRequestorToGame({
             variables: {userId: userId, gameId : gameId}
           })
-
-          console.log(data)
-        
         } catch (err) {
           console.error(err)  
         }

@@ -12,8 +12,9 @@ const Inbox = () => {
     const [requestedGames, SetRequestedGames] = useState([])
     
     useEffect(()=>{
+        console.log("game requests updated", state.requestedGames)
         SetRequestedGames(state.requestedGames)
-    } , [state.requestedGames])
+    }, [state.requestedGames])
 
     return (
         <AnimatedPage>
@@ -31,15 +32,10 @@ const Inbox = () => {
                 <div className="vh-75">
                     <div className="row m-0 ">
                     { requestedGames && requestedGames.map((game) => {
-                        console.log("game",game)
                                 for(let i = 0; game.isRequestedBy.length; i++){
-
                                     // console.log("Requestor", game.isRequestedBy[i]);
                                     // console.log("Length", game.isRequestedBy.length);
                                     // console.log("owner", Auth.getProfile().data.username)
-
-                                    
-
                                     return <RequestedGameListItem
                                     id={game._id}
                                     key={game._id}

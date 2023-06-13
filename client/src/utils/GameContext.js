@@ -72,7 +72,7 @@ const GamesBorrowedByUser = (gameLibrary) => {
 }
 
 //New - Will - Addition of game requests to State
-const GetRequestedGames = () => {
+export const GetRequestedGames = () => {
     //get userId
     const userId = auth.getProfile().data._id
     const { loading, data } = useQuery(QUERY_USER_GAMES, {variables: {
@@ -89,7 +89,7 @@ const GetRequestedGames = () => {
     for(let i = 0; i < n; i++){
         requestedGamesArray.push(data?.userGames.userGames[i]);
     }
-    console.log('requestedGamesArray', requestedGamesArray)
+
     return requestedGamesArray;
 }
 
