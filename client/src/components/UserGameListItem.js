@@ -1,11 +1,15 @@
 import { useMutation } from "@apollo/client";
 import React from "react";
+import { REMOVE_GAME_FROM_OWNED_GAMES } from "../utils/actions";
 import auth from "../utils/auth";
+import { useGameContext } from "../utils/GameContext";
 import {  REMOVE_GAME_FROM_USER_GAME } from "../utils/mutations";
 
 
 //-- Deconstructing the "game" object --//
 export default function UserListGameItem (game) {
+    const [state, dispatch] = useGameContext()
+
     const { name, image, platform, id } = game;
 
     const [removeGameFromUserGame, {error, data}] = useMutation(REMOVE_GAME_FROM_USER_GAME);
@@ -20,11 +24,17 @@ export default function UserListGameItem (game) {
         }
     }
 
-    const removeGame = () => {
+    const removeGame = async () => {
         const gameId = id
         const username = auth.getProfile().data._id
 
-        processRemoveFromUserGames(username, gameId)
+        await processRemoveFromUserGames(username, gameId)
+
+        dispatch({
+            type: REMOVE_GAME_FROM_OWNED_GAMES,
+            game: game
+        })
+
     }
     return (
         <div className="list-group-item d-flex border border-dark-subtle p-1"> 

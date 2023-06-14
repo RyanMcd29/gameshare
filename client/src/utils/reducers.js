@@ -5,6 +5,7 @@ import {
     CLEAR_CART,
     REMOVE_FROM_AVAILABLE,
     PROCESS_BORROW_REQUEST,
+    REMOVE_GAME_FROM_OWNED_GAMES,
 
 } from './actions'
 
@@ -46,7 +47,11 @@ export const reducer = ( state, action ) => {
             return {
                 ...state,
                 requestedGames: games
-            }
+            };
+        
+        case REMOVE_GAME_FROM_OWNED_GAMES:
+            
+        
             
 
 

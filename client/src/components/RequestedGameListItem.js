@@ -22,26 +22,29 @@ export default function RequestedGameListItem (game) {
     const { username, userId, image, platform, id, gamename } = game;
     // console.log("game", game);
     
-    const handleAccept = () => {
+    const handleAccept = async () => {
         console.log("accepted ", userId)
 
         // Clear game from state and update borrowed games state
-        dispatch({
-            type: PROCESS_BORROW_REQUEST,
-            game: game
-        })
 
         console.log(userId);
 
         try {
             const { data } = acceptBorrowRequest({
                 variables: {userId: userId, gameId: id}
-                
+            })
+
+            dispatch({
+                type: PROCESS_BORROW_REQUEST,
+                game: game
             })
         } catch(err) {
                 console.error(err)
             }
+            
         }
+
+
 
     const handleReject = ()=>{
         console.log("rejected ",userId)
