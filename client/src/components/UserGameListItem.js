@@ -43,7 +43,7 @@ export default function UserListGameItem (game) {
                 <p>{name}</p>
                 <p>{platform}</p>
             </div>
-            <button onClick={()=>removeGame()}className="btn btn-danger h-50 position-absolute top-0 end-0">X</button>
+            <button onClick={()=>removeGame()}className="btn btn-danger px-2 position-absolute mx-2 top-50 end-0 translate-middle-y">X</button>
 
     </div>
     )

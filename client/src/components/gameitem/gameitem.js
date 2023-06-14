@@ -12,6 +12,7 @@ export default function GameItem (game) {
     const { id, name, image, platforms } = game
 
     // Local state for wheter 'add game' button is clicked or not ---//
+    const [ isHovered, setHovered ] = useState(false)
     const [ isSelected, setSelected ] = useState(false)
     
     //-- Submit game to cart ---//
@@ -33,22 +34,30 @@ export default function GameItem (game) {
         setSelected(true)
     }
 
+    // const renderGameDetails = (hovered) => {
+    //     setHovered(hovered)
+    // }
+
+    // onFocus={() =>renderGameDetails(true)} onPointerLeave={() => {renderGameDetails(false)}}
+
     return (
-        <div key={id} className="col-sm-6 col-md-3">
+        <div key={id} className="col-sm-6 col-md-3 mb-3">
             <div className="card">
-                <img className="card-img-top game-img" src={image}/>
-                <div className= "card-body">
-                    <h5 className="card-title">{name}</h5>
-                    { isSelected ? (
-                        <ul>
-                            { platforms.map((platform)=>{
-                                return (<button onClick={()=>submitGame({platform})} value={platform} key={platform} className={platform}>{platform}</button>)
-                            })}
-                        </ul>)
-                    : 
-                        <button onClick={renderAddGameForm}>add this game</button>
-                    }
-                </div>
+                <img  className="card-img-top game-img" src={image}/>
+                        <div className= "card-img-overlay">
+                            <h5 className="card-title fs-3 text-light p-2 fw-bold">{name}</h5>
+                            { isSelected ? (
+                                <ul>
+                                    { platforms.map((platform)=>{
+                                        return (<button className={"platform-btn " + platform.toLowerCase().replace(' ', '-')} onClick={()=>submitGame({platform})} value={platform} key={platform}>{platform}</button>)
+                                    })}
+                                </ul>)
+                            : 
+                                <button className="addGameBtn" onClick={renderAddGameForm}>+</button>
+                            }
+                        </div>
+                    <div/>
+              
             </div>
         </div>
         
