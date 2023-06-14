@@ -44,13 +44,24 @@ export const reducer = ( state, action ) => {
 
             console.log("newstate", games)
 
-            return {
-                ...state,
-                requestedGames: games
-            };
+        return {
+            ...state,
+            requestedGames: games
+        };
         
         case REMOVE_GAME_FROM_OWNED_GAMES:
-            
+            console.log("action object", action.game)
+            let userGames = state.userGameLibrary.filter(
+                game => game._id != action.game.id
+            )
+
+            console.log(userGames)
+
+        return {
+            ...state,
+            userGameLibrary: userGames
+        }
+
         
             
 
