@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useGameContext } from "../../utils/GameContext";
-import { ADD_USER_GAMES, CLEAR_CART, TOGGLE_CART } from "../../utils/actions";
+import { ADD_GAME_TO_GAMES_OWNED, CLEAR_CART, TOGGLE_CART } from "../../utils/actions";
 import CartElement from "./element";
 import { ADD_GAMES_TO_USER, ADD_GAME_TO_USER_GAMES } from "../../utils/mutations";
 import Auth from "../../utils/auth";
@@ -27,9 +27,20 @@ export default function GameCart () {
         gameIdsandPlatform.forEach(game => {
           // console.log(game.id, userId, game.platform)
           try {
-            const { data } = addGameToUserUserGames({
+            addGameToUserUserGames({
               variables: { gameId: game.id, userId: userId, platform: game.platform  }
             })
+            .then(()=>{ 
+                if (data) {
+                  console.log("added: ", data)
+                  dispatch({
+                    type: ADD_GAME_TO_GAMES_OWNED,
+                    game: data.addGameToUserGames
+                  })
+                }
+              }
+
+            )
           } catch (err) {
             console.err(err)
           }

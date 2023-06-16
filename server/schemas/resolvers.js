@@ -62,17 +62,20 @@ const resolvers = {
     },
 
     addGameToUserGames: async (parent, {gameId, userId, platform}) => {
-      console.log(userId)
+      
       const userGame = await UserGames.create(
         {gameDetails: gameId, platform: platform, isOwnedBy: userId},
-        {new: true}
       )
+
+      console.log("new game created", userGame._id)
       // Update user games
       //console.log(userGame[0]._id)
-      const newGameId = userGame[0]._id
+      const newGameId = userGame._id
 
+      
+  
 
-      const user = await User.findOneAndUpdate(
+      await User.findOneAndUpdate(
         { _id: userId },
         { $addToSet: { userGames: newGameId}},
         { new: true }

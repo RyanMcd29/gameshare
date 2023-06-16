@@ -5,6 +5,7 @@ import {
     CLEAR_CART,
     REMOVE_FROM_AVAILABLE,
     PROCESS_BORROW_REQUEST,
+    ADD_GAME_TO_GAMES_OWNED,
     REMOVE_GAME_FROM_OWNED_GAMES,
 
 } from './actions'
@@ -48,6 +49,20 @@ export const reducer = ( state, action ) => {
             ...state,
             requestedGames: games
         };
+
+        case ADD_GAME_TO_GAMES_OWNED:
+            console.log("action object", action)
+            console.log("old state", state.userGames.userGames)
+            const newState = state.userGames
+            
+            
+            console.log("newState: ", newState)
+            newState.userGames.concat(action.game)
+                        
+            return {
+                ... state,
+                userGames: newState
+            }
         
         case REMOVE_GAME_FROM_OWNED_GAMES:
             console.log("action object", action.game)
@@ -61,6 +76,8 @@ export const reducer = ( state, action ) => {
             ...state,
             userGameLibrary: userGames
         }
+
+
 
         
             
