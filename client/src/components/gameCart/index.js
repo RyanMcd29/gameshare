@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useGameContext } from "../../utils/GameContext";
 import { ADD_GAME_TO_GAMES_OWNED, CLEAR_CART, TOGGLE_CART } from "../../utils/actions";
 import CartElement from "./element";
-import { ADD_GAMES_TO_USER, ADD_GAME_TO_USER_GAMES } from "../../utils/mutations";
+import { ADD_GAME_TO_USER_GAMES } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 import { useMutation } from "@apollo/client";
 import auth from "../../utils/auth";
@@ -23,29 +23,24 @@ export default function GameCart () {
 
       const userId = auth.getProfile().data._id
 
-      // console.log(userId, gameIdsandPlatform)
-        gameIdsandPlatform.forEach(game => {
-          // console.log(game.id, userId, game.platform)
-          try {
-            addGameToUserUserGames({
-              variables: { gameId: game.id, userId: userId, platform: game.platform  }
-            })
-            .then(()=>{ 
-                if (data) {
-                  console.log("added: ", data)
-                  dispatch({
-                    type: ADD_GAME_TO_GAMES_OWNED,
-                    game: data.addGameToUserGames
-                  })
-                }
-              }
-
-            )
-          } catch (err) {
-            console.err(err)
-          }
+      for (const game of gameIdsandPlatform) {
+        try {
+          const { data } = await addGameToUserUserGames({
+            variables: { gameId: game.id, userId: userId, platform: game.platform }
+          });
           
-        });
+          if (data) {
+            console.log("added: ", data);
+            dispatch({
+              type: ADD_GAME_TO_GAMES_OWNED,
+              game: data.addGameToUserGames
+            });
+          }
+        } catch (error) {
+          // Handle any errors that occur during the API call
+          console.error("Error adding game:", error);
+        }
+      }
 
     }
 
