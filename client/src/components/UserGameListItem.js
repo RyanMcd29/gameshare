@@ -1,5 +1,5 @@
 import { useMutation } from "@apollo/client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import auth from "../utils/auth";
 import {  REMOVE_GAME_FROM_USER_GAME } from "../utils/mutations";
 
@@ -8,9 +8,16 @@ import {  REMOVE_GAME_FROM_USER_GAME } from "../utils/mutations";
 export default function UserListGameItem (game) {
     const { name, image, platform, id, isBorrowedBy} = game;
 
+    const [borrowStatus, setBorrowStatus] = useState(false)
     //Will-New
     console.log(isBorrowedBy);
-    const isBorrowed = isBorrowedBy
+    
+    useEffect(()=>{
+        if (isBorrowedBy) {
+            setBorrowStatus(true)
+        }
+    })
+
     
 
 
@@ -39,7 +46,7 @@ export default function UserListGameItem (game) {
             <div className=" m-2 game-cart-details">
                 <p>{name}</p>
                 <p>{platform}</p>
-                <p>{isBorrowed != "" ? "On-Loan" : ""}</p>
+                <p>{borrowStatus != "" ? "On-Loan" : ""}</p>
             </div>
             <button onClick={()=>removeGame()}className="btn btn-danger px-2 position-absolute mx-2 top-50 end-0 translate-middle-y">X</button> 
         </div>
