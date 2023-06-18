@@ -21,7 +21,9 @@ const resolvers = {
                     populate: {path: 'gameDetails'},
       }).populate({path: 'userGames',
                     populate:  {path: 'isRequestedBy'},
-      })
+      }).populate({path: 'userGames',
+                    populate:  {path: 'isBorrowedBy'},
+})
 
         return user
         

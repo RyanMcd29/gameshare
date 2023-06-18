@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.3d3c4087.css",
-    "main.js": "/static/js/main.9ad58100.js",
+    "main.css": "/static/css/main.da746a51.css",
+    "main.js": "/static/js/main.b3836003.js",
     "static/js/787.f480428d.chunk.js": "/static/js/787.f480428d.chunk.js",
     "static/media/mario_background3.jpg": "/static/media/mario_background3.376c2f18bfa8526138cd.jpg",
     "index.html": "/index.html",
-    "main.3d3c4087.css.map": "/static/css/main.3d3c4087.css.map",
-    "main.9ad58100.js.map": "/static/js/main.9ad58100.js.map",
+    "main.da746a51.css.map": "/static/css/main.da746a51.css.map",
+    "main.b3836003.js.map": "/static/js/main.b3836003.js.map",
     "787.f480428d.chunk.js.map": "/static/js/787.f480428d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3d3c4087.css",
-    "static/js/main.9ad58100.js"
+    "static/css/main.da746a51.css",
+    "static/js/main.b3836003.js"
   ]
 }
