@@ -20,12 +20,14 @@ const Home = () => {
 
     const [userGame, setUserGames ] = useState([])
     const [borrowedGames, SetBorrowedGames] = useState([])
+    const [borrowedBy, SetBorrowedBy] = useState([])
 
     console.log("state", state);
     
     useEffect(()=>{
         setUserGames(state.userGames.userGames)
         SetBorrowedGames(state.borrowedGames)
+        
     }, [state.userGames.userGames, state.borrowedGames])
 
     // console.log("borrowed games", borrowedGames)
@@ -48,13 +50,16 @@ return (
                         <div className="vh-75">
                             <div className="row m-0">
                             { userGame && userGame.map((game) => {
-                                //console.log(game)
+                                console.log("game",game)
+                                
                                         return <UserListGameItem
                                             id={game._id}
                                             key={game._id}
                                             name={game.gameDetails[0].name}
                                             image={game.gameDetails[0].img}
-                                            platform={game.platform}/>                          
+                                            platform={game.platform}
+
+                                            isBorrowedBy={game.isBorrowedBy}/>                          
                                     }) }
                             </div>
                         </div>

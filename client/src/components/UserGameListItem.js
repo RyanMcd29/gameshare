@@ -6,7 +6,13 @@ import {  REMOVE_GAME_FROM_USER_GAME } from "../utils/mutations";
 
 //-- Deconstructing the "game" object --//
 export default function UserListGameItem (game) {
-    const { name, image, platform, id } = game;
+    const { name, image, platform, id, isBorrowedBy} = game;
+
+    //Will-New
+    console.log(isBorrowedBy);
+    const isBorrowed = isBorrowedBy
+    
+
 
     const [removeGameFromUserGame, {error, data}] = useMutation(REMOVE_GAME_FROM_USER_GAME);
 
@@ -26,15 +32,16 @@ export default function UserListGameItem (game) {
 
         processRemoveFromUserGames(username, gameId)
     }
+
     return (
         <div className="list-group-item d-flex border border-dark-subtle p-1"> 
             <img className="img-thumbnail w-25" src={image}/>
             <div className=" m-2 game-cart-details">
                 <p>{name}</p>
                 <p>{platform}</p>
+                <p>{isBorrowed != "" ? "On-Loan" : ""}</p>
             </div>
-            <button onClick={()=>removeGame()}className="btn btn-danger px-2 position-absolute mx-2 top-50 end-0 translate-middle-y">X</button>
-
-    </div>
+            <button onClick={()=>removeGame()}className="btn btn-danger px-2 position-absolute mx-2 top-50 end-0 translate-middle-y">X</button> 
+        </div>
     )
 }
