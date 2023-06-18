@@ -8,7 +8,7 @@ import { useMutation } from "@apollo/client";
 import auth from "../../utils/auth";
 
 
-export default function GameCart () {
+function GameCart () {
 
     //-- Get state and dispatch from GameContext --//
     const [state, dispatch] = useGameContext()
@@ -70,81 +70,80 @@ export default function GameCart () {
 
 
   
-  return (
-    <div>
-
-      <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-        Show Game Cart <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">{state.gamesToAdd.length} </span>
-      </button>
-
-      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasRightLabel">Games to add</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-          <div className="row h-75">
-            <ul className="list-group">
-              {/* Map over games in the cart and render CartElement for each one */}
-              {state.gamesToAdd && state.gamesToAdd.map((game) => (
-                <CartElement
-                  key={game._id}
-                  name={game.name}
-                  image={game.img}
-                  platform={game.platform}
-                />
-              ))}
-            </ul>
+    return (
+      <div>
+        <button
+          className="btn btn-primary"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasRight"
+          aria-controls="offcanvasRight"
+        >
+          Show Game Cart{" "}
+          <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">
+            {state.gamesToAdd.length}
+          </span>
+        </button>
+  
+        <div
+          className="offcanvas offcanvas-end"
+          tabIndex="-1"
+          id="offcanvasRight"
+          aria-labelledby="offcanvasRightLabel"
+        >
+          <div className="offcanvas-header">
+            <h5 className="offcanvas-title" id="offcanvasRightLabel">
+              Games to add
+            </h5>
+            <button
+              type="button"
+              className="btn-close"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
           </div>
-        </div>
-        <div className="h-10">
-          <button onClick={handleCartSubmit} className="row btn btn-success m-3">
-            Add Games
-          </button>
-          <button onClick={handleClearCart} className="row btn btn-danger m-3">
-            Clear
-          </button>
-        </div>
-  </div>
-
-      {/* <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#cartOffCanvas" aria-controls="offCanvasCartLabel">
-        Open Cart
-      </button>
-
-      <div className="offcanvas offcanvas start" tabIndex="-1" id="cartOffCanvas" aria-labelled="offCanvasCartLabel">
-        <div className="z-3 position-absolute top-50 start-50 translate-middle game-cart container d-flex">
-          <div
-            id="cart"
-            className="container col-3 z-3 position-fixed end-0 w-25 bg-dark mt-5"
-          >
+          <div className="offcanvas-body">
             <div className="row h-75">
               <ul className="list-group">
-                {/* Map over games in the cart and render CartElement for each one */}
-                {/* {state.gamesToAdd && state.gamesToAdd.map((game) => (
-                  <CartElement
-                    key={game._id}
-                    name={game.name}
-                    image={game.img}
-                    platform={game.platform}
-                  />
-                ))}
-              </ul> */}
-            {/* </div>
-            <div className="h-10">
-              <button onClick={handleCartSubmit} className="row btn btn-success m-3">
-                Add Games
-              </button>
-              <button onClick={handleClearCart} className="row btn btn-danger m-3">
-                Clear
-              </button>
+                {state.gamesToAdd &&
+                  state.gamesToAdd.map((game) => (
+                    <CartElement
+                      key={game._id}
+                      name={game.name}
+                      image={game.img}
+                      platform={game.platform}
+                    />
+                  ))}
+              </ul>
             </div>
           </div>
-        </div> */}
+          <div className="h-10">
+            <button
+              onClick={handleCartSubmit}
+              className="row btn btn-success m-3"
+            >
+              Add Games
+            </button>
+            <button
+              onClick={handleClearCart}
+              className="row btn btn-danger m-3"
+            >
+              Clear
+            </button>
+          </div>
+        </div>
       </div>
+    );
+  }
 
-      
-    // </div>
-  );
+
+//-- separating the authentication check and the rendering of the GameCart component --//
+export { GameCart };
+
+export default function GameCartWrapper() {
+  const isAuthenticated = Auth.loggedIn();
+  
+  return isAuthenticated ? <GameCart /> : null;
 }
 
 
