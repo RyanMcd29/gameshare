@@ -33,7 +33,7 @@ const GetAvailableGames = () => {
     const { loading, data } = useQuery(GET_AVAILABLE_GAMES)
     const availableGames = data?.allGames || []
     var alLGamesWithoutBorrower = availableGames.filter((game)=>{
-        if (game.isBorrowedBy === null) {
+        if (game.isBorrowedBy === null && game.gameDetails.length != 0) {
             return game
         }
     })

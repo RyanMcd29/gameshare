@@ -20,7 +20,6 @@ const Borrow = () => {
     // state.availableGames = GetAvailableGames()
     useEffect(()=>(
         setFilteredGames(state.availableGames)
-
     ),[state.availableGames])
 
     const searchItems = (searchValue) => {
@@ -38,6 +37,7 @@ const Borrow = () => {
         }   
     }
 
+    console.log(filteredGames)
   return (
     <AnimatedPage>
     <br></br>

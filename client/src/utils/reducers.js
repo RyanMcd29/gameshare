@@ -51,18 +51,19 @@ export const reducer = ( state, action ) => {
         };
 
         case ADD_GAME_TO_GAMES_OWNED:
-            console.log("action object", action)
-            console.log("old state", state.userGames.userGames)
-            const newState = state.userGames
-            
-            
-            console.log("newState: ", newState)
-            newState.userGames.concat(action.game)
-                        
+            console.log("action object", action);
+            console.log("old state", state.userGames.userGames);
+            const updatedUserGames = state.userGames.userGames.concat(action.game);
+          
+            console.log("updatedUserGames: ", updatedUserGames);
+          
             return {
-                ... state,
-                userGames: newState
-            }
+              ...state,
+              userGames: {
+                ...state.userGames,
+                userGames: updatedUserGames,
+              },
+            };
         
         case REMOVE_GAME_FROM_OWNED_GAMES:
             console.log("action object", action.game)
@@ -84,14 +85,19 @@ export const reducer = ( state, action ) => {
 
 
         // todo: add action to remove game from state when requested
-        // case REMOVE_FROM_AVAILABLE: 
-        //     console.log(state.availableGames)
-        //     console.log(action._id)
-        //     let newState = state.availableGames.filter((game) => {
-        //         return game._id !== action._id
-        //     });
+        case REMOVE_FROM_AVAILABLE: 
+            console.log(state.availableGames)
+            console.log(action._id)
+            let newState = state.availableGames.filter((game) => {
+                return game._id !== action._id
+            });
 
-        //     console.log("newState", newState)
+            console.log("newState", newState)
+
+            return {
+                ...state,
+                availableGames: newState
+            }
 
 
 

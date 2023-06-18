@@ -30,7 +30,7 @@ export default function BorrowListItem (game) {
         const gameId = id
         const userId = auth.getProfile().data._id
         // call to remove game from state
-        // dispatch({ type: REMOVE_FROM_AVAILABLE, _id: id })
+        dispatch({ type: REMOVE_FROM_AVAILABLE, _id: id })
         console.log(userId);
         processGameRequest(userId, gameId)
 

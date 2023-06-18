@@ -14,18 +14,16 @@ import auth from '../utils/auth';
 //-- initialize the state and dispatch using the useGameContext hook --//
 const Home = () => {
     const [state, dispatch] = useGameContext();
-    //console.log("user",state.userGames)
-    //console.log("userGames State", state.userGameLibrary)
-
 
     const [userGame, setUserGames ] = useState([])
     const [borrowedGames, SetBorrowedGames] = useState([])
 
     console.log("state", state);
     
-    useEffect(()=>{
-        setUserGames(state.userGames.userGames)
-    }, [state.userGames.userGames])
+    useEffect(() => {
+        console.log("state updated");
+        setUserGames(state.userGames.userGames || []);
+      }, [state.userGames.userGames]);
 
     useEffect(()=>{
         SetBorrowedGames(state.borrowedGames)
