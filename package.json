@@ -24,7 +24,7 @@
   "bugs": {
     "url": "https://github.com/RyanMcd29/project-3/issues"
   },
-  "homepage": "/",
+  "homepage": "https://github.com/RyanMcd29/project-3#readme",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
     "@fortawesome/free-regular-svg-icons": "^6.4.0",
