@@ -23,8 +23,8 @@ const resolvers = {
                     populate:  {path: 'isRequestedBy'},
       }).populate({path: 'userGames',
                     populate:  {path: 'isBorrowedBy'},
-})
-
+      })
+      
         return user
         
       };

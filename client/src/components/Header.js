@@ -87,6 +87,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Auth from '../utils/auth';
+import { useGameContext } from '../utils/GameContext';
 
 const Header = () => {
   const location = useLocation();
@@ -94,6 +95,9 @@ const Header = () => {
   const logout = () => {
     Auth.logout();
   };
+
+  const [state, dispatch] = useGameContext()
+
 
   return (
     <header className="headerColor sticky-top">
@@ -120,8 +124,9 @@ const Header = () => {
               {location.pathname !== '/inbox' && location.pathname !== '/' && (
                 <Link to="/inbox">
                   <button className="button-80 ms-1" type="button">
-                    Inbox
+                    Inbox <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{state.requestedGames.length} <span class="visually-hidden">new requests</span></span>
                   </button>
+
                 </Link>
               )}
               <button
