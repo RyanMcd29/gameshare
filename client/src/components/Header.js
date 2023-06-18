@@ -87,7 +87,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Auth from '../utils/auth';
-import { useGameContext } from '../utils/GameContext';
+import { GetRequestedGames, useGameContext } from '../utils/GameContext';
 
 const Header = () => {
   const location = useLocation();
@@ -97,6 +97,18 @@ const Header = () => {
   };
 
   const [state, dispatch] = useGameContext()
+
+  const getNewRequests = () => {
+    console.log("requested games", state.requestedGames)
+    var requestCount = 0
+    
+    // Go through each game and add isRequested by length
+    state.requestedGames.forEach(game => {
+      requestCount += game.isRequestedBy.length
+    });
+
+    return requestCount
+}
 
 
   return (
@@ -124,7 +136,7 @@ const Header = () => {
               {location.pathname !== '/inbox' && location.pathname !== '/' && (
                 <Link to="/inbox">
                   <button className="button-80 ms-1" type="button">
-                    Inbox <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{state.requestedGames.length} <span class="visually-hidden">new requests</span></span>
+                    Inbox <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{getNewRequests()} <span class="visually-hidden">new requests</span></span>
                   </button>
 
                 </Link>
