@@ -35,7 +35,7 @@ export const QUERY_USER = gql`
 `
 
 export const QUERY_USER_GAMES = gql`
-query UserGames($userId: ID) {
+query userGames($userId: ID) {
   userGames(userId: $userId) {
     email
     userGames {
@@ -52,6 +52,10 @@ query UserGames($userId: ID) {
         genres
         name
         platforms
+      }
+      isBorrowedBy {
+        _id
+        username
       }
     }
   }

@@ -30,6 +30,8 @@ const Home = () => {
         
     }, [state.userGames.userGames, state.borrowedGames])
 
+
+    console.log("usergames", userGame)
     // console.log("borrowed games", borrowedGames)
 
 return (
