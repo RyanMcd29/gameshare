@@ -53,7 +53,10 @@ const GetUserDetails = () => {
     const { loading, data } = useQuery(QUERY_USER_GAMES, {variables: {
         userId : userId
     }})
-    const userGames = data?.userGames || [] // Extract the user’s games array from the fetched data, or an empty array if there is no data
+
+    console.log(data)
+
+    const userGames = data?.userDetails || [] // Extract the user’s games array from the fetched data, or an empty array if there is no data
     //console.log(“userGameData”,userGames)
     return userGames
 }
@@ -83,11 +86,11 @@ export const GetRequestedGames = () => {
     // const userDataOne = data?.userGames.userGames[1];
     // console.log(“data”, data);
  
-    let n = data?.userGames.userGames.length || 0;
+    let n = data?.userDetails.userGames.length || 0;
     const requestedGamesArray = [];
 
     for(let i = 0; i < n; i++){
-        requestedGamesArray.push(data?.userGames.userGames[i]);
+        requestedGamesArray.push(data?.userDetails.userGames[i]);
     }
 
     return requestedGamesArray;
@@ -115,7 +118,7 @@ const GameProvider = ({ value = [], ...props }) => {
     // GetRequestedGames();
     if (auth.loggedIn() === true) {
         // Games belonging to user
-        state.userGames = GetUserDetails();
+        state.userDetails = GetUserDetails();
         // 
         state.borrowedGames = GamesBorrowedByUser(state.userGameLibrary)
         state.requestedGames = GetRequestedGames();

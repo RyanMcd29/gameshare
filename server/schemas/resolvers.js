@@ -14,7 +14,7 @@ const resolvers = {
       return User.findOne({ username: username });
     },
 
-    userGames: async (parent, {userId}) => {
+    userDetails: async (parent, {userId}) => {
       if (userId) {
         const user = await User.findOne({ _id: userId })
         .populate({path: 'userGames',

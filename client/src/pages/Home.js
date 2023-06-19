@@ -21,9 +21,9 @@ const Home = () => {
     console.log("state", state);
     
     useEffect(() => {
-        console.log("state updated");
-        setUserGames(state.userGames.userGames || []);
-      }, [state.userGames.userGames]);
+        console.log("state updated",state );
+        setUserGames(state.userDetails.userGames || []);
+      }, [state.userDetails.userGames]);
 
     useEffect(()=>{
         SetBorrowedGames(state.borrowedGames)

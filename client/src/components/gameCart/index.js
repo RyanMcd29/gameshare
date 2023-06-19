@@ -22,7 +22,7 @@ export default function GameCart () {
       // console.log(gameIdsandPlatform)
 
       const userId = auth.getProfile().data._id
-
+      const newGames = [];
       for (const game of gameIdsandPlatform) {
         try {
           const { data } = await addGameToUserUserGames({
@@ -30,18 +30,20 @@ export default function GameCart () {
           });
           
           if (data) {
-            console.log("added: ", data);
-            dispatch({
-              type: ADD_GAME_TO_GAMES_OWNED,
-              game: data.addGameToUserGames
-            });
+            newGames.push(data.addGameToUserGames)
           }
         } catch (error) {
           // Handle any errors that occur during the API call
           console.error("Error adding game:", error);
         }
       }
+      console.log(newGames)
 
+      console.log("added: ", data);
+            dispatch({
+              type: ADD_GAME_TO_GAMES_OWNED,
+              games: newGames
+            });
     }
 
   

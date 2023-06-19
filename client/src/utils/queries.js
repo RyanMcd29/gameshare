@@ -36,7 +36,7 @@ export const QUERY_USER = gql`
 
 export const QUERY_USER_GAMES = gql`
 query UserGames($userId: ID) {
-  userGames(userId: $userId) {
+  userDetails(userId: $userId) {
     email
     userGames {
       _id
