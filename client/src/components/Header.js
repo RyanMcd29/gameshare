@@ -136,13 +136,13 @@ const Header = () => {
               {location.pathname !== '/inbox' && location.pathname !== '/' && (
                 <Link to="/inbox">
                   <button className="button-80 ms-1" type="button">
-                    Inbox <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{getNewRequests()} <span class="visually-hidden">new requests</span></span>
+                    Inbox <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">{getNewRequests()} <span class="visually-hidden">new requests</span></span>
                   </button>
 
                 </Link>
               )}
               <button
-                className="button-80 ms-1"
+                className="button-80 ms-3"
                 type="button"
                 onClick={logout}
               >

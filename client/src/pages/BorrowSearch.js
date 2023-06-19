@@ -49,7 +49,7 @@ const Borrow = () => {
 
       <div className="card-deck row justify-content-center">
 
-    <div className="card m-4 cardScroll" style={{width: "500px", height: "400px"}}>
+    <div className="shadow-lg card m-4 cardScroll" style={{width: "500px", height: "400px"}}>
             <div className="card-body text-center">
             <h5 className="card-title">Request Games to Borrow: <i className="fa-sharp fa-solid fa-exchange"></i></h5>
                 <input 

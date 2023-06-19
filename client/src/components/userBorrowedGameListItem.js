@@ -28,8 +28,8 @@ export default function BorrowedGameListItem (game) {
     return (
         <div className="list-group-item d-flex border border-dark-subtle p-1"> 
             <img className="img-thumbnail w-25" src={image}/>
-            <div className=" m-2 game-cart-details">
-                <p>{name}</p>
+            <div className=" m-2 game-cart-details dashboard-card-element">
+                <p className="mb-1">{name}</p>
                 <p>{platform}</p>
             </div>
             <button onClick={()=>removeGame()}className="btn btn-danger px-2 position-absolute mx-2 top-50 end-0 translate-middle-y">X</button>
