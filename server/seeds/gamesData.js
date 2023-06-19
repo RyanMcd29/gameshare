@@ -20,7 +20,7 @@ function destructureGames (games) {
 }
 
 const getGameDetails = async () => {
-    const games = await axios.get('https://api.rawg.io/api/games?page_size=10&rating&key='+ API_KEY)
+    const games = await axios.get('https://api.rawg.io/api/games?page_size=40&rating&key='+ API_KEY)
     try {    
         const gamesData = await destructureGames(games.data.results)
         return gamesData

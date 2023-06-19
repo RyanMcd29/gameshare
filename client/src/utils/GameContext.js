@@ -33,7 +33,7 @@ const GetAvailableGames = () => {
     const { loading, data } = useQuery(GET_AVAILABLE_GAMES)
     const availableGames = data?.allGames || []
     var alLGamesWithoutBorrower = availableGames.filter((game)=>{
-        if (game.isBorrowedBy === null) {
+        if (game.isBorrowedBy === null && game.gameDetails.length != 0) {
             return game
         }
     })
@@ -75,6 +75,7 @@ const GamesBorrowedByUser = (gameLibrary) => {
 export const GetRequestedGames = () => {
     //get userId
     const userId = auth.getProfile().data._id
+
     const { loading, data } = useQuery(QUERY_USER_GAMES, {variables: {
         userId : userId
     }})
@@ -82,7 +83,8 @@ export const GetRequestedGames = () => {
     // const userData = data?.userGames.userGames[0].isRequestedBy;
     // const userDataOne = data?.userGames.userGames[1];
     // console.log(“data”, data);
- 
+    console.log(data)
+    
     let n = data?.userGames.userGames.length || 0;
     const requestedGamesArray = [];
 

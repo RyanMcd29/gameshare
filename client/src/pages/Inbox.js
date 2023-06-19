@@ -31,23 +31,19 @@ const Inbox = () => {
             <div className="card-body text-center">
                 <div className="vh-75">
                     <div className="row m-0 ">
-                    { requestedGames && requestedGames.map((game) => {
-                                for(let i = 0; game.isRequestedBy.length; i++){
-                                    // console.log("Requestor", game.isRequestedBy[i]);
-                                    // console.log("Length", game.isRequestedBy.length);
-                                    // console.log("owner", Auth.getProfile().data.username)
-                                    return <RequestedGameListItem
+                    { requestedGames && requestedGames.map((game)=>{
+                            return game.isRequestedBy.map((user) => {
+                                return <RequestedGameListItem
                                     id={game._id}
-                                    key={game._id}
+                                    key={game._id + user.username}
                                     image={game.gameDetails[0].img}
                                     gamename={game.gameDetails[0].name}
                                     platform={game.platform}
-                                    username={game.isRequestedBy[0].username}
-                                    userId={game.isRequestedBy[0]._id}
-                                    /> 
-                                }
-                         
-                            }) }
+                                    username={user.username}
+                                    userId={user._id}
+                                />
+                            })
+                        })}
                     </div>
                 </div>
             </div> 
