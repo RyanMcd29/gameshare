@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from 'react';
+import React, { createContext, useContext, useEffect } from 'react';
 import { useGameReducer } from './reducers'
 import { useQuery , useMutation } from '@apollo/client';
 import { GET_AVAILABLE_GAMES, QUERY_GAMELIBRARY, QUERY_USER_GAMES } from './queries';
@@ -46,7 +46,7 @@ const GetAvailableGames = () => {
 }
 
 //-- Retrieves the details of the logged-in user --//
-const GetUserDetails = () => {
+const fetchUserDetails = () => {
     //get userId
     const userId = auth.getProfile().data._id
     //console.log(“userId”, userId)
@@ -54,8 +54,8 @@ const GetUserDetails = () => {
         userId : userId
     }})
 
-    console.log(data)
-
+    console.log("getting user details", data)
+    
     const userGames = data?.userDetails || [] // Extract the user’s games array from the fetched data, or an empty array if there is no data
     //console.log(“userGameData”,userGames)
     return userGames
@@ -76,6 +76,8 @@ const GamesBorrowedByUser = (gameLibrary) => {
 
 //New - Will - Addition of game requests to State
 export const GetRequestedGames = () => {
+
+    
     //get userId
     const userId = auth.getProfile().data._id
     const { loading, data } = useQuery(QUERY_USER_GAMES, {variables: {
@@ -118,12 +120,22 @@ const GameProvider = ({ value = [], ...props }) => {
     // GetRequestedGames();
     if (auth.loggedIn() === true) {
         // Games belonging to user
-        state.userDetails = GetUserDetails();
+        // state.userDetails = GetUserDetails();
         // 
         state.borrowedGames = GamesBorrowedByUser(state.userGameLibrary)
         state.requestedGames = GetRequestedGames();
     }
     
+    useEffect(()=>{
+        const fetchData = async () => {
+            const userDetails = await fetchUserDetails()
+
+            console.log(userDetails)
+        }
+
+        fetchData()
+    }, [])
+
     return <Provider value={[ state, dispatch ]} {...props} />;
 };
 

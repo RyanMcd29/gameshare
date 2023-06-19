@@ -57,7 +57,7 @@ export const reducer = ( state, action ) => {
           
             // console.log("updatedUserGames: ", updatedUserGames);
    
-            const hi = {
+            const updatedState = {
                 ...state,
                 userDetails: {
                   ...state.userDetails,
@@ -67,8 +67,9 @@ export const reducer = ( state, action ) => {
                   ]
                 }
               };
+            
+            console.log("updated state:", updatedState)
 
-              console.log(hi)
             return {
                 ...state,
                 userDetails: {
