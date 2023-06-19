@@ -105,7 +105,7 @@ const GameProvider = ({ value = [], ...props }) => {
         userGameLibrary:[],
         availableGames: [],
         gamesToAdd: [],
-        userGames: [],
+        userDetails: [],
         borrowedGames: [],
         requestedGames: [],
     });

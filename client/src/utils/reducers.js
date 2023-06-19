@@ -51,18 +51,33 @@ export const reducer = ( state, action ) => {
         };
 
         case ADD_GAME_TO_GAMES_OWNED:
-            console.log("action object", action);
-            console.log("old state", state.userGames.userGames);
-            const updatedUserGames = state.userGames.userGames.concat(action.game);
+            // console.log("action object", action);
+            // console.log("old state", state.userGames.userGames);
+            // const updatedUserGames = state.userDetails.userGames.concat(action.game);
           
-            console.log("updatedUserGames: ", updatedUserGames);
-          
+            // console.log("updatedUserGames: ", updatedUserGames);
+   
+            const hi = {
+                ...state,
+                userDetails: {
+                  ...state.userDetails,
+                  userGames: [
+                    ...state.userDetails.userGames,
+                    ...action.games
+                  ]
+                }
+              };
+
+              console.log(hi)
             return {
-              ...state,
-              userGames: {
-                ...state.userGames,
-                userGames: updatedUserGames,
-              },
+                ...state,
+                userDetails: {
+                  ...state.userDetails,
+                  userGames: [
+                    ...state.userDetails.userGames,
+                    ...action.games
+                  ]
+                }
             };
         
         case REMOVE_GAME_FROM_OWNED_GAMES:

@@ -21,7 +21,7 @@ const Home = () => {
     console.log("state", state);
     
     useEffect(() => {
-        console.log("state updated",state );
+        console.log("state updated",state.userDetails.userGames );
         setUserGames(state.userDetails.userGames || []);
       }, [state.userDetails.userGames]);
 
