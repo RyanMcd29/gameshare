@@ -69,6 +69,19 @@
   overflow-y: scroll;
 }
 
+.available {
+  font-weight: bold;
+  color: green;
+}
+.on-loan {
+  font-weight: bold;
+  color: orange;
+}
+
+h6 {
+  font-weight: bolder;
+}
+
 /* General App Elements */
 .App {
   text-align: center;
@@ -140,6 +153,11 @@
 .card:hover .card-img-overlay {
   background-color: rgba(0, 0, 0, 0.7);
   opacity: 1;
+}
+
+.card-body {
+  margin-top: 12px;
+  margin-bottom: auto;
 }
 
 .addGameBtn {

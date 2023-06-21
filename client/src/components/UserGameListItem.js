@@ -47,8 +47,8 @@ export default function UserListGameItem (game) {
             <img className="img-thumbnail w-25" src={image}/>
             <div className=" m-2 game-cart-details dashboard-card-element">
                 <p className="mb-1">{name}</p>
-                <p>{platform}</p>
-                <p>{borrowStatus != "" ? "On-Loan" : ""}</p>
+                <p className="mb-1">{platform}</p>
+                <p className={borrowStatus != false ? "on-loan " : "available " + "mb-1"}>{borrowStatus != "" ? "On-Loan" : "Available"}</p>
             </div>
             <button onClick={()=>removeGame()}className="btn btn-danger px-2 position-absolute mx-2 top-50 end-0 translate-middle-y">X</button> 
         </div>

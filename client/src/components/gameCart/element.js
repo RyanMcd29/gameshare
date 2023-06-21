@@ -5,11 +5,11 @@ import React from "react";
 export default function CartElement ({ name, image, platform }) {
   
   return (
-    <div className="game-cart list-group-item d-flex bg-dark text-white">
+    <div className= " game-cart list-group-item d-flex bg-dark text-white">
       <img className="img-thumbnail" src={image}/>
       <div className=" m-2 game-cart-details">
-        <p>{name}</p>
-        <p>{platform}</p>
+        <h5>{name}</h5>
+        <p className={"platform-btn " + platform.toLowerCase().replace(' ', '-')} >{platform}</p>
       </div>
     </div>
   );
