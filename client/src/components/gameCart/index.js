@@ -93,7 +93,7 @@ function GameCart () {
         >
           <div className="offcanvas-header">
             <h5 className="offcanvas-title" id="offcanvasRightLabel">
-              Games to add
+              Games in Bag
             </h5>
             <button
               type="button"
