@@ -44,11 +44,11 @@ return (
     </div>
     <div className='row'>
         <div className='col d-flex justify-content-center p-0 m-3'>
-                <div className="card cardScroll" style={{width: "480px", height: "500px"}}>
+                <div className=" shadow-lg card dashboard-card" style={{width: "480px", height: "500px"}}>
                     <div className='row sticky-top m-0'>
                         <h5 className="card-title text-center p-2 homeCardHeader"> My Games <i className="fa-sharp fa-solid fa-gamepad ms-1"></i></h5>
                     </div>
-                    <div className="card-body text-center">
+                    <div className="card-body text-center cardScroll">
                         <div className="vh-75">
                             <div className="row m-0">
                             { userGame && userGame.map((game) => {
@@ -67,18 +67,18 @@ return (
                         </div>
                     </div>
                     <Link to="/games" className='row text-center sticky-bottom p-0 m-0'>
-                        <button className="btn btn-lg btn-block btn-primary p-2 mb-1" type="button">Update Library!</button>
+                        <button className="btn btn-lg btn-block btn-primary p-2 mb-0" type="button">Update Library!</button>
                     </Link>
 
                 </div>
         </div>
 
         <div className='col d-flex justify-content-center p-0 m-3'>
-                <div className="card cardScroll" style={{width: "480px", height: "500px"}}>
+                <div className="shadow-lg card" style={{width: "480px", height: "500px"}}>
                 <div className='row sticky-top m-0'>
                     <h5 className="card-title text-center p-2 homeCardHeader"> Borrowed Games <i className="fa-sharp fa-solid fa-gamepad ms-1"></i></h5>
                 </div>
-                    <div className="card-body text-center">
+                    <div className="card-body text-center cardScroll">
                         <div className="vh-75">
                             <div className="row m-0 ">
                             { borrowedGames && borrowedGames.map((game) => {
@@ -95,7 +95,7 @@ return (
                         </div>
                     </div>
                     <Link to="/borrow" className='row text-center sticky-bottom p-0 m-0'>
-                        <button className="btn btn-lg btn-block btn-primary p-2 mb-1" type="button">Borrow Games!</button>
+                        <button className="btn btn-lg btn-block btn-primary p-2 mb-0" type="button">Borrow Games!</button>
                     </Link>
                 </div>
         </div>
