@@ -3,17 +3,17 @@
     {
       "username": "Ryan",
       "email": "ryan@test.com",
-      "password": "password"
+      "password": "123987"
     },
     {
       "username": "Will",
       "email": "will@test.com",
-      "password": "password"
+      "password": "123987"
     },
     {
       "username": "Mauxi",
       "email": "mauxi@test.com",
-      "password": "password"
+      "password": "123987"
     }
   ]
 }

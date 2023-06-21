@@ -50,12 +50,14 @@ export default function BorrowListItem (game) {
                   <h6>{name}</h6>
                   <p className={platforms.toLowerCase().replace(' ', '-')}>{platforms}</p>
                 </div>
-              <div className="col-2">
-                <button onClick={()=>requestGame()} className="btn btn-primary position-absolute top-50 end-0 translate-middle-y mx-2">Request</button>
+              <div className="col-2 ">
+                <button onClick={()=>requestGame()} className="btn btn-primary position-absolute top-50 end-0 translate-middle-y mx-2 p-2">Request</button>
               </div>
               </div>
             </div>
           </div>
+
+
 
       //   <div className="game-cart list-group-item d-flex">
       //   <div className="img-thumbnail img-container">
